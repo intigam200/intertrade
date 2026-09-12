@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-steel-50 font-sans text-graphite-900 antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    @apply bg-ochre-500 text-white;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tightest;
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-grid px-5 sm:px-8 lg:px-12;
+  }
+
+  /* технический подзаголовок-маркировка */
+  .tag {
+    @apply font-mono text-[11px] uppercase leading-none tracking-wide2 text-ochre-500;
+  }
+
+  .rule {
+    @apply border-t border-steel-200;
+  }
+
+  .rule-dark {
+    @apply border-t border-graphite-700;
+  }
+
+  .link-underline {
+    @apply relative inline-block after:absolute after:bottom-[-2px] after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-current after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-3 px-7 py-4 font-mono text-[12px] uppercase tracking-wide2 transition-colors duration-200;
+  }
+
+  .btn-primary {
+    @apply btn bg-ochre-500 text-white hover:bg-ochre-600;
+  }
+
+  .btn-ghost {
+    @apply btn border border-steel-300 text-graphite-900 hover:border-graphite-900 hover:bg-graphite-900 hover:text-white;
+  }
+
+  .btn-ghost-dark {
+    @apply btn border border-graphite-600 text-steel-100 hover:border-ochre-500 hover:bg-ochre-500 hover:text-white;
+  }
+
+  .field {
+    @apply w-full border border-steel-300 bg-white px-4 py-3 font-sans text-[15px] text-graphite-900 outline-none transition-colors placeholder:text-steel-400 focus:border-graphite-900;
+  }
+
+  .field-error {
+    @apply border-signal-red;
+  }
+
+  .label {
+    @apply mb-2 block font-mono text-[11px] uppercase tracking-wide2 text-steel-500;
+  }
+}
+
+/* сдержанное появление при скролле */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-marquee {
+    animation: none;
+  }
+}
