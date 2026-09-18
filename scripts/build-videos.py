@@ -24,17 +24,18 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / 'public' / 'video'
 IMAGES = ROOT / 'public' / 'images'
 
-WIDTH = 1440          # шире фон не нужен: он уходит под затемнение и текст
-CRF = '33'            # фон под скримом — разница с crf 28 не видна, вес вдвое меньше
+WIDTH = 1600
+CRF = '28'            # по умолчанию; для насыщенных деталями съёмок задаётся у клипа
 DURATION = 10
-FPS = 25
+GOP = '50'            # ключевой кадр раз в ~2 секунды
 
 # Файл, момент начала и кадр для постера. Отрезки выбраны по ровному
 # движению камеры, без склеек и затемнений.
 CLIPS = [
     {'name': 'sea', 'src': 'sea.mp4', 'start': 20, 'poster': 4},
-    {'name': 'industrial', 'src': 'industrial.mp4', 'start': 40, 'poster': None},
-    {'name': 'energy', 'src': 'energy.mov', 'start': 7, 'poster': None},
+    # аэросъёмка с дымкой и мелкой фактурой — самый тяжёлый материал
+    {'name': 'industrial', 'src': 'industrial.mp4', 'start': 40, 'poster': None, 'crf': '31'},
+    {'name': 'energy', 'src': 'energy.mov', 'start': 7, 'poster': None, 'crf': '30'},
 ]
 
 
@@ -48,14 +49,15 @@ def size(path):
 
 def encode(clip):
     src = SOURCES / clip['src']
-    # лёгкий шумодав съедает зерно съёмки: на глаз незаметно, по весу −30%
-    vf = f'scale={WIDTH}:-2:flags=lanczos,hqdn3d=3:2:8:8,fps={FPS}'
+    # Частоту кадров не трогаем: пересчёт 29.97 → 25 давал рваное движение.
+    # Шумодав слабый — только чтобы снять зерно съёмки, не смазывая детали.
+    vf = f'scale={WIDTH}:-2:flags=lanczos,hqdn3d=1.5:1.5:6:6'
     common = ['-ss', str(clip['start']), '-t', str(DURATION), '-i', str(src), '-an', '-vf', vf]
 
     mp4 = OUT / f"{clip['name']}.mp4"
-    run([*common, '-c:v', 'libx264', '-preset', 'veryslow', '-crf', CRF,
-         '-profile:v', 'high', '-pix_fmt', 'yuv420p', '-g', str(FPS * 2),
-         '-movflags', '+faststart', str(mp4)])
+    run([*common, '-c:v', 'libx264', '-preset', 'veryslow', '-crf', clip.get('crf', CRF),
+         '-profile:v', 'high', '-level', '4.1', '-pix_fmt', 'yuv420p',
+         '-g', GOP, '-movflags', '+faststart', str(mp4)])
 
     print(f"{clip['name']:<12} mp4 {size(mp4):>9}")
 
