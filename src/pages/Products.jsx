@@ -24,7 +24,13 @@ export default function Products() {
 
   return (
     <>
-      <PageHero code={t.products.code} title={t.products.title} lead={t.products.lead}>
+      <PageHero
+        code={t.products.code}
+        title={t.products.title}
+        lead={t.products.lead}
+        image={{ name: 'industry-hero', widths: [760, 1440], width: '1440', height: '1026' }}
+        imageAlt={t.products.heroAlt}
+      >
         <dl className="mt-10 flex flex-wrap gap-x-12 gap-y-4 font-mono text-[11px] uppercase tracking-wide2 text-steel-400">
           <div>
             <dt>{t.products.statGroups}</dt>

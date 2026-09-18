@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import Reveal from '../components/Reveal.jsx'
 import Icon from '../components/Icon.jsx'
 import { IconArrow } from '../components/Icons.jsx'
+import HeroSlides from '../components/HeroSlides.jsx'
 import { Photo, SectionHead, IndexList, BrandStrip, CtaBand } from '../components/ui.jsx'
 import { countPositions } from '../data/company.js'
 import { useI18n } from '../i18n/index.jsx'
@@ -16,9 +17,9 @@ export default function Home() {
     <>
       {/* ── Первый экран ───────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-graphite-900">
-        <div className="absolute inset-0 bg-blueprint bg-grid opacity-70" aria-hidden />
-        <div className="shell relative grid grid-cols-1 gap-12 pb-0 pt-14 lg:grid-cols-12 lg:gap-8 lg:pt-20">
-          <div className="lg:col-span-6">
+        <HeroSlides posterAlt={t.home.posterAlt} labels={t.home.slides} />
+        <div className="shell relative grid grid-cols-1 gap-12 pb-0 pt-14 lg:grid-cols-12 lg:gap-8 lg:pb-8 lg:pt-28">
+          <div className="lg:col-span-7">
             <p className="tag">{t.home.tag}</p>
             <h1 className="mt-7 text-[38px] font-bold uppercase leading-[1.02] text-white sm:text-[58px] lg:text-[70px]">
               {t.home.h1.line1}
@@ -40,32 +41,15 @@ export default function Home() {
               </Link>
             </div>
           </div>
-
-          <div className="relative -mx-5 sm:-mx-8 lg:col-span-6 lg:-ml-4 lg:-mr-12 lg:self-center xl:-ml-8">
-            <Photo
-              name="industry-hero"
-              widths={[760, 1440]}
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              alt={t.home.heroAlt}
-              width="1440"
-              height="1026"
-              className="w-full object-contain"
-              priority
-            />
-            <p className="pointer-events-none absolute right-5 top-4 hidden items-center gap-3 font-mono text-[11px] uppercase tracking-wide2 text-steel-400 sm:right-8 lg:right-12 lg:flex">
-              <span className="h-px w-6 bg-ochre-500" aria-hidden />
-              {t.home.heroCaption}
-            </p>
-          </div>
         </div>
 
         {/* технические показатели */}
         <div className="shell relative">
-          <dl className="grid grid-cols-2 border-t border-graphite-700 lg:grid-cols-4">
+          <dl className="grid grid-cols-2 border-t border-white/15 lg:grid-cols-4">
             {figures.map((f, i) => (
               <div
                 key={f.label}
-                className={`border-graphite-700 py-8 pr-6 ${i % 2 === 1 ? 'border-l pl-6' : ''} ${
+                className={`border-white/15 py-8 pr-6 ${i % 2 === 1 ? 'border-l pl-6' : ''} ${
                   i < 2 ? 'border-b lg:border-b-0' : ''
                 } ${i === 2 ? 'lg:border-l lg:pl-6' : ''} ${i === 3 ? 'lg:pl-6' : ''}`}
               >

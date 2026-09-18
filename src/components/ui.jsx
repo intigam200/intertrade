@@ -185,9 +185,25 @@ export function CtaBand({ title, text }) {
 }
 
 /* Шапка внутренней страницы */
-export function PageHero({ code, title, lead, children }) {
+export function PageHero({ code, title, lead, image, imageAlt, children }) {
   return (
     <section className="relative overflow-hidden border-b border-graphite-700 bg-graphite-900">
+      {image && (
+        <div className="absolute inset-0" aria-hidden>
+          <Photo
+            name={image.name}
+            widths={image.widths}
+            sizes="100vw"
+            alt={imageAlt}
+            width={image.width}
+            height={image.height}
+            className="h-full w-full object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-graphite-950/55" />
+          <div className="absolute inset-0 bg-gradient-to-r from-graphite-950 via-graphite-950/80 to-graphite-950/40" />
+        </div>
+      )}
       <div className="absolute inset-0 bg-blueprint bg-grid opacity-60" aria-hidden />
       <div className="shell relative grid grid-cols-1 gap-8 py-16 lg:grid-cols-12 lg:py-24">
         <div className="lg:col-span-2">

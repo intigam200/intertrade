@@ -371,9 +371,12 @@ export default {
       },
       ctaPrimary: 'Send a request',
       ctaSecondary: 'Product catalogue',
-      heroAlt:
-        'Night view of an oil refinery: process columns and trunk pipelines running to the horizon',
-      heroCaption: 'Oil refining · Power generation · Pipeline networks',
+      posterAlt: 'Container terminal at sunset: gantry cranes and a vessel under load',
+      slides: [
+        'Sea freight · Ports',
+        'Production sites',
+        'Power generation',
+      ],
       figures: [
         'brands in the portfolio',
         'regions of direct supply',
@@ -465,6 +468,8 @@ export default {
       title: 'Product catalogue',
       lead:
         'The principal supply groups, broken down by type. Items outside the catalogue are sourced by specification, drawing or part number.',
+      heroAlt:
+        'Night view of an oil refinery: process columns and trunk pipelines running to the horizon',
       statGroups: 'Groups',
       statPositions: 'Items in the catalogue',
       statBrands: 'Brands in the portfolio',
