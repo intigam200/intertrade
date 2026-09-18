@@ -371,11 +371,11 @@ export default {
       },
       ctaPrimary: 'Send a request',
       ctaSecondary: 'Product catalogue',
-      posterAlt: 'Container terminal at sunset: gantry cranes and a vessel under load',
+      posterAlt: 'Aerial view of a wind farm: turbines above hills and fields',
       slides: [
-        'Sea freight · Ports',
-        'Production sites',
         'Power generation',
+        'Production sites',
+        'Sea freight · Ports',
       ],
       figures: [
         'brands in the portfolio',

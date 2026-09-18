@@ -143,7 +143,7 @@ export default function About() {
               </a>
             </div>
           </div>
-          <p className="relative hidden items-center gap-3 font-mono text-[11px] uppercase tracking-wide2 text-steel-300 lg:col-span-4 lg:col-start-9 lg:flex lg:justify-end">
+          <p className="relative hidden items-center gap-3 font-mono text-[11px] uppercase tracking-wide2 text-steel-300 lg:col-span-4 lg:col-start-9 lg:flex lg:justify-end lg:self-end lg:pb-1">
             <span className="h-px w-6 bg-ochre-500" aria-hidden />
             {t.about.geography.caption}
           </p>

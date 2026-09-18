@@ -3,7 +3,7 @@ import { Photo } from './ui.jsx'
 
 // Порядок слайдов первого экрана. Файлы готовит scripts/build-videos.py:
 // по 10 секунд, без звука, MP4/H.264.
-export const clips = ['sea', 'industrial', 'energy']
+export const clips = ['energy', 'industrial', 'sea']
 
 const FADE = 900 // мс, столько же стоит в transition-duration
 const LEAD = 1.1 // за сколько секунд до конца начинать следующий ролик
