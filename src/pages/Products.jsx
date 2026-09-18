@@ -3,11 +3,13 @@ import { Link, useLocation } from 'react-router-dom'
 import Icon from '../components/Icon.jsx'
 import { IconArrow, IconPlus } from '../components/Icons.jsx'
 import { PageHero, BrandStrip, CtaBand } from '../components/ui.jsx'
-import { catalog, catalogPositions } from '../data/catalog.js'
-import { contacts } from '../data/company.js'
+import { contacts, countPositions } from '../data/company.js'
+import { useI18n } from '../i18n/index.jsx'
 
 export default function Products() {
   const { hash } = useLocation()
+  const { t, d, path } = useI18n()
+  const catalog = d.catalog
   const [open, setOpen] = useState(() => [catalog[0].id])
 
   // Раздел из адреса разворачивается автоматически
@@ -22,26 +24,22 @@ export default function Products() {
 
   return (
     <>
-      <PageHero
-        code="03 / Продукция"
-        title="Каталог продукции"
-        lead="Основные группы поставки с разбивкой по типам исполнения. Позиции вне каталога подбираются по спецификации, чертежу или артикулу."
-      >
+      <PageHero code={t.products.code} title={t.products.title} lead={t.products.lead}>
         <dl className="mt-10 flex flex-wrap gap-x-12 gap-y-4 font-mono text-[11px] uppercase tracking-wide2 text-steel-400">
           <div>
-            <dt>Групп</dt>
+            <dt>{t.products.statGroups}</dt>
             <dd className="mt-2 font-display text-[28px] tracking-tightest text-white">
               {String(catalog.length).padStart(2, '0')}
             </dd>
           </div>
           <div>
-            <dt>Позиций в каталоге</dt>
+            <dt>{t.products.statPositions}</dt>
             <dd className="mt-2 font-display text-[28px] tracking-tightest text-white">
-              {catalogPositions}
+              {countPositions(catalog)}
             </dd>
           </div>
           <div>
-            <dt>Брендов в портфеле</dt>
+            <dt>{t.products.statBrands}</dt>
             <dd className="mt-2 font-display text-[28px] tracking-tightest text-white">400+</dd>
           </div>
         </dl>
@@ -52,7 +50,7 @@ export default function Products() {
           {/* навигация по группам */}
           <aside className="lg:col-span-3">
             <div className="lg:sticky lg:top-32">
-              <p className="tag">Группы</p>
+              <p className="tag">{t.products.groupsTag}</p>
               <nav className="mt-5 border-t border-steel-200">
                 {catalog.map((c) => (
                   <a
@@ -66,7 +64,7 @@ export default function Products() {
                 ))}
               </nav>
               <p className="mt-6 text-[13px] leading-relaxed text-steel-500">
-                Не нашли позицию? Направьте спецификацию на{' '}
+                {t.products.notFoundLead}
                 <a href={contacts.emailHref} className="text-ochre-600 underline underline-offset-4">
                   {contacts.email}
                 </a>
@@ -79,7 +77,7 @@ export default function Products() {
           <div className="lg:col-span-9">
             {catalog.map((c) => {
               const isOpen = open.includes(c.id)
-              const count = c.groups.reduce((s, g) => s + g.items.length, 0)
+              const count = countPositions([c])
               return (
                 <article
                   key={c.id}
@@ -98,7 +96,7 @@ export default function Products() {
                     />
                     <span className="flex-1">
                       <span className="font-mono text-[11px] uppercase tracking-wide2 text-steel-400">
-                        ICG-{c.code} · {String(count).padStart(2, '0')} позиций
+                        ICG-{c.code} · {String(count).padStart(2, '0')} {t.products.itemsCount}
                       </span>
                       <h2 className="mt-3 text-[22px] font-bold uppercase leading-tight text-graphite-900 group-hover:text-ochre-600 sm:text-[28px]">
                         {c.title}
@@ -142,12 +140,10 @@ export default function Products() {
 
             <div className="border-t-2 border-graphite-900 pt-10">
               <p className="max-w-2xl text-[15px] leading-relaxed text-steel-500">
-                Помимо каталога поставляем расходные материалы, СИЗ, станки, инструмент, запасные
-                части, смазочные материалы, измерительные приборы, металлоконструкции, арматуру и
-                строительные материалы.
+                {t.products.closing}
               </p>
-              <Link to="/kontakty" className="btn-primary mt-8">
-                Запросить позицию
+              <Link to={path('contacts')} className="btn-primary mt-8">
+                {t.products.request}
                 <IconArrow />
               </Link>
             </div>
@@ -156,10 +152,7 @@ export default function Products() {
       </section>
 
       <BrandStrip />
-      <CtaBand
-        title="Подберём аналог или замену по действующей схеме"
-        text="Укажите производителя, артикул или параметры узла — инженеры подберут позицию по качеству и стоимости."
-      />
+      <CtaBand title={t.products.cta.title} text={t.products.cta.text} />
     </>
   )
 }

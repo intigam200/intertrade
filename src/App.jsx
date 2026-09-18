@@ -7,12 +7,23 @@ import About from './pages/About.jsx'
 import Services from './pages/Services.jsx'
 import Products from './pages/Products.jsx'
 import Contacts from './pages/Contacts.jsx'
+import { useI18n } from './i18n/index.jsx'
+import { languages, routes } from './i18n/routes.js'
+
+const pages = {
+  home: Home,
+  about: About,
+  services: Services,
+  products: Products,
+  contacts: Contacts,
+}
 
 function NotFound() {
+  const { t, path } = useI18n()
   return (
-    <PageHero code="404" title="Страница не найдена" lead="Проверьте адрес или вернитесь к разделам сайта.">
-      <Link to="/" className="btn-primary mt-8">
-        На главную
+    <PageHero code={t.notFound.code} title={t.notFound.title} lead={t.notFound.lead}>
+      <Link to={path('home')} className="btn-primary mt-8">
+        {t.notFound.button}
       </Link>
     </PageHero>
   )
@@ -25,11 +36,12 @@ export default function App() {
       <Header />
       <main className="flex-1">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/o-kompanii" element={<About />} />
-          <Route path="/uslugi" element={<Services />} />
-          <Route path="/produkciya" element={<Products />} />
-          <Route path="/kontakty" element={<Contacts />} />
+          {/* Один и тот же экран объявляется в обоих языках: /uslugi и /en/services */}
+          {Object.entries(pages).flatMap(([key, Page]) =>
+            languages.map((lang) => (
+              <Route key={`${lang}-${key}`} path={routes[key][lang]} element={<Page />} />
+            )),
+          )}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

@@ -3,43 +3,34 @@ import Reveal from '../components/Reveal.jsx'
 import Icon from '../components/Icon.jsx'
 import { IconArrow } from '../components/Icons.jsx'
 import { PageHero, SectionHead, IndexList, CtaBand } from '../components/ui.jsx'
-import { activities, outsourcing } from '../data/company.js'
-
-// Порядок работы по заявке — сухая последовательность этапов.
-const workflow = [
-  { index: '01', title: 'Заявка', text: 'Спецификация, чертёж или артикул от предприятия.' },
-  { index: '02', title: 'Техническая обработка', text: 'Подбор позиций, аналогов и замен инженерами.' },
-  { index: '03', title: 'Коммерческое предложение', text: 'Цена, срок поставки, условия отгрузки.' },
-  { index: '04', title: 'Поставка', text: 'Транспортировка, растаможка, документы, отгрузка на объект.' },
-]
+import { useI18n } from '../i18n/index.jsx'
 
 export default function Services() {
+  const { t, d, path } = useI18n()
+
   return (
     <>
-      <PageHero
-        code="02 / Услуги"
-        title="Услуги"
-        lead="Снабжение, логистика и технический аудит — по отдельности или как единый контур обеспечения предприятия."
-      >
+      <PageHero code={t.services.code} title={t.services.title} lead={t.services.lead}>
         <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3">
-          {[...activities, { slug: 'autsorsing', title: 'Аутсорсинг снабжения', index: '04' }].map(
-            (a) => (
-              <li key={a.slug}>
-                <a
-                  href={`#${a.slug}`}
-                  className="flex items-baseline gap-3 font-mono text-[12px] uppercase tracking-wide2 text-steel-300 hover:text-ochre-400"
-                >
-                  <span className="text-ochre-500">{a.index}</span>
-                  {a.title}
-                </a>
-              </li>
-            ),
-          )}
+          {[
+            ...d.activities,
+            { slug: 'outsourcing', title: t.services.outsourcingNav, index: '04' },
+          ].map((a) => (
+            <li key={a.slug}>
+              <a
+                href={`#${a.slug}`}
+                className="flex items-baseline gap-3 font-mono text-[12px] uppercase tracking-wide2 text-steel-300 hover:text-ochre-400"
+              >
+                <span className="text-ochre-500">{a.index}</span>
+                {a.title}
+              </a>
+            </li>
+          ))}
         </ul>
       </PageHero>
 
       {/* ── Направления ────────────────────────────────────────────── */}
-      {activities.map((a, i) => (
+      {d.activities.map((a, i) => (
         <section
           key={a.slug}
           id={a.slug}
@@ -59,16 +50,16 @@ export default function Services() {
               </h2>
               <p className="mt-6 max-w-lg text-[16px] leading-relaxed text-steel-500">{a.full}</p>
               <Link
-                to="/kontakty"
+                to={path('contacts')}
                 className="mt-8 inline-flex items-center gap-3 font-mono text-[12px] uppercase tracking-wide2 text-graphite-900 hover:text-ochre-500"
               >
-                Запросить по этому направлению
+                {t.services.request}
                 <IconArrow />
               </Link>
             </div>
 
             <Reveal className="lg:col-span-4">
-              <p className="tag mb-4">Состав работ</p>
+              <p className="tag mb-4">{t.services.scopeTag}</p>
               <ul className="border-t border-steel-300">
                 {a.items.map((item, n) => (
                   <li
@@ -89,19 +80,19 @@ export default function Services() {
 
       {/* ── Аутсорсинг снабжения ───────────────────────────────────── */}
       <section
-        id="autsorsing"
+        id="outsourcing"
         className="relative scroll-mt-24 overflow-hidden bg-graphite-900 py-20 lg:py-28"
       >
         <div className="absolute inset-0 bg-blueprint bg-grid opacity-50" aria-hidden />
         <div className="shell relative">
           <SectionHead
             dark
-            tag="04 / Аутсорсинг снабжения"
-            title="Снабжение на стороне подрядчика"
-            lead="Передача процесса снабжения снимает с предприятия непрофильную нагрузку."
+            tag={t.services.outsourcing.tag}
+            title={t.services.outsourcing.title}
+            lead={t.services.outsourcing.lead}
           />
           <div className="mt-14">
-            <IndexList items={outsourcing} dark columns={3} />
+            <IndexList items={d.outsourcing} dark columns={3} />
           </div>
         </div>
       </section>
@@ -110,12 +101,12 @@ export default function Services() {
       <section className="bg-white py-20 lg:py-28">
         <div className="shell">
           <SectionHead
-            tag="05 / Порядок работы"
-            title="Как проходит заявка"
-            lead="От поступления спецификации до отгрузки на объект."
+            tag={t.services.workflow.tag}
+            title={t.services.workflow.title}
+            lead={t.services.workflow.lead}
           />
           <div className="mt-14 grid grid-cols-1 gap-px bg-steel-200 sm:grid-cols-2 lg:grid-cols-4">
-            {workflow.map((step, i) => (
+            {d.workflow.map((step, i) => (
               <Reveal key={step.index} delay={i * 70} className="bg-white p-8 lg:p-10">
                 <span className="font-mono text-[12px] tracking-wide2 text-ochre-500">
                   {step.index}
@@ -130,10 +121,7 @@ export default function Services() {
         </div>
       </section>
 
-      <CtaBand
-        title="Опишите задачу — предложим состав поставки и сроки"
-        text="Заявки принимаются по спецификации, чертежу, артикулу или описанию узла."
-      />
+      <CtaBand title={t.services.cta.title} text={t.services.cta.text} />
     </>
   )
 }

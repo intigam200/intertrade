@@ -141,9 +141,9 @@ export function RefineryPlate({ className = '' }) {
 }
 
 /* Карьерные уступы — горнодобывающие предприятия */
-export function QuarryPlate({ className = '' }) {
+export function QuarryPlate({ className = '', label, alt }) {
   return (
-    <svg viewBox="0 0 620 300" className={className} role="img" aria-label="Схема карьерных уступов">
+    <svg viewBox="0 0 620 300" className={className} role="img" aria-label={alt}>
       <g fill="none" stroke={STROKE} strokeWidth="2">
         <path d="M0 60h140l40 40h120l40 40h120l40 40h120" />
         <path d="M0 96h160l40 40h120l40 40h120l40 40h140" />
@@ -154,7 +154,7 @@ export function QuarryPlate({ className = '' }) {
         <circle cx="440" cy="92" r="5" fill={ACC} stroke="none" />
       </g>
       <g fill={STROKE} fontFamily="IBM Plex Mono, monospace" fontSize="11" letterSpacing="2">
-        <text x="0" y="252">КАРЬЕР / УСТУПЫ / ОТМЕТКИ 60—180</text>
+        <text x="0" y="252">{label}</text>
       </g>
     </svg>
   )

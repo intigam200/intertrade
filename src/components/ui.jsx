@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import Reveal from './Reveal.jsx'
 import { IconArrow } from './Icons.jsx'
 import { brands, contacts } from '../data/company.js'
+import { useI18n } from '../i18n/index.jsx'
 
 /* Заголовок секции: маркировка слева, заголовок и лид в асимметричной сетке */
 export function SectionHead({ tag, title, lead, dark = false, className = '' }) {
@@ -83,20 +84,18 @@ export function IndexList({ items, dark = false, columns = 2 }) {
 
 /* Лента брендов. Плейсхолдеры-подписи меняются на логотипы без правки разметки. */
 export function BrandStrip() {
+  const { t } = useI18n()
   const row = [...brands, ...brands]
   return (
     <section className="border-y border-graphite-700 bg-graphite-900 py-14">
       <div className="shell flex flex-col gap-3 pb-10 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="tag">Производители</p>
+          <p className="tag">{t.brandStrip.tag}</p>
           <h2 className="mt-4 text-[26px] font-bold uppercase leading-none text-white sm:text-[34px]">
-            Более 400 промышленных брендов
+            {t.brandStrip.title}
           </h2>
         </div>
-        <p className="max-w-sm text-[14px] leading-relaxed text-steel-400">
-          Прямая работа с заводами-производителями Европы, Великобритании, США и Китая. Подбор
-          аналогов и замен по техническому заданию.
-        </p>
+        <p className="max-w-sm text-[14px] leading-relaxed text-steel-400">{t.brandStrip.text}</p>
       </div>
 
       <div className="relative overflow-hidden">
@@ -118,25 +117,23 @@ export function BrandStrip() {
 }
 
 /* Полоса перехода к заявке */
-export function CtaBand({
-  title = 'Направьте спецификацию — подберём и просчитаем поставку',
-  text = 'Принимаем заявки по спецификации, чертежу или артикулу. Отвечаем со сроками, ценой и условиями поставки.',
-}) {
+export function CtaBand({ title, text }) {
+  const { t, path } = useI18n()
   return (
     <section className="bg-ochre-500">
       <div className="shell grid grid-cols-1 items-center gap-8 py-14 lg:grid-cols-12 lg:py-20">
         <div className="lg:col-span-7">
           <h2 className="max-w-3xl text-[28px] font-bold uppercase leading-[1.08] text-white sm:text-[38px]">
-            {title}
+            {title || t.cta.title}
           </h2>
-          <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-white/85">{text}</p>
+          <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-white/85">{text || t.cta.text}</p>
         </div>
         <div className="flex flex-col gap-4 lg:col-span-4 lg:col-start-9 lg:items-end">
           <Link
-            to="/kontakty"
+            to={path('contacts')}
             className="btn w-full bg-graphite-950 text-white hover:bg-white hover:text-graphite-950 sm:w-auto"
           >
-            Оформить заявку
+            {t.cta.button}
             <IconArrow />
           </Link>
           <a

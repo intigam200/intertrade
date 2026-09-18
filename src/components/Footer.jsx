@@ -1,15 +1,11 @@
 import { Link } from 'react-router-dom'
-import { contacts, activities } from '../data/company.js'
-import { catalog } from '../data/catalog.js'
+import { contacts } from '../data/company.js'
+import { useI18n } from '../i18n/index.jsx'
 
-const sitemap = [
-  { to: '/o-kompanii', label: 'О компании' },
-  { to: '/uslugi', label: 'Услуги' },
-  { to: '/produkciya', label: 'Продукция' },
-  { to: '/kontakty', label: 'Контакты' },
-]
+const sitemapKeys = ['about', 'services', 'products', 'contacts']
 
 export default function Footer() {
+  const { t, d, path } = useI18n()
   const year = new Date().getFullYear()
 
   return (
@@ -21,24 +17,21 @@ export default function Footer() {
             <br />
             and Consulting Group
           </p>
-          <p className="mt-5 max-w-sm text-[14px] leading-relaxed text-steel-400">
-            Поставка промышленного оборудования и комплектующих для производственных, карьерных и
-            нефтегазовых предприятий Казахстана. Более 400 брендов в портфеле.
-          </p>
+          <p className="mt-5 max-w-sm text-[14px] leading-relaxed text-steel-400">{t.footer.blurb}</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link to="/kontakty" className="btn-primary !py-3">
-              Заявка на поставку
+            <Link to={path('contacts')} className="btn-primary !py-3">
+              {t.footer.cta}
             </Link>
           </div>
         </div>
 
         <div className="lg:col-span-2 lg:col-start-6">
-          <p className="tag mb-5">Карта сайта</p>
+          <p className="tag mb-5">{t.footer.sitemap}</p>
           <ul className="space-y-3 text-[14px]">
-            {sitemap.map((item) => (
-              <li key={item.to}>
-                <Link to={item.to} className="link-underline hover:text-white">
-                  {item.label}
+            {sitemapKeys.map((key) => (
+              <li key={key}>
+                <Link to={path(key)} className="link-underline hover:text-white">
+                  {t.nav[key]}
                 </Link>
               </li>
             ))}
@@ -46,11 +39,11 @@ export default function Footer() {
         </div>
 
         <div className="lg:col-span-3">
-          <p className="tag mb-5">Продукция</p>
+          <p className="tag mb-5">{t.footer.products}</p>
           <ul className="space-y-3 text-[14px]">
-            {catalog.map((c) => (
+            {d.catalog.map((c) => (
               <li key={c.id}>
-                <Link to={`/produkciya#${c.id}`} className="link-underline hover:text-white">
+                <Link to={path('products', `#${c.id}`)} className="link-underline hover:text-white">
                   {c.title}
                 </Link>
               </li>
@@ -59,10 +52,12 @@ export default function Footer() {
         </div>
 
         <div className="lg:col-span-3">
-          <p className="tag mb-5">Контакты</p>
+          <p className="tag mb-5">{t.footer.contacts}</p>
           <dl className="space-y-4 text-[14px]">
             <div>
-              <dt className="font-mono text-[11px] uppercase tracking-wide2 text-steel-500">Телефон</dt>
+              <dt className="font-mono text-[11px] uppercase tracking-wide2 text-steel-500">
+                {t.footer.phone}
+              </dt>
               <dd className="mt-1">
                 <a href={contacts.phoneHref} className="font-mono text-[16px] text-white hover:text-ochre-400">
                   {contacts.phone}
@@ -70,7 +65,9 @@ export default function Footer() {
               </dd>
             </div>
             <div>
-              <dt className="font-mono text-[11px] uppercase tracking-wide2 text-steel-500">E-mail</dt>
+              <dt className="font-mono text-[11px] uppercase tracking-wide2 text-steel-500">
+                {t.footer.email}
+              </dt>
               <dd className="mt-1">
                 <a href={contacts.emailHref} className="text-white hover:text-ochre-400">
                   {contacts.email}
@@ -78,25 +75,27 @@ export default function Footer() {
               </dd>
             </div>
             <div>
-              <dt className="font-mono text-[11px] uppercase tracking-wide2 text-steel-500">Юридическое лицо</dt>
-              <dd className="mt-1 text-steel-300">{contacts.legalName}</dd>
+              <dt className="font-mono text-[11px] uppercase tracking-wide2 text-steel-500">
+                {t.footer.legal}
+              </dt>
+              <dd className="mt-1 text-steel-300">{d.contacts.legalName}</dd>
             </div>
           </dl>
         </div>
       </div>
 
       <div className="shell flex flex-col gap-4 py-7 font-mono text-[11px] uppercase tracking-wide2 text-steel-500 md:flex-row md:items-center md:justify-between">
-        <p>© {year} {contacts.legalName}</p>
+        <p>© {year} {d.contacts.legalName}</p>
         <ul className="flex flex-wrap gap-x-6 gap-y-2">
-          {activities.map((a) => (
+          {d.activities.map((a) => (
             <li key={a.slug}>
-              <Link to={`/uslugi#${a.slug}`} className="hover:text-steel-200">
+              <Link to={path('services', `#${a.slug}`)} className="hover:text-steel-200">
                 {a.title}
               </Link>
             </li>
           ))}
         </ul>
-        <p>{contacts.country}</p>
+        <p>{d.contacts.country}</p>
       </div>
     </footer>
   )

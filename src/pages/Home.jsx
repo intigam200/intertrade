@@ -3,17 +3,15 @@ import Reveal from '../components/Reveal.jsx'
 import Icon from '../components/Icon.jsx'
 import { IconArrow } from '../components/Icons.jsx'
 import { SectionHead, IndexList, BrandStrip, CtaBand } from '../components/ui.jsx'
-import { activities, advantages, capabilities, industries, positioning } from '../data/company.js'
-import { catalog } from '../data/catalog.js'
+import { countPositions } from '../data/company.js'
+import { useI18n } from '../i18n/index.jsx'
 
-const figures = [
-  { value: '400+', label: 'брендов в портфеле' },
-  { value: '04', label: 'региона прямых поставок' },
-  { value: '03', label: 'отрасли обслуживания' },
-  { value: '05', label: 'категорий каталога' },
-]
+const figureValues = ['400+', '04', '03', '05']
 
 export default function Home() {
+  const { t, d, path } = useI18n()
+  const figures = figureValues.map((value, i) => ({ value, label: t.home.figures[i] }))
+
   return (
     <>
       {/* ── Первый экран ───────────────────────────────────────────── */}
@@ -21,24 +19,24 @@ export default function Home() {
         <div className="absolute inset-0 bg-blueprint bg-grid opacity-70" aria-hidden />
         <div className="shell relative grid grid-cols-1 gap-12 pb-0 pt-14 lg:grid-cols-12 lg:gap-8 lg:pt-20">
           <div className="lg:col-span-6">
-            <p className="tag">ТОО · Республика Казахстан · Прямые поставки</p>
+            <p className="tag">{t.home.tag}</p>
             <h1 className="mt-7 text-[38px] font-bold uppercase leading-[1.02] text-white sm:text-[58px] lg:text-[70px]">
-              Промышленное
+              {t.home.h1.line1}
               <br />
-              оборудование
-              <span className="text-ochre-500"> и комплектующие</span>
+              {t.home.h1.line2}
+              <span className="text-ochre-500">{t.home.h1.accent}</span>
               <br />
-              для предприятий
+              {t.home.h1.line3}
             </h1>
-            <p className="mt-8 max-w-xl text-[16px] leading-relaxed text-steel-300">{positioning}</p>
+            <p className="mt-8 max-w-xl text-[16px] leading-relaxed text-steel-300">{d.positioning}</p>
 
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <Link to="/kontakty" className="btn-primary">
-                Отправить заявку
+              <Link to={path('contacts')} className="btn-primary">
+                {t.home.ctaPrimary}
                 <IconArrow />
               </Link>
-              <Link to="/produkciya" className="btn-ghost-dark">
-                Каталог продукции
+              <Link to={path('products')} className="btn-ghost-dark">
+                {t.home.ctaSecondary}
               </Link>
             </div>
           </div>
@@ -48,7 +46,7 @@ export default function Home() {
               <source srcSet="/images/industry-hero.webp" type="image/webp" />
               <img
                 src="/images/industry-hero.png"
-                alt="Ночная панорама нефтеперерабатывающего завода: технологические колонны и магистральные трубопроводы"
+                alt={t.home.heroAlt}
                 width="1440"
                 height="1026"
                 className="w-full select-none object-contain"
@@ -58,7 +56,7 @@ export default function Home() {
             </picture>
             <p className="pointer-events-none absolute right-5 top-4 hidden items-center gap-3 font-mono text-[11px] uppercase tracking-wide2 text-steel-400 sm:right-8 lg:right-12 lg:flex">
               <span className="h-px w-6 bg-ochre-500" aria-hidden />
-              Нефтепереработка · Энергетика · Магистральные сети
+              {t.home.heroCaption}
             </p>
           </div>
         </div>
@@ -88,9 +86,9 @@ export default function Home() {
       {/* ── Отрасли ────────────────────────────────────────────────── */}
       <section className="border-b border-steel-200 bg-white">
         <div className="shell flex flex-col gap-4 py-6 md:flex-row md:items-center md:gap-10">
-          <p className="tag shrink-0">Отрасли</p>
+          <p className="tag shrink-0">{t.home.industriesTag}</p>
           <ul className="flex flex-col gap-x-10 gap-y-2 font-mono text-[12px] uppercase tracking-wide2 text-graphite-700 md:flex-row">
-            {industries.map((item) => (
+            {d.industries.map((item) => (
               <li key={item} className="flex items-center gap-3">
                 <span className="h-px w-5 bg-ochre-500" aria-hidden />
                 {item}
@@ -104,13 +102,13 @@ export default function Home() {
       <section className="bg-steel-50 py-20 lg:py-28">
         <div className="shell">
           <SectionHead
-            tag="01 / Сферы деятельности"
-            title="Снабжение, логистика и технический аудит"
-            lead="Три направления работы, которые закрывают путь позиции от заявки предприятия до поставки на объект."
+            tag={t.home.activities.tag}
+            title={t.home.activities.title}
+            lead={t.home.activities.lead}
           />
 
           <div className="mt-14 border-t border-steel-200">
-            {activities.map((a, i) => (
+            {d.activities.map((a, i) => (
               <Reveal
                 key={a.slug}
                 delay={i * 80}
@@ -129,10 +127,10 @@ export default function Home() {
                   </h3>
                   <p className="mt-4 max-w-md text-[15px] leading-relaxed text-steel-500">{a.full}</p>
                   <Link
-                    to={`/uslugi#${a.slug}`}
+                    to={path('services', `#${a.slug}`)}
                     className="mt-6 inline-flex items-center gap-3 font-mono text-[12px] uppercase tracking-wide2 text-graphite-900 hover:text-ochre-500"
                   >
-                    Подробно
+                    {t.home.activities.more}
                     <IconArrow />
                   </Link>
                 </div>
@@ -157,9 +155,9 @@ export default function Home() {
       <section className="bg-white py-20 lg:py-28">
         <div className="shell">
           <SectionHead
-            tag="02 / Каталог"
-            title="Продукция"
-            lead="Основные группы поставки. Полная номенклатура — на странице каталога и по запросу."
+            tag={t.home.catalog.tag}
+            title={t.home.catalog.title}
+            lead={t.home.catalog.lead}
           />
 
           <Reveal className="mt-14 overflow-x-auto">
@@ -167,20 +165,20 @@ export default function Home() {
               <thead>
                 <tr className="border-y border-graphite-900">
                   <th className="w-[110px] py-3 font-mono text-[11px] uppercase tracking-wide2 text-steel-500">
-                    Индекс
+                    {t.home.catalog.colIndex}
                   </th>
                   <th className="py-3 font-mono text-[11px] uppercase tracking-wide2 text-steel-500">
-                    Группа продукции
+                    {t.home.catalog.colGroup}
                   </th>
                   <th className="w-[140px] py-3 text-right font-mono text-[11px] uppercase tracking-wide2 text-steel-500">
-                    Позиций
+                    {t.home.catalog.colCount}
                   </th>
                   <th className="w-[60px]" />
                 </tr>
               </thead>
               <tbody>
-                {catalog.map((c) => {
-                  const count = c.groups.reduce((s, g) => s + g.items.length, 0)
+                {d.catalog.map((c) => {
+                  const count = countPositions([c])
                   return (
                     <tr key={c.id} className="group border-b border-steel-200 hover:bg-steel-50">
                       <td className="py-5 align-top font-mono text-[13px] text-ochre-500">
@@ -188,7 +186,7 @@ export default function Home() {
                       </td>
                       <td className="py-5 align-top">
                         <Link
-                          to={`/produkciya#${c.id}`}
+                          to={path('products', `#${c.id}`)}
                           className="font-display text-[17px] font-bold uppercase leading-tight tracking-tightest text-graphite-900 group-hover:text-ochre-600 sm:text-[19px]"
                         >
                           {c.title}
@@ -202,9 +200,9 @@ export default function Home() {
                       </td>
                       <td className="py-5 text-right align-top">
                         <Link
-                          to={`/produkciya#${c.id}`}
+                          to={path('products', `#${c.id}`)}
                           className="inline-flex text-steel-400 group-hover:text-ochre-500"
-                          aria-label={`Перейти к разделу «${c.title}»`}
+                          aria-label={t.home.catalog.goTo.replace('{title}', c.title)}
                         >
                           <IconArrow className="h-5 w-5" />
                         </Link>
@@ -217,8 +215,8 @@ export default function Home() {
           </Reveal>
 
           <Reveal className="mt-10">
-            <Link to="/produkciya" className="btn-ghost">
-              Открыть каталог
+            <Link to={path('products')} className="btn-ghost">
+              {t.home.catalog.open}
               <IconArrow />
             </Link>
           </Reveal>
@@ -231,12 +229,12 @@ export default function Home() {
         <div className="shell relative">
           <SectionHead
             dark
-            tag="03 / Преимущества"
-            title="Почему предприятия работают с нами"
-            lead="Условия, на которых строится снабжение по нашим контрактам."
+            tag={t.home.advantages.tag}
+            title={t.home.advantages.title}
+            lead={t.home.advantages.lead}
           />
           <div className="mt-14">
-            <IndexList items={advantages} dark />
+            <IndexList items={d.advantages} dark />
           </div>
 
           <div className="mt-16 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-end">
@@ -245,7 +243,7 @@ export default function Home() {
                 <source srcSet="/images/capabilities.webp" type="image/webp" />
                 <img
                   src="/images/capabilities.png"
-                  alt="Сварочные работы на производстве: сноп искр от электродуговой сварки металлоконструкции"
+                  alt={t.home.capabilitiesAlt}
                   width="1280"
                   height="852"
                   className="w-full select-none object-contain"
@@ -255,9 +253,9 @@ export default function Home() {
               </picture>
             </div>
             <div className="lg:col-span-4 lg:col-start-9">
-              <p className="tag">Возможности</p>
+              <p className="tag">{t.home.capabilitiesTag}</p>
               <ul className="mt-6 space-y-6">
-                {capabilities.map((c) => (
+                {d.capabilities.map((c) => (
                   <li key={c.index} className="flex gap-5 border-b border-graphite-700 pb-6">
                     <Icon name={c.icon} className="h-10 w-10 shrink-0 text-ochre-500" />
                     <div>
@@ -268,10 +266,10 @@ export default function Home() {
                 ))}
               </ul>
               <Link
-                to="/o-kompanii"
+                to={path('about')}
                 className="mt-7 inline-flex items-center gap-3 font-mono text-[12px] uppercase tracking-wide2 text-steel-200 hover:text-ochre-400"
               >
-                О компании
+                {t.home.aboutLink}
                 <IconArrow />
               </Link>
             </div>
