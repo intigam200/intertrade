@@ -424,10 +424,6 @@ export default {
         title: 'Who handles your request',
         lead: 'Every request is processed technically before it reaches procurement.',
       },
-      plate: {
-        label: 'QUARRY / BENCHES / LEVELS 60—180',
-        alt: 'Diagram of quarry benches',
-      },
       staffTag: 'On staff',
       staffTitle: 'Engineering team',
       geography: {
@@ -436,6 +432,7 @@ export default {
         text:
           'We work directly with manufacturing plants. Our portfolio holds over 400 industrial brands — equipment, components and spare parts for your existing process schemes.',
         button: 'Product catalogue',
+        caption: 'Astana · Republic of Kazakhstan',
       },
     },
 

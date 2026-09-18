@@ -2,8 +2,7 @@ import { Link } from 'react-router-dom'
 import Reveal from '../components/Reveal.jsx'
 import Icon from '../components/Icon.jsx'
 import { IconArrow } from '../components/Icons.jsx'
-import { QuarryPlate } from '../components/Plates.jsx'
-import { PageHero, SectionHead, IndexList, BrandStrip, CtaBand } from '../components/ui.jsx'
+import { PageHero, Photo, SectionHead, IndexList, BrandStrip, CtaBand } from '../components/ui.jsx'
 import { contacts } from '../data/company.js'
 import { useI18n } from '../i18n/index.jsx'
 
@@ -107,29 +106,47 @@ export default function About() {
       </section>
 
       {/* ── Отрасли / география ────────────────────────────────────── */}
-      <section className="border-y border-steel-200 bg-steel-50 py-20 lg:py-24">
-        <div className="shell grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center lg:gap-8">
-          <div className="lg:col-span-5">
+      <section className="relative overflow-hidden border-y border-graphite-700 bg-graphite-900 py-20 lg:py-28">
+        {/* фон — Астана на закате; скрим держит контраст текста */}
+        <div className="absolute inset-0" aria-hidden>
+          <Photo
+            name="kazakhstan"
+            widths={[800, 1440, 1920]}
+            sizes="100vw"
+            width="1920"
+            height="800"
+            className="h-full w-full object-cover object-[center_32%]"
+          />
+        </div>
+        <div className="absolute inset-0 bg-graphite-950/35" aria-hidden />
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-graphite-950/95 via-graphite-950/75 to-graphite-950/55 lg:bg-gradient-to-r lg:via-graphite-950/80 lg:to-transparent"
+          aria-hidden
+        />
+
+        <div className="shell relative grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center lg:gap-8">
+          <div className="lg:col-span-6">
             <p className="tag">{t.about.geography.tag}</p>
-            <h2 className="mt-5 text-[28px] font-bold uppercase leading-[1.08] text-graphite-900 sm:text-[36px]">
+            <h2 className="mt-5 text-[28px] font-bold uppercase leading-[1.08] text-white sm:text-[36px]">
               {t.about.geography.title}
             </h2>
-            <p className="mt-6 max-w-lg text-[15px] leading-relaxed text-steel-500">
+            <p className="mt-6 max-w-lg text-[15px] leading-relaxed text-steel-300">
               {t.about.geography.text}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link to={path('products')} className="btn-ghost">
+              <Link to={path('products')} className="btn-primary">
                 {t.about.geography.button}
                 <IconArrow />
               </Link>
-              <a href={contacts.phoneHref} className="btn-ghost">
+              <a href={contacts.phoneHref} className="btn-ghost-dark">
                 {contacts.phone}
               </a>
             </div>
           </div>
-          <div className="lg:col-span-6 lg:col-start-7">
-            <QuarryPlate className="w-full" label={t.about.plate.label} alt={t.about.plate.alt} />
-          </div>
+          <p className="relative hidden items-center gap-3 font-mono text-[11px] uppercase tracking-wide2 text-steel-300 lg:col-span-4 lg:col-start-9 lg:flex lg:justify-end">
+            <span className="h-px w-6 bg-ochre-500" aria-hidden />
+            {t.about.geography.caption}
+          </p>
         </div>
       </section>
 

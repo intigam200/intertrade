@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import Reveal from '../components/Reveal.jsx'
 import Icon from '../components/Icon.jsx'
 import { IconArrow } from '../components/Icons.jsx'
-import { SectionHead, IndexList, BrandStrip, CtaBand } from '../components/ui.jsx'
+import { Photo, SectionHead, IndexList, BrandStrip, CtaBand } from '../components/ui.jsx'
 import { countPositions } from '../data/company.js'
 import { useI18n } from '../i18n/index.jsx'
 
@@ -42,18 +42,16 @@ export default function Home() {
           </div>
 
           <div className="relative -mx-5 sm:-mx-8 lg:col-span-6 lg:-ml-4 lg:-mr-12 lg:self-center xl:-ml-8">
-            <picture>
-              <source srcSet="/images/industry-hero.webp" type="image/webp" />
-              <img
-                src="/images/industry-hero.png"
-                alt={t.home.heroAlt}
-                width="1440"
-                height="1026"
-                className="w-full select-none object-contain"
-                loading="eager"
-                draggable="false"
-              />
-            </picture>
+            <Photo
+              name="industry-hero"
+              widths={[760, 1440]}
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              alt={t.home.heroAlt}
+              width="1440"
+              height="1026"
+              className="w-full object-contain"
+              priority
+            />
             <p className="pointer-events-none absolute right-5 top-4 hidden items-center gap-3 font-mono text-[11px] uppercase tracking-wide2 text-steel-400 sm:right-8 lg:right-12 lg:flex">
               <span className="h-px w-6 bg-ochre-500" aria-hidden />
               {t.home.heroCaption}
@@ -239,18 +237,15 @@ export default function Home() {
 
           <div className="mt-16 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-end">
             <div className="relative -mx-5 sm:-mx-8 lg:col-span-7 lg:-ml-12 lg:mr-0">
-              <picture>
-                <source srcSet="/images/capabilities.webp" type="image/webp" />
-                <img
-                  src="/images/capabilities.png"
-                  alt={t.home.capabilitiesAlt}
-                  width="1280"
-                  height="852"
-                  className="w-full select-none object-contain"
-                  loading="lazy"
-                  draggable="false"
-                />
-              </picture>
+              <Photo
+                name="capabilities"
+                widths={[700, 1280]}
+                sizes="(min-width: 1024px) 58vw, 100vw"
+                alt={t.home.capabilitiesAlt}
+                width="1280"
+                height="852"
+                className="w-full object-contain"
+              />
             </div>
             <div className="lg:col-span-4 lg:col-start-9">
               <p className="tag">{t.home.capabilitiesTag}</p>

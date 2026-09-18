@@ -5,6 +5,42 @@ import { IconArrow } from './Icons.jsx'
 import { brands, contacts } from '../data/company.js'
 import { useI18n } from '../i18n/index.jsx'
 
+/* Фотография сайта: AVIF с запасным WebP и набором ширин под srcset.
+   Файлы готовит scripts/build-images.py; самая широкая версия лежит без
+   суффикса, остальные — с ним (industry-hero-760.avif). */
+export function Photo({
+  name,
+  widths,
+  sizes = '100vw',
+  alt = '',
+  width,
+  height,
+  className = '',
+  priority = false,
+}) {
+  const max = Math.max(...widths)
+  const srcSet = (ext) =>
+    widths.map((w) => `/images/${name}${w === max ? '' : `-${w}`}.${ext} ${w}w`).join(', ')
+
+  return (
+    <picture>
+      <source type="image/avif" srcSet={srcSet('avif')} sizes={sizes} />
+      <source type="image/webp" srcSet={srcSet('webp')} sizes={sizes} />
+      <img
+        src={`/images/${name}.webp`}
+        alt={alt}
+        width={width}
+        height={height}
+        className={`select-none ${className}`}
+        loading={priority ? 'eager' : 'lazy'}
+        decoding="async"
+        draggable="false"
+        aria-hidden={alt ? undefined : true}
+      />
+    </picture>
+  )
+}
+
 /* Заголовок секции: маркировка слева, заголовок и лид в асимметричной сетке */
 export function SectionHead({ tag, title, lead, dark = false, className = '' }) {
   return (
