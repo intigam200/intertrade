@@ -24,7 +24,9 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / 'public' / 'video'
 IMAGES = ROOT / 'public' / 'images'
 
-WIDTH = 1600
+# Ролик показывается панелью в правой колонке первого экрана (~700 px),
+# поэтому 1000 px хватает с запасом под экраны с удвоенной плотностью.
+WIDTH = 1000
 CRF = '28'            # по умолчанию; для насыщенных деталями съёмок задаётся у клипа
 DURATION = 10
 GOP = '50'            # ключевой кадр раз в ~2 секунды
@@ -33,9 +35,9 @@ GOP = '50'            # ключевой кадр раз в ~2 секунды
 # движению камеры, без склеек и затемнений.
 # Порядок тот же, что на сайте: постер снимается с первого ролика.
 CLIPS = [
-    {'name': 'energy', 'src': 'energy.mov', 'start': 7, 'poster': 2, 'crf': '30'},
+    {'name': 'energy', 'src': 'energy.mov', 'start': 7, 'poster': 2, 'crf': '29'},
     # аэросъёмка с дымкой и мелкой фактурой — самый тяжёлый материал
-    {'name': 'industrial', 'src': 'industrial.mp4', 'start': 40, 'poster': None, 'crf': '31'},
+    {'name': 'industrial', 'src': 'industrial.mp4', 'start': 40, 'poster': None, 'crf': '30'},
     {'name': 'sea', 'src': 'sea.mp4', 'start': 20, 'poster': None},
 ]
 
@@ -72,7 +74,7 @@ def poster(clip):
          '-frames:v', '1', '-vf', f'scale={WIDTH}:-2:flags=lanczos', str(raw)])
 
     img = Image.open(raw).convert('RGB')
-    for width in (WIDTH, 800):
+    for width in (WIDTH, 600):
         suffix = '' if width == WIDTH else f'-{width}'
         frame = img.resize((width, round(width * img.height / img.width)), Image.LANCZOS)
         for ext, params in (('avif', dict(quality=55, speed=4)), ('webp', dict(quality=78, method=6))):

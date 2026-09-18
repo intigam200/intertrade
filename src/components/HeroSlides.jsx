@@ -8,10 +8,10 @@ export const clips = ['energy', 'industrial', 'sea']
 const FADE = 900 // мс, столько же стоит в transition-duration
 const LEAD = 1.1 // за сколько секунд до конца начинать следующий ролик
 
-/* Фон первого экрана: постер-кадр снизу, поверх — ролики со сменой по
-   очереди. Видео включается только на широком экране, при обычных
-   настройках анимации и без режима экономии трафика — иначе остаётся
-   один постер, и телефон не качает ни одного мегабайта. */
+/* Панель с роликами в правой колонке первого экрана. Текста поверх нет,
+   поэтому кадр идёт без затемнения. Видео включается только на широком
+   экране, при обычных настройках анимации и без режима экономии трафика —
+   иначе остаётся постер-кадр, и телефон не качает ни одного мегабайта. */
 export default function HeroSlides({ posterAlt, labels }) {
   const [enabled, setEnabled] = useState(false)
   const [index, setIndex] = useState(0)
@@ -73,51 +73,48 @@ export default function HeroSlides({ posterAlt, labels }) {
   }
 
   return (
-    <div className="absolute inset-0 overflow-hidden" aria-hidden>
-      <Photo
-        name="hero-poster"
-        widths={[800, 1600]}
-        sizes="100vw"
-        alt={posterAlt}
-        width="1600"
-        height="900"
-        className="absolute inset-0 h-full w-full object-cover"
-        priority
-      />
+    <div>
+      <div className="relative aspect-[16/10] overflow-hidden bg-graphite-850 sm:aspect-[16/9]">
+        <Photo
+          name="hero-poster"
+          widths={[600, 1000]}
+          sizes="(min-width: 1024px) 50vw, 100vw"
+          alt={posterAlt}
+          width="1000"
+          height="563"
+          className="absolute inset-0 h-full w-full object-cover"
+          priority
+        />
 
-      {enabled &&
-        clips.map((name, i) =>
-          loading.has(i) ? (
-            <video
-              key={name}
-              ref={(el) => {
-                videos.current[i] = el
-              }}
-              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[900ms] ease-linear ${
-                i === index ? 'opacity-100' : 'opacity-0'
-              }`}
-              muted
-              playsInline
-              preload="auto"
-              tabIndex={-1}
-              disablePictureInPicture
-              onTimeUpdate={onProgress(i)}
-              onEnded={() => show((i + 1) % clips.length)}
-            >
-              <source src={`/video/${name}.mp4`} type="video/mp4" />
-            </video>
-          ) : null,
-        )}
+        {enabled &&
+          clips.map((name, i) =>
+            loading.has(i) ? (
+              <video
+                key={name}
+                ref={(el) => {
+                  videos.current[i] = el
+                }}
+                className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[900ms] ease-linear ${
+                  i === index ? 'opacity-100' : 'opacity-0'
+                }`}
+                muted
+                playsInline
+                preload="auto"
+                tabIndex={-1}
+                disablePictureInPicture
+                onTimeUpdate={onProgress(i)}
+                onEnded={() => show((i + 1) % clips.length)}
+              >
+                <source src={`/video/${name}.mp4`} type="video/mp4" />
+              </video>
+            ) : null,
+          )}
+      </div>
 
-      {/* затемнение: слева плотное — под заголовок, справа кадр открыт */}
-      <div className="absolute inset-0 bg-graphite-950/25" />
-      <div className="absolute inset-0 bg-gradient-to-b from-graphite-950/90 via-graphite-950/60 to-graphite-950/75 lg:bg-gradient-to-r lg:from-graphite-950 lg:via-graphite-950/65 lg:to-transparent" />
-      <div className="absolute inset-0 bg-blueprint bg-grid opacity-15" />
-
-      {/* маркировка слайдов */}
+      {/* подпись и переключатели — под кадром, чтобы не закрывать его */}
       {enabled && (
-        <div className="pointer-events-auto absolute right-5 top-7 hidden items-center gap-4 sm:right-8 lg:right-12 lg:flex">
-          <span className="font-mono text-[11px] uppercase tracking-wide2 text-white/80">
+        <div className="flex items-center justify-between gap-4 px-5 pt-4 sm:px-8 lg:pl-0 lg:pr-12">
+          <span className="font-mono text-[11px] uppercase tracking-wide2 text-steel-400">
             {labels[index]}
           </span>
           <span className="flex items-center gap-2">
@@ -128,7 +125,7 @@ export default function HeroSlides({ posterAlt, labels }) {
                 onClick={() => show(i)}
                 aria-label={labels[i]}
                 className={`h-px w-8 transition-colors duration-300 ${
-                  i === index ? 'bg-ochre-500' : 'bg-white/40 hover:bg-white/80'
+                  i === index ? 'bg-ochre-500' : 'bg-graphite-600 hover:bg-steel-400'
                 }`}
               />
             ))}

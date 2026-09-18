@@ -17,9 +17,9 @@ export default function Home() {
     <>
       {/* ── Первый экран ───────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-graphite-900">
-        <HeroSlides posterAlt={t.home.posterAlt} labels={t.home.slides} />
-        <div className="shell relative grid grid-cols-1 gap-12 pb-0 pt-14 lg:grid-cols-12 lg:gap-8 lg:pb-8 lg:pt-28">
-          <div className="lg:col-span-7">
+        <div className="absolute inset-0 bg-blueprint bg-grid opacity-70" aria-hidden />
+        <div className="shell relative grid grid-cols-1 gap-10 pb-0 pt-14 lg:grid-cols-12 lg:gap-8 lg:pt-20">
+          <div className="lg:col-span-6">
             <p className="tag">{t.home.tag}</p>
             <h1 className="mt-7 text-[38px] font-bold uppercase leading-[1.02] text-white sm:text-[58px] lg:text-[70px]">
               {t.home.h1.line1}
@@ -41,15 +41,19 @@ export default function Home() {
               </Link>
             </div>
           </div>
+
+          <div className="-mx-5 sm:-mx-8 lg:col-span-6 lg:-mr-12 lg:ml-0 lg:self-center">
+            <HeroSlides posterAlt={t.home.posterAlt} labels={t.home.slides} />
+          </div>
         </div>
 
         {/* технические показатели */}
         <div className="shell relative">
-          <dl className="grid grid-cols-2 border-t border-white/15 lg:grid-cols-4">
+          <dl className="grid grid-cols-2 border-t border-graphite-700 lg:grid-cols-4">
             {figures.map((f, i) => (
               <div
                 key={f.label}
-                className={`border-white/15 py-8 pr-6 ${i % 2 === 1 ? 'border-l pl-6' : ''} ${
+                className={`border-graphite-700 py-8 pr-6 ${i % 2 === 1 ? 'border-l pl-6' : ''} ${
                   i < 2 ? 'border-b lg:border-b-0' : ''
                 } ${i === 2 ? 'lg:border-l lg:pl-6' : ''} ${i === 3 ? 'lg:pl-6' : ''}`}
               >
