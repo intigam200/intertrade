@@ -35,9 +35,8 @@ GOP = '50'            # ключевой кадр раз в ~2 секунды
 # движению камеры, без склеек и затемнений.
 # Порядок тот же, что на сайте: постер снимается с первого ролика.
 CLIPS = [
-    {'name': 'energy', 'src': 'energy.mov', 'start': 7, 'poster': 2, 'crf': '29'},
-    # аэросъёмка с дымкой и мелкой фактурой — самый тяжёлый материал
-    {'name': 'industrial', 'src': 'industrial.mp4', 'start': 40, 'poster': None, 'crf': '30'},
+    {'name': 'manufacturing', 'src': 'manufacturing.mp4', 'start': 2, 'poster': 1},
+    {'name': 'energy', 'src': 'energy.mov', 'start': 7, 'poster': None, 'crf': '29'},
     {'name': 'sea', 'src': 'sea.mp4', 'start': 20, 'poster': None},
 ]
 

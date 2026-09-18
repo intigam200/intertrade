@@ -371,10 +371,10 @@ export default {
       },
       ctaPrimary: 'Send a request',
       ctaSecondary: 'Product catalogue',
-      posterAlt: 'Aerial view of a wind farm: turbines above hills and fields',
+      posterAlt: 'Assembly line: a worker in gloves fitting an electric motor stator',
       slides: [
+        'Manufacturing · Assembly',
         'Power generation',
-        'Production sites',
         'Sea freight · Ports',
       ],
       figures: [
