@@ -21,7 +21,7 @@ export default function About() {
           </div>
           <div className="lg:col-span-9">
             <blockquote className="border-l-2 border-ochre-500 pl-6 lg:pl-10">
-              <p className="font-display text-[24px] font-bold uppercase leading-[1.15] tracking-tightest text-graphite-900 sm:text-[34px] lg:text-[40px]">
+              <p className="font-display text-[24px] font-bold uppercase leading-[1.15] tracking-tightest text-navy-900 sm:text-[34px] lg:text-[40px]">
                 {d.mission}
               </p>
             </blockquote>
@@ -31,7 +31,7 @@ export default function About() {
                   <span className="font-mono text-[11px] tracking-wide2 text-ochre-500">
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <p className="mt-2 text-[15px] leading-snug text-graphite-700">{item}</p>
+                  <p className="mt-2 text-[15px] leading-snug text-navy-700">{item}</p>
                 </div>
               ))}
             </div>
@@ -58,12 +58,12 @@ export default function About() {
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <Icon name={c.icon} className="h-14 w-14 text-graphite-900" />
+                  <Icon name={c.icon} className="h-14 w-14 text-navy-900" />
                   <span className="font-display text-[40px] font-bold leading-none tracking-tightest text-steel-200">
                     {c.index}
                   </span>
                 </div>
-                <h3 className="mt-8 text-[20px] font-bold uppercase text-graphite-900">{c.title}</h3>
+                <h3 className="mt-8 text-[20px] font-bold uppercase text-navy-900">{c.title}</h3>
                 <p className="mt-3 text-[15px] leading-relaxed text-steel-500">{c.text}</p>
               </Reveal>
             ))}
@@ -83,7 +83,7 @@ export default function About() {
             <IndexList items={d.specialists} columns={3} />
           </div>
 
-          <Reveal className="mt-14 grid grid-cols-1 gap-8 bg-graphite-900 p-8 lg:grid-cols-12 lg:p-12">
+          <Reveal className="mt-14 grid grid-cols-1 gap-8 bg-navy-900 p-8 lg:grid-cols-12 lg:p-12">
             <div className="lg:col-span-4">
               <p className="tag">{t.about.staffTag}</p>
               <h3 className="mt-4 text-[22px] font-bold uppercase leading-tight text-white lg:text-[26px]">
@@ -94,7 +94,7 @@ export default function About() {
               {d.staffEngineers.map((item) => (
                 <li
                   key={item}
-                  className="flex items-baseline gap-4 border-b border-graphite-700 py-4 text-[15px] text-steel-200"
+                  className="flex items-baseline gap-4 border-b border-navy-700 py-4 text-[15px] text-steel-200"
                 >
                   <span className="h-px w-4 shrink-0 translate-y-[-4px] bg-ochre-500" aria-hidden />
                   {item}
@@ -106,7 +106,7 @@ export default function About() {
       </section>
 
       {/* ── Отрасли / география ────────────────────────────────────── */}
-      <section className="relative overflow-hidden border-y border-graphite-700 bg-graphite-900 py-20 lg:py-28">
+      <section className="relative overflow-hidden border-y border-navy-700 bg-navy-900 py-20 lg:py-28">
         {/* фон — Астана на закате; скрим держит контраст текста */}
         <div className="absolute inset-0" aria-hidden>
           <Photo
@@ -118,9 +118,9 @@ export default function About() {
             className="h-full w-full object-cover object-[center_32%]"
           />
         </div>
-        <div className="absolute inset-0 bg-graphite-950/35" aria-hidden />
+        <div className="absolute inset-0 bg-navy-950/35" aria-hidden />
         <div
-          className="absolute inset-0 bg-gradient-to-b from-graphite-950/95 via-graphite-950/75 to-graphite-950/55 lg:bg-gradient-to-r lg:via-graphite-950/80 lg:to-transparent"
+          className="absolute inset-0 bg-gradient-to-b from-navy-950/95 via-navy-950/75 to-navy-950/55 lg:bg-gradient-to-r lg:via-navy-950/80 lg:to-transparent"
           aria-hidden
         />
 

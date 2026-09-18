@@ -8,31 +8,34 @@ export default {
       current: 'currentColor',
       white: '#FFFFFF',
       black: '#000000',
-      graphite: {
-        950: '#080B0E',
-        900: '#0E1318',
-        850: '#141B21',
-        800: '#1B242C',
-        700: '#26313B',
-        600: '#33414D',
+      // тёмно-синий корпус
+      navy: {
+        950: '#050B18',
+        900: '#0A1428',
+        850: '#0F1B33',
+        800: '#152340',
+        700: '#203157',
+        600: '#2E4270',
       },
+      // холодные серые с синим подтоном — текст и линии на светлых секциях
       steel: {
-        500: '#5F707D',
-        400: '#7E8F9C',
-        300: '#A3B1BC',
-        200: '#C6D0D7',
-        100: '#E2E8EC',
-        50: '#F2F5F7',
+        500: '#5E6E88',
+        400: '#7D8CA6',
+        300: '#A2AFC4',
+        200: '#C5CFDD',
+        100: '#E1E7F0',
+        50: '#F2F5FA',
       },
+      // акцент
       ochre: {
-        700: '#8F4405',
-        600: '#B0570A',
-        500: '#C96A0E',
-        400: '#E08420',
+        700: '#9A4A07',
+        600: '#C25E0B',
+        500: '#E87511',
+        400: '#FF9330',
       },
       signal: {
-        red: '#9E2B25',
-        green: '#3F6B4F',
+        red: '#C0392B',
+        green: '#3F7A5A',
       },
     },
     extend: {
@@ -50,9 +53,9 @@ export default {
       },
       backgroundImage: {
         blueprint:
-          'linear-gradient(to right, rgba(126,143,156,0.10) 1px, transparent 1px), linear-gradient(to bottom, rgba(126,143,156,0.10) 1px, transparent 1px)',
+          'linear-gradient(to right, rgba(125,140,166,0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(125,140,166,0.12) 1px, transparent 1px)',
         hatch:
-          'repeating-linear-gradient(135deg, rgba(201,106,14,0.16) 0 2px, transparent 2px 9px)',
+          'repeating-linear-gradient(135deg, rgba(232,117,17,0.16) 0 2px, transparent 2px 9px)',
       },
       backgroundSize: {
         grid: '64px 64px',

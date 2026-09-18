@@ -51,7 +51,7 @@ export function SectionHead({ tag, title, lead, dark = false, className = '' }) 
       <div className="lg:col-span-6">
         <h2
           className={`text-[30px] font-bold uppercase leading-[1.05] sm:text-[40px] lg:text-[46px] ${
-            dark ? 'text-white' : 'text-graphite-900'
+            dark ? 'text-white' : 'text-navy-900'
           }`}
         >
           {title}
@@ -70,7 +70,7 @@ export function SectionHead({ tag, title, lead, dark = false, className = '' }) 
 
 /* Нумерованный список: крупный индекс как графический элемент */
 export function IndexList({ items, dark = false, columns = 2 }) {
-  const line = dark ? 'border-graphite-700' : 'border-steel-200'
+  const line = dark ? 'border-navy-700' : 'border-steel-200'
   return (
     <div
       className={`grid grid-cols-1 border-t ${line} ${
@@ -90,7 +90,7 @@ export function IndexList({ items, dark = false, columns = 2 }) {
           <div className="flex items-start gap-6">
             <span
               className={`font-display text-[44px] font-bold leading-none tracking-tightest lg:text-[56px] ${
-                dark ? 'text-graphite-700' : 'text-steel-200'
+                dark ? 'text-navy-700' : 'text-steel-200'
               } transition-colors duration-300 group-hover:text-ochre-500`}
             >
               {item.index}
@@ -98,7 +98,7 @@ export function IndexList({ items, dark = false, columns = 2 }) {
             <div className="pt-1">
               <h3
                 className={`text-[19px] font-bold uppercase leading-tight lg:text-[22px] ${
-                  dark ? 'text-white' : 'text-graphite-900'
+                  dark ? 'text-white' : 'text-navy-900'
                 }`}
               >
                 {item.title}
@@ -123,7 +123,7 @@ export function BrandStrip() {
   const { t } = useI18n()
   const row = [...brands, ...brands]
   return (
-    <section className="border-y border-graphite-700 bg-graphite-900 py-14">
+    <section className="border-y border-navy-700 bg-navy-900 py-14">
       <div className="shell flex flex-col gap-3 pb-10 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="tag">{t.brandStrip.tag}</p>
@@ -139,14 +139,14 @@ export function BrandStrip() {
           {row.map((brand, i) => (
             <span
               key={`${brand}-${i}`}
-              className="flex h-16 min-w-[190px] items-center justify-center border border-graphite-700 border-r-0 px-8 font-mono text-[13px] uppercase tracking-wide2 text-steel-400 last:border-r"
+              className="flex h-16 min-w-[190px] items-center justify-center border border-navy-700 border-r-0 px-8 font-mono text-[13px] uppercase tracking-wide2 text-steel-400 last:border-r"
             >
               {brand}
             </span>
           ))}
         </div>
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-graphite-900 to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-graphite-900 to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-navy-900 to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-navy-900 to-transparent" />
       </div>
     </section>
   )
@@ -167,14 +167,14 @@ export function CtaBand({ title, text }) {
         <div className="flex flex-col gap-4 lg:col-span-4 lg:col-start-9 lg:items-end">
           <Link
             to={path('contacts')}
-            className="btn w-full bg-graphite-950 text-white hover:bg-white hover:text-graphite-950 sm:w-auto"
+            className="btn w-full bg-navy-950 text-white hover:bg-white hover:text-navy-950 sm:w-auto"
           >
             {t.cta.button}
             <IconArrow />
           </Link>
           <a
             href={contacts.phoneHref}
-            className="font-mono text-[18px] tracking-wide text-white hover:text-graphite-950"
+            className="font-mono text-[18px] tracking-wide text-white hover:text-navy-950"
           >
             {contacts.phone}
           </a>
@@ -187,7 +187,7 @@ export function CtaBand({ title, text }) {
 /* Шапка внутренней страницы */
 export function PageHero({ code, title, lead, image, imageAlt, children }) {
   return (
-    <section className="relative overflow-hidden border-b border-graphite-700 bg-graphite-900">
+    <section className="relative overflow-hidden border-b border-navy-700 bg-navy-900">
       {image && (
         <div className="absolute inset-0" aria-hidden>
           <Photo
@@ -200,8 +200,8 @@ export function PageHero({ code, title, lead, image, imageAlt, children }) {
             className="h-full w-full object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-graphite-950/55" />
-          <div className="absolute inset-0 bg-gradient-to-r from-graphite-950 via-graphite-950/80 to-graphite-950/40" />
+          <div className="absolute inset-0 bg-navy-950/55" />
+          <div className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/80 to-navy-950/40" />
         </div>
       )}
       <div className="absolute inset-0 bg-blueprint bg-grid opacity-60" aria-hidden />

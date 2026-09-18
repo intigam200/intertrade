@@ -74,7 +74,7 @@ export default function HeroSlides({ posterAlt, labels }) {
 
   return (
     <div>
-      <div className="relative aspect-[16/10] overflow-hidden bg-graphite-850 sm:aspect-[16/9]">
+      <div className="relative aspect-[16/10] overflow-hidden bg-navy-850 sm:aspect-[16/9]">
         <Photo
           name="hero-poster"
           widths={[600, 1000]}
@@ -125,7 +125,7 @@ export default function HeroSlides({ posterAlt, labels }) {
                 onClick={() => show(i)}
                 aria-label={labels[i]}
                 className={`h-px w-8 transition-colors duration-300 ${
-                  i === index ? 'bg-ochre-500' : 'bg-graphite-600 hover:bg-steel-400'
+                  i === index ? 'bg-ochre-500' : 'bg-navy-600 hover:bg-steel-400'
                 }`}
               />
             ))}

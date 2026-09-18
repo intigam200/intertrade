@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <>
       {/* ── Первый экран ───────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-graphite-900">
+      <section className="relative overflow-hidden bg-navy-900">
         <div className="absolute inset-0 bg-blueprint bg-grid opacity-70" aria-hidden />
         <div className="shell relative grid grid-cols-1 gap-10 pb-0 pt-14 lg:grid-cols-12 lg:gap-8 lg:pt-20">
           <div className="lg:col-span-6">
@@ -49,11 +49,11 @@ export default function Home() {
 
         {/* технические показатели */}
         <div className="shell relative">
-          <dl className="grid grid-cols-2 border-t border-graphite-700 lg:grid-cols-4">
+          <dl className="grid grid-cols-2 border-t border-navy-700 lg:grid-cols-4">
             {figures.map((f, i) => (
               <div
                 key={f.label}
-                className={`border-graphite-700 py-8 pr-6 ${i % 2 === 1 ? 'border-l pl-6' : ''} ${
+                className={`border-navy-700 py-8 pr-6 ${i % 2 === 1 ? 'border-l pl-6' : ''} ${
                   i < 2 ? 'border-b lg:border-b-0' : ''
                 } ${i === 2 ? 'lg:border-l lg:pl-6' : ''} ${i === 3 ? 'lg:pl-6' : ''}`}
               >
@@ -73,7 +73,7 @@ export default function Home() {
       <section className="border-b border-steel-200 bg-white">
         <div className="shell flex flex-col gap-4 py-6 md:flex-row md:items-center md:gap-10">
           <p className="tag shrink-0">{t.home.industriesTag}</p>
-          <ul className="flex flex-col gap-x-10 gap-y-2 font-mono text-[12px] uppercase tracking-wide2 text-graphite-700 md:flex-row">
+          <ul className="flex flex-col gap-x-10 gap-y-2 font-mono text-[12px] uppercase tracking-wide2 text-navy-700 md:flex-row">
             {d.industries.map((item) => (
               <li key={item} className="flex items-center gap-3">
                 <span className="h-px w-5 bg-ochre-500" aria-hidden />
@@ -108,13 +108,13 @@ export default function Home() {
                 </div>
 
                 <div className="lg:col-span-4">
-                  <h3 className="text-[24px] font-bold uppercase leading-tight text-graphite-900 lg:text-[30px]">
+                  <h3 className="text-[24px] font-bold uppercase leading-tight text-navy-900 lg:text-[30px]">
                     {a.title}
                   </h3>
                   <p className="mt-4 max-w-md text-[15px] leading-relaxed text-steel-500">{a.full}</p>
                   <Link
                     to={path('services', `#${a.slug}`)}
-                    className="mt-6 inline-flex items-center gap-3 font-mono text-[12px] uppercase tracking-wide2 text-graphite-900 hover:text-ochre-500"
+                    className="mt-6 inline-flex items-center gap-3 font-mono text-[12px] uppercase tracking-wide2 text-navy-900 hover:text-ochre-500"
                   >
                     {t.home.activities.more}
                     <IconArrow />
@@ -149,7 +149,7 @@ export default function Home() {
           <Reveal className="mt-14 overflow-x-auto">
             <table className="w-full min-w-[640px] border-collapse text-left">
               <thead>
-                <tr className="border-y border-graphite-900">
+                <tr className="border-y border-navy-900">
                   <th className="w-[110px] py-3 font-mono text-[11px] uppercase tracking-wide2 text-steel-500">
                     {t.home.catalog.colIndex}
                   </th>
@@ -173,7 +173,7 @@ export default function Home() {
                       <td className="py-5 align-top">
                         <Link
                           to={path('products', `#${c.id}`)}
-                          className="font-display text-[17px] font-bold uppercase leading-tight tracking-tightest text-graphite-900 group-hover:text-ochre-600 sm:text-[19px]"
+                          className="font-display text-[17px] font-bold uppercase leading-tight tracking-tightest text-navy-900 group-hover:text-ochre-600 sm:text-[19px]"
                         >
                           {c.title}
                         </Link>
@@ -181,7 +181,7 @@ export default function Home() {
                           {c.lead}
                         </p>
                       </td>
-                      <td className="py-5 text-right align-top font-mono text-[13px] text-graphite-700">
+                      <td className="py-5 text-right align-top font-mono text-[13px] text-navy-700">
                         {String(count).padStart(2, '0')}
                       </td>
                       <td className="py-5 text-right align-top">
@@ -210,7 +210,7 @@ export default function Home() {
       </section>
 
       {/* ── Преимущества ───────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-graphite-900 py-20 lg:py-28">
+      <section className="relative overflow-hidden bg-navy-900 py-20 lg:py-28">
         <div className="absolute inset-0 bg-blueprint bg-grid opacity-50" aria-hidden />
         <div className="shell relative">
           <SectionHead
@@ -239,7 +239,7 @@ export default function Home() {
               <p className="tag">{t.home.capabilitiesTag}</p>
               <ul className="mt-6 space-y-6">
                 {d.capabilities.map((c) => (
-                  <li key={c.index} className="flex gap-5 border-b border-graphite-700 pb-6">
+                  <li key={c.index} className="flex gap-5 border-b border-navy-700 pb-6">
                     <Icon name={c.icon} className="h-10 w-10 shrink-0 text-ochre-500" />
                     <div>
                       <h3 className="text-[16px] font-bold uppercase text-white">{c.title}</h3>

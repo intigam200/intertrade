@@ -16,7 +16,7 @@ from PIL import Image, ImageEnhance
 
 SOURCES = Path(os.environ.get('ICG_SOURCES', Path.home() / 'Downloads'))
 OUT = Path(__file__).resolve().parent.parent / 'public' / 'images'
-BG = np.array([0x0E, 0x13, 0x18], np.float32) / 255.0  # graphite-900
+BG = np.array([0x0A, 0x14, 0x28], np.float32) / 255.0  # navy-900
 
 
 def tone(img, color=0.88, contrast=1.06, shadows=0.85, knee=0.30):

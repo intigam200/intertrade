@@ -8,7 +8,7 @@
   }
 
   body {
-    @apply bg-steel-50 font-sans text-graphite-900 antialiased;
+    @apply bg-steel-50 font-sans text-navy-900 antialiased;
     text-rendering: optimizeLegibility;
   }
 
@@ -39,7 +39,7 @@
   }
 
   .rule-dark {
-    @apply border-t border-graphite-700;
+    @apply border-t border-navy-700;
   }
 
   .link-underline {
@@ -55,15 +55,15 @@
   }
 
   .btn-ghost {
-    @apply btn border border-steel-300 text-graphite-900 hover:border-graphite-900 hover:bg-graphite-900 hover:text-white;
+    @apply btn border border-steel-300 text-navy-900 hover:border-navy-900 hover:bg-navy-900 hover:text-white;
   }
 
   .btn-ghost-dark {
-    @apply btn border border-graphite-600 text-steel-100 hover:border-ochre-500 hover:bg-ochre-500 hover:text-white;
+    @apply btn border border-navy-600 text-steel-100 hover:border-ochre-500 hover:bg-ochre-500 hover:text-white;
   }
 
   .field {
-    @apply w-full border border-steel-300 bg-white px-4 py-3 font-sans text-[15px] text-graphite-900 outline-none transition-colors placeholder:text-steel-400 focus:border-graphite-900;
+    @apply w-full border border-steel-300 bg-white px-4 py-3 font-sans text-[15px] text-navy-900 outline-none transition-colors placeholder:text-steel-400 focus:border-navy-900;
   }
 
   .field-error {

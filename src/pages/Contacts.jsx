@@ -84,7 +84,7 @@ export default function Contacts() {
           {/* реквизиты и связь */}
           <div className="lg:col-span-4">
             <p className="tag">{t.contacts.tag}</p>
-            <dl className="mt-6 border-t border-graphite-900">
+            <dl className="mt-6 border-t border-navy-900">
               <div className="border-b border-steel-200 py-5">
                 <dt className="font-mono text-[11px] uppercase tracking-wide2 text-steel-500">
                   {t.contacts.phone}
@@ -92,7 +92,7 @@ export default function Contacts() {
                 <dd className="mt-2">
                   <a
                     href={contacts.phoneHref}
-                    className="font-display text-[26px] font-bold tracking-tightest text-graphite-900 hover:text-ochre-600"
+                    className="font-display text-[26px] font-bold tracking-tightest text-navy-900 hover:text-ochre-600"
                   >
                     {contacts.phone}
                   </a>
@@ -105,7 +105,7 @@ export default function Contacts() {
                 <dd className="mt-2">
                   <a
                     href={contacts.emailHref}
-                    className="text-[18px] text-graphite-900 hover:text-ochre-600"
+                    className="text-[18px] text-navy-900 hover:text-ochre-600"
                   >
                     {contacts.email}
                   </a>
@@ -115,7 +115,7 @@ export default function Contacts() {
                 <dt className="font-mono text-[11px] uppercase tracking-wide2 text-steel-500">
                   {t.contacts.legal}
                 </dt>
-                <dd className="mt-2 text-[15px] leading-relaxed text-graphite-800">
+                <dd className="mt-2 text-[15px] leading-relaxed text-navy-800">
                   {d.contacts.legalName}
                 </dd>
               </div>
@@ -123,7 +123,7 @@ export default function Contacts() {
                 <dt className="font-mono text-[11px] uppercase tracking-wide2 text-steel-500">
                   {t.contacts.region}
                 </dt>
-                <dd className="mt-2 text-[15px] leading-relaxed text-graphite-800">
+                <dd className="mt-2 text-[15px] leading-relaxed text-navy-800">
                   {d.contacts.country}
                 </dd>
               </div>
@@ -131,7 +131,7 @@ export default function Contacts() {
                 <dt className="font-mono text-[11px] uppercase tracking-wide2 text-steel-500">
                   {t.contacts.directions}
                 </dt>
-                <dd className="mt-2 space-y-1 text-[15px] text-graphite-800">
+                <dd className="mt-2 space-y-1 text-[15px] text-navy-800">
                   {d.activities.map((a) => (
                     <p key={a.slug}>{a.title}</p>
                   ))}
@@ -152,7 +152,7 @@ export default function Contacts() {
           {/* форма */}
           <div className="lg:col-span-7 lg:col-start-6">
             <p className="tag">{t.contacts.formTag}</p>
-            <h2 className="mt-4 text-[26px] font-bold uppercase leading-tight text-graphite-900 sm:text-[34px]">
+            <h2 className="mt-4 text-[26px] font-bold uppercase leading-tight text-navy-900 sm:text-[34px]">
               {t.contacts.formTitle}
             </h2>
 

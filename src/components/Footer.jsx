@@ -9,8 +9,8 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="bg-graphite-950 text-steel-300">
-      <div className="shell grid grid-cols-1 gap-12 border-b border-graphite-800 py-16 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+    <footer className="bg-navy-950 text-steel-300">
+      <div className="shell grid grid-cols-1 gap-12 border-b border-navy-800 py-16 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-4">
           <p className="font-display text-[22px] font-bold uppercase leading-tight tracking-tightest text-white">
             Intertrade
