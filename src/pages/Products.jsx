@@ -64,7 +64,7 @@ export default function Products() {
                     href={`#${c.id}`}
                     className="flex items-baseline gap-4 border-b border-steel-200 py-3 text-[14px] leading-snug text-ink-700 transition-colors hover:text-accent-600"
                   >
-                    <span className="font-mono text-[11px] text-steel-400">{c.code}</span>
+                    <span className="font-mono text-[11px] text-steel-500">{c.code}</span>
                     {c.title}
                   </a>
                 ))}
@@ -101,7 +101,7 @@ export default function Products() {
                       className="hidden h-12 w-12 shrink-0 text-accent-500 sm:block"
                     />
                     <span className="flex-1">
-                      <span className="font-mono text-[11px] uppercase tracking-wide2 text-steel-400">
+                      <span className="font-mono text-[11px] uppercase tracking-wide2 text-steel-500">
                         ICG-{c.code} · {String(count).padStart(2, '0')} {t.products.itemsCount}
                       </span>
                       <h2 className="mt-3 text-[22px] font-bold uppercase leading-tight text-ink-900 group-hover:text-accent-600 sm:text-[28px]">
@@ -127,7 +127,7 @@ export default function Products() {
                                 key={item}
                                 className="flex items-baseline gap-4 border-b border-steel-200 py-3"
                               >
-                                <span className="w-[74px] shrink-0 font-mono text-[11px] uppercase tracking-wide text-steel-400">
+                                <span className="w-[74px] shrink-0 font-mono text-[11px] uppercase tracking-wide text-steel-500">
                                   {c.code}-{String(n + 1).padStart(2, '0')}
                                 </span>
                                 <span className="text-[15px] leading-snug text-ink-800">

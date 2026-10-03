@@ -21,7 +21,7 @@ export default function Services() {
                 href={`#${a.slug}`}
                 className="flex items-baseline gap-3 font-mono text-[12px] uppercase tracking-wide2 text-steel-300 hover:text-accent-400"
               >
-                <span className="text-accent-500">{a.index}</span>
+                <span className="text-accent-400">{a.index}</span>
                 {a.title}
               </a>
             </li>
@@ -38,7 +38,7 @@ export default function Services() {
         >
           <div className="shell grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-8">
             <div className="lg:col-span-3">
-              <p className="font-display text-[64px] font-bold leading-none tracking-tightest text-steel-200 lg:text-[88px]">
+              <p className="font-display text-[64px] font-bold leading-none tracking-tightest text-steel-300 lg:text-[88px]">
                 {a.index}
               </p>
               <Icon name={a.icon} className="mt-6 h-16 w-16 text-accent-500" />
@@ -66,7 +66,7 @@ export default function Services() {
                     key={item}
                     className="flex items-baseline gap-4 border-b border-steel-200 py-3 text-[15px] text-ink-700"
                   >
-                    <span className="font-mono text-[11px] text-steel-400">
+                    <span className="font-mono text-[11px] text-steel-500">
                       {String(n + 1).padStart(2, '0')}
                     </span>
                     {item}
@@ -107,7 +107,7 @@ export default function Services() {
           <div className="mt-14 grid grid-cols-1 gap-px bg-steel-200 sm:grid-cols-2 lg:grid-cols-4">
             {d.workflow.map((step, i) => (
               <Reveal key={step.index} delay={i * 70} className="bg-white p-8 lg:p-10">
-                <span className="font-mono text-[12px] tracking-wide2 text-accent-500">
+                <span className="font-mono text-[12px] tracking-wide2 text-accent-600">
                   {step.index}
                 </span>
                 <h3 className="mt-6 text-[19px] font-bold uppercase leading-tight text-ink-900">

@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useMemo } from 'react'
 import { useLocation } from 'react-router-dom'
 import ru from './ru.js'
 import en from './en.js'
-import { langFromPath, languages, pathFor, switchLangPath } from './routes.js'
+import { langFromPath, languages, pathFor, routeKeyFromPath, switchLangPath } from './routes.js'
 
 const bundles = { ru, en }
 
@@ -32,10 +32,13 @@ export function I18nProvider({ children }) {
   const bundle = bundles[lang]
 
   useEffect(() => {
+    const key = routeKeyFromPath(pathname)
+    const meta = bundle.pages[key] || bundle.meta
+
     document.documentElement.lang = lang
-    document.title = bundle.meta.title
+    document.title = meta.title
     const description = document.querySelector('meta[name="description"]')
-    if (description) description.setAttribute('content', bundle.meta.description)
+    if (description) description.setAttribute('content', meta.description)
 
     const origin = window.location.origin
     setLink('canonical', null, origin + pathname)

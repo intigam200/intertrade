@@ -25,7 +25,7 @@ function LangSwitch({ className = '' }) {
     >
       {languages.map((code, i) => (
         <span key={code} className="flex items-center gap-1">
-          {i > 0 && <span className="text-ink-600">/</span>}
+          {i > 0 && <span className="text-steel-500">/</span>}
           {code === lang ? (
             <span className="px-1 text-accent-400" aria-current="true">
               {code}
@@ -71,7 +71,7 @@ export default function Header() {
         <div className="shell flex h-10 items-center justify-between font-mono text-[11px] uppercase tracking-wide2">
           <p>{t.header.topline}</p>
           <div className="flex items-center gap-8">
-            <span className="text-steel-500">{d.contacts.country}</span>
+            <span className="text-steel-400">{d.contacts.country}</span>
             <a href={contacts.emailHref} className="link-underline hover:text-white">
               {contacts.email}
             </a>
@@ -152,7 +152,7 @@ export default function Header() {
                 }`
               }
             >
-              <span className="font-mono text-[11px] tracking-wide2 text-steel-500">{item.code}</span>
+              <span className="font-mono text-[11px] tracking-wide2 text-steel-400">{item.code}</span>
               {item.label}
             </NavLink>
           ))}

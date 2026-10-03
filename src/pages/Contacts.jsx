@@ -202,7 +202,7 @@ export default function Contacts() {
                   id="subject"
                   value={values.subject}
                   onChange={update('subject')}
-                  className="field"
+                  className="field-select"
                 >
                   {d.activities.map((a) => (
                     <option key={a.slug}>{a.title}</option>
@@ -223,8 +223,10 @@ export default function Contacts() {
                   onChange={update('message')}
                   placeholder={t.contacts.fields.messagePlaceholder}
                   className={`field resize-y ${errors.message ? 'field-error' : ''}`}
+                  aria-invalid={errors.message ? true : undefined}
+                  aria-describedby={errors.message ? 'message-error' : undefined}
                 />
-                {errors.message && <Note>{errors.message}</Note>}
+                {errors.message && <Note id="message-error">{errors.message}</Note>}
               </div>
 
               <label className="mt-6 flex cursor-pointer items-start gap-3 text-[13px] leading-relaxed text-steel-500">
@@ -240,7 +242,7 @@ export default function Contacts() {
                 </span>
               </label>
 
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center" aria-live="polite">
                 <button type="submit" className="btn-primary" disabled={status === 'sending'}>
                   {status === 'sending' ? t.contacts.sending : t.contacts.submit}
                   {status !== 'sending' && <IconArrow />}
@@ -258,7 +260,7 @@ export default function Contacts() {
                 )}
               </div>
 
-              {!ENDPOINT && (
+              {!ENDPOINT && import.meta.env.DEV && (
                 <p className="mt-6 border-l-2 border-steel-300 pl-4 font-mono text-[11px] uppercase leading-relaxed tracking-wide2 text-steel-400">
                   {t.contacts.stub}
                 </p>
@@ -277,15 +279,22 @@ function Field({ id, label, error, ...rest }) {
       <label htmlFor={id} className="label">
         {label}
       </label>
-      <input id={id} className={`field ${error ? 'field-error' : ''}`} {...rest} />
-      {error && <Note>{error}</Note>}
+      <input
+        id={id}
+        className={`field ${error ? 'field-error' : ''}`}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? `${id}-error` : undefined}
+        {...rest}
+      />
+      {error && <Note id={`${id}-error`}>{error}</Note>}
     </div>
   )
 }
 
-function Note({ children, inline = false }) {
+function Note({ children, id, inline = false }) {
   return (
     <span
+      id={id}
       className={`font-mono text-[11px] uppercase tracking-wide2 text-signal-red ${
         inline ? 'ml-2' : 'mt-2 block'
       }`}

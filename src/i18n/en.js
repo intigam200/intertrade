@@ -7,6 +7,36 @@ export default {
       'Intertrade and Consulting Group LLP supplies industrial equipment and components to manufacturing, quarrying and oil & gas enterprises in Kazakhstan. Over 400 brands, direct supply from plants in Europe, the UK, the USA and China.',
   },
 
+  // A separate title and description per page: one site-wide title makes
+  // browser tabs and search results meaningless.
+  pages: {
+    home: {
+      title: 'Intertrade and Consulting Group — industrial supply, logistics, technical audit',
+      description:
+        'Intertrade and Consulting Group LLP supplies industrial equipment and components to manufacturing, quarrying and oil & gas enterprises in Kazakhstan. Over 400 brands, direct supply from plants in Europe, the UK, the USA and China.',
+    },
+    about: {
+      title: 'About the company — Intertrade and Consulting Group',
+      description:
+        'Supplier of industrial equipment for enterprises in Kazakhstan: manufacturers, warehouses, engineering team and the geography of direct supply.',
+    },
+    services: {
+      title: 'Services: supply, logistics, technical audit — Intertrade and Consulting Group',
+      description:
+        'Supply for enterprises, logistics with customs clearance and documentation, technical audit of equipment and procurement outsourcing. How a request is handled.',
+    },
+    products: {
+      title: 'Product catalogue — Intertrade and Consulting Group',
+      description:
+        'Actuators and spare parts, steam traps and steam system equipment, flanges, flexible hoses, expansion joints. Items sourced by specification, drawing or part number.',
+    },
+    contacts: {
+      title: 'Contacts — Intertrade and Consulting Group',
+      description:
+        'Requests for supply and technical audit: phone, e-mail and the request form. Intertrade and Consulting Group LLP, Republic of Kazakhstan.',
+    },
+  },
+
   data: {
     contacts: {
       legalName: 'Intertrade and Consulting Group LLP',
@@ -326,6 +356,7 @@ export default {
       openMenu: 'Open menu',
       closeMenu: 'Close menu',
       language: 'Site language',
+      skip: 'Skip to content',
     },
 
     footer: {

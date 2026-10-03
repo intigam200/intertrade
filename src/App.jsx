@@ -18,6 +18,16 @@ const pages = {
   contacts: Contacts,
 }
 
+/* Для клавиатуры: первым Tab'ом можно перепрыгнуть меню и уйти к контенту */
+function SkipLink() {
+  const { t } = useI18n()
+  return (
+    <a href="#content" className="skip-link">
+      {t.header.skip}
+    </a>
+  )
+}
+
 function NotFound() {
   const { t, path } = useI18n()
   return (
@@ -33,8 +43,9 @@ export default function App() {
   return (
     <div className="flex min-h-screen flex-col">
       <ScrollManager />
+      <SkipLink />
       <Header />
-      <main className="flex-1">
+      <main id="content" className="flex-1">
         <Routes>
           {/* Один и тот же экран объявляется в обоих языках: /uslugi и /en/services */}
           {Object.entries(pages).flatMap(([key, Page]) =>

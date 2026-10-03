@@ -46,7 +46,7 @@ export function SectionHead({ tag, title, lead, dark = false, className = '' }) 
   return (
     <Reveal className={`grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8 ${className}`}>
       <div className="lg:col-span-3">
-        <p className="tag">{tag}</p>
+        <p className={dark ? 'tag-dark' : 'tag'}>{tag}</p>
       </div>
       <div className="lg:col-span-6">
         <h2
@@ -90,7 +90,7 @@ export function IndexList({ items, dark = false, columns = 2 }) {
           <div className="flex items-start gap-6">
             <span
               className={`font-display text-[44px] font-bold leading-none tracking-tightest lg:text-[56px] ${
-                dark ? 'text-ink-700' : 'text-steel-200'
+                dark ? 'text-ink-600' : 'text-steel-300'
               } transition-colors duration-300 group-hover:text-accent-500`}
             >
               {item.index}
@@ -126,7 +126,7 @@ export function BrandStrip() {
     <section className="border-y border-ink-700 bg-ink-900 py-14">
       <div className="shell flex flex-col gap-3 pb-10 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="tag">{t.brandStrip.tag}</p>
+          <p className="tag-dark">{t.brandStrip.tag}</p>
           <h2 className="mt-4 text-[26px] font-bold uppercase leading-none text-white sm:text-[34px]">
             {t.brandStrip.title}
           </h2>
@@ -139,6 +139,7 @@ export function BrandStrip() {
           {row.map((brand, i) => (
             <span
               key={`${brand}-${i}`}
+              aria-hidden={i >= brands.length ? true : undefined}
               className="flex h-16 min-w-[190px] items-center justify-center border border-ink-700 border-r-0 px-8 font-mono text-[13px] uppercase tracking-wide2 text-steel-400 last:border-r"
             >
               {brand}
@@ -206,7 +207,7 @@ export function PageHero({ code, title, lead, image, imageAlt, children }) {
       )}
       <div className="shell relative grid grid-cols-1 gap-8 py-16 lg:grid-cols-12 lg:py-24">
         <div className="lg:col-span-2">
-          <p className="font-mono text-[11px] uppercase tracking-wide2 text-accent-500">{code}</p>
+          <p className="font-mono text-[11px] uppercase tracking-wide2 text-accent-400">{code}</p>
         </div>
         <div className="lg:col-span-7">
           <h1 className="text-[34px] font-bold uppercase leading-[1.03] text-white sm:text-[52px] lg:text-[62px]">

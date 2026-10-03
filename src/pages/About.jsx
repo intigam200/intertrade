@@ -59,7 +59,7 @@ export default function About() {
               >
                 <div className="flex items-center justify-between">
                   <Icon name={c.icon} className="h-14 w-14 text-ink-900" />
-                  <span className="font-display text-[40px] font-bold leading-none tracking-tightest text-steel-200">
+                  <span className="font-display text-[40px] font-bold leading-none tracking-tightest text-steel-300">
                     {c.index}
                   </span>
                 </div>
@@ -85,7 +85,7 @@ export default function About() {
 
           <Reveal className="mt-14 grid grid-cols-1 gap-8 bg-ink-900 p-8 lg:grid-cols-12 lg:p-12">
             <div className="lg:col-span-4">
-              <p className="tag">{t.about.staffTag}</p>
+              <p className="tag-dark">{t.about.staffTag}</p>
               <h3 className="mt-4 text-[22px] font-bold uppercase leading-tight text-white lg:text-[26px]">
                 {t.about.staffTitle}
               </h3>
@@ -126,7 +126,7 @@ export default function About() {
 
         <div className="shell relative grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center lg:gap-8">
           <div className="lg:col-span-6">
-            <p className="tag">{t.about.geography.tag}</p>
+            <p className="tag-dark">{t.about.geography.tag}</p>
             <h2 className="mt-5 text-[28px] font-bold uppercase leading-[1.08] text-white sm:text-[36px]">
               {t.about.geography.title}
             </h2>

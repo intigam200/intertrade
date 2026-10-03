@@ -25,8 +25,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="lg:col-span-2 lg:col-start-6">
-          <p className="tag mb-5">{t.footer.sitemap}</p>
+        <div className="lg:col-span-2 lg:col-start-5">
+          <p className="tag-dark mb-5">{t.footer.sitemap}</p>
           <ul className="space-y-3 text-[14px]">
             {sitemapKeys.map((key) => (
               <li key={key}>
@@ -39,7 +39,7 @@ export default function Footer() {
         </div>
 
         <div className="lg:col-span-3">
-          <p className="tag mb-5">{t.footer.products}</p>
+          <p className="tag-dark mb-5">{t.footer.products}</p>
           <ul className="space-y-3 text-[14px]">
             {d.catalog.map((c) => (
               <li key={c.id}>
@@ -51,11 +51,11 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div className="lg:col-span-3">
-          <p className="tag mb-5">{t.footer.contacts}</p>
+        <div className="lg:col-span-3 lg:col-start-10">
+          <p className="tag-dark mb-5">{t.footer.contacts}</p>
           <dl className="space-y-4 text-[14px]">
             <div>
-              <dt className="font-mono text-[11px] uppercase tracking-wide2 text-steel-500">
+              <dt className="font-mono text-[11px] uppercase tracking-wide2 text-steel-400">
                 {t.footer.phone}
               </dt>
               <dd className="mt-1">
@@ -65,7 +65,7 @@ export default function Footer() {
               </dd>
             </div>
             <div>
-              <dt className="font-mono text-[11px] uppercase tracking-wide2 text-steel-500">
+              <dt className="font-mono text-[11px] uppercase tracking-wide2 text-steel-400">
                 {t.footer.email}
               </dt>
               <dd className="mt-1">
@@ -75,7 +75,7 @@ export default function Footer() {
               </dd>
             </div>
             <div>
-              <dt className="font-mono text-[11px] uppercase tracking-wide2 text-steel-500">
+              <dt className="font-mono text-[11px] uppercase tracking-wide2 text-steel-400">
                 {t.footer.legal}
               </dt>
               <dd className="mt-1 text-steel-300">{d.contacts.legalName}</dd>
@@ -84,7 +84,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="shell flex flex-col gap-4 py-7 font-mono text-[11px] uppercase tracking-wide2 text-steel-500 md:flex-row md:items-center md:justify-between">
+      <div className="shell flex flex-col gap-4 py-7 font-mono text-[11px] uppercase tracking-wide2 text-steel-400 md:flex-row md:items-center md:justify-between">
         <p>© {year} {d.contacts.legalName}</p>
         <ul className="flex flex-wrap gap-x-6 gap-y-2">
           {d.activities.map((a) => (

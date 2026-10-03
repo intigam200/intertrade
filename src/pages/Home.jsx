@@ -19,7 +19,7 @@ export default function Home() {
       <section className="relative overflow-hidden bg-ink-900">
         <div className="shell relative grid grid-cols-1 gap-10 pb-0 pt-14 lg:grid-cols-12 lg:gap-8 lg:pt-20">
           <div className="lg:col-span-6">
-            <p className="tag">{t.home.tag}</p>
+            <p className="tag-dark">{t.home.tag}</p>
             <h1 className="mt-7 text-[38px] font-bold uppercase leading-[1.02] text-white sm:text-[58px] lg:text-[70px]">
               {t.home.h1.line1}
               <br />
@@ -100,7 +100,7 @@ export default function Home() {
                 className="grid grid-cols-1 gap-6 border-b border-steel-200 py-10 lg:grid-cols-12 lg:gap-8 lg:py-14"
               >
                 <div className="flex items-start gap-6 lg:col-span-3">
-                  <span className="font-display text-[40px] font-bold leading-none tracking-tightest text-steel-200">
+                  <span className="font-display text-[40px] font-bold leading-none tracking-tightest text-steel-300">
                     {a.index}
                   </span>
                   <Icon name={a.icon} className="h-12 w-12 text-accent-500" />
@@ -234,7 +234,7 @@ export default function Home() {
               />
             </div>
             <div className="lg:col-span-4 lg:col-start-9">
-              <p className="tag">{t.home.capabilitiesTag}</p>
+              <p className="tag-dark">{t.home.capabilitiesTag}</p>
               <ul className="mt-6 space-y-6">
                 {d.capabilities.map((c) => (
                   <li key={c.index} className="flex gap-5 border-b border-ink-700 pb-6">
