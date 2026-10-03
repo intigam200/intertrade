@@ -20,18 +20,18 @@ export default function About() {
             <p className="tag">{t.about.missionTag}</p>
           </div>
           <div className="lg:col-span-9">
-            <blockquote className="border-l-2 border-ochre-500 pl-6 lg:pl-10">
-              <p className="font-display text-[24px] font-bold uppercase leading-[1.15] tracking-tightest text-navy-900 sm:text-[34px] lg:text-[40px]">
+            <blockquote className="border-l-2 border-accent-500 pl-6 lg:pl-10">
+              <p className="font-display text-[24px] font-bold uppercase leading-[1.15] tracking-tightest text-ink-900 sm:text-[34px] lg:text-[40px]">
                 {d.mission}
               </p>
             </blockquote>
             <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-3">
               {d.industries.map((item, i) => (
                 <div key={item} className="border-t border-steel-200 pt-4">
-                  <span className="font-mono text-[11px] tracking-wide2 text-ochre-500">
+                  <span className="font-mono text-[11px] tracking-wide2 text-accent-500">
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <p className="mt-2 text-[15px] leading-snug text-navy-700">{item}</p>
+                  <p className="mt-2 text-[15px] leading-snug text-ink-700">{item}</p>
                 </div>
               ))}
             </div>
@@ -58,12 +58,12 @@ export default function About() {
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <Icon name={c.icon} className="h-14 w-14 text-navy-900" />
+                  <Icon name={c.icon} className="h-14 w-14 text-ink-900" />
                   <span className="font-display text-[40px] font-bold leading-none tracking-tightest text-steel-200">
                     {c.index}
                   </span>
                 </div>
-                <h3 className="mt-8 text-[20px] font-bold uppercase text-navy-900">{c.title}</h3>
+                <h3 className="mt-8 text-[20px] font-bold uppercase text-ink-900">{c.title}</h3>
                 <p className="mt-3 text-[15px] leading-relaxed text-steel-500">{c.text}</p>
               </Reveal>
             ))}
@@ -83,7 +83,7 @@ export default function About() {
             <IndexList items={d.specialists} columns={3} />
           </div>
 
-          <Reveal className="mt-14 grid grid-cols-1 gap-8 bg-navy-900 p-8 lg:grid-cols-12 lg:p-12">
+          <Reveal className="mt-14 grid grid-cols-1 gap-8 bg-ink-900 p-8 lg:grid-cols-12 lg:p-12">
             <div className="lg:col-span-4">
               <p className="tag">{t.about.staffTag}</p>
               <h3 className="mt-4 text-[22px] font-bold uppercase leading-tight text-white lg:text-[26px]">
@@ -94,9 +94,9 @@ export default function About() {
               {d.staffEngineers.map((item) => (
                 <li
                   key={item}
-                  className="flex items-baseline gap-4 border-b border-navy-700 py-4 text-[15px] text-steel-200"
+                  className="flex items-baseline gap-4 border-b border-ink-700 py-4 text-[15px] text-steel-200"
                 >
-                  <span className="h-px w-4 shrink-0 translate-y-[-4px] bg-ochre-500" aria-hidden />
+                  <span className="h-px w-4 shrink-0 translate-y-[-4px] bg-accent-500" aria-hidden />
                   {item}
                 </li>
               ))}
@@ -106,7 +106,7 @@ export default function About() {
       </section>
 
       {/* ── Отрасли / география ────────────────────────────────────── */}
-      <section className="relative overflow-hidden border-y border-navy-700 bg-navy-900 py-20 lg:py-28">
+      <section className="relative overflow-hidden border-y border-ink-700 bg-ink-900 py-20 lg:py-28">
         {/* фон — Астана на закате; скрим держит контраст текста */}
         <div className="absolute inset-0" aria-hidden>
           <Photo
@@ -118,9 +118,9 @@ export default function About() {
             className="h-full w-full object-cover object-[center_32%]"
           />
         </div>
-        <div className="absolute inset-0 bg-navy-950/35" aria-hidden />
+        <div className="absolute inset-0 bg-ink-950/35" aria-hidden />
         <div
-          className="absolute inset-0 bg-gradient-to-b from-navy-950/95 via-navy-950/75 to-navy-950/55 lg:bg-gradient-to-r lg:via-navy-950/80 lg:to-transparent"
+          className="absolute inset-0 bg-gradient-to-b from-ink-950/95 via-ink-950/75 to-ink-950/55 lg:bg-gradient-to-r lg:via-ink-950/80 lg:to-transparent"
           aria-hidden
         />
 
@@ -144,7 +144,7 @@ export default function About() {
             </div>
           </div>
           <p className="relative hidden items-center gap-3 font-mono text-[11px] uppercase tracking-wide2 text-steel-300 lg:col-span-4 lg:col-start-9 lg:flex lg:justify-end lg:self-end lg:pb-1">
-            <span className="h-px w-6 bg-ochre-500" aria-hidden />
+            <span className="h-px w-6 bg-accent-500" aria-hidden />
             {t.about.geography.caption}
           </p>
         </div>

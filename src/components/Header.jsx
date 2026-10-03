@@ -7,7 +7,7 @@ import { languages, routeKeys } from '../i18n/routes.js'
 function Monogram() {
   return (
     <svg viewBox="0 0 40 40" className="h-10 w-10 shrink-0" aria-hidden>
-      <rect width="40" height="40" fill="#E87511" />
+      <rect width="40" height="40" fill="#2E63E8" />
       <rect x="8" y="10" width="4" height="20" fill="#FFFFFF" />
       <path d="M16 30V10l8 10v10" fill="none" stroke="#FFFFFF" strokeWidth="4" />
       <path d="M32 12a8 8 0 100 16" fill="none" stroke="#FFFFFF" strokeWidth="4" />
@@ -25,9 +25,9 @@ function LangSwitch({ className = '' }) {
     >
       {languages.map((code, i) => (
         <span key={code} className="flex items-center gap-1">
-          {i > 0 && <span className="text-navy-600">/</span>}
+          {i > 0 && <span className="text-ink-600">/</span>}
           {code === lang ? (
-            <span className="px-1 text-ochre-400" aria-current="true">
+            <span className="px-1 text-accent-400" aria-current="true">
               {code}
             </span>
           ) : (
@@ -67,7 +67,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50">
       {/* верхняя служебная полоса */}
-      <div className="hidden bg-navy-950 text-steel-300 lg:block">
+      <div className="hidden bg-ink-950 text-steel-300 lg:block">
         <div className="shell flex h-10 items-center justify-between font-mono text-[11px] uppercase tracking-wide2">
           <p>{t.header.topline}</p>
           <div className="flex items-center gap-8">
@@ -75,7 +75,7 @@ export default function Header() {
             <a href={contacts.emailHref} className="link-underline hover:text-white">
               {contacts.email}
             </a>
-            <a href={contacts.phoneHref} className="link-underline text-white hover:text-ochre-400">
+            <a href={contacts.phoneHref} className="link-underline text-white hover:text-accent-400">
               {contacts.phone}
             </a>
             <LangSwitch />
@@ -83,7 +83,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="border-b border-navy-700 bg-navy-900">
+      <div className="border-b border-ink-700 bg-ink-900">
         <div className="shell flex h-[72px] items-center justify-between gap-6">
           <Link to={path('home')} className="flex items-center gap-3" aria-label={t.header.toHome}>
             <Monogram />
@@ -105,7 +105,7 @@ export default function Header() {
                 end={item.key === 'home'}
                 className={({ isActive }) =>
                   `px-4 py-2 font-mono text-[12px] uppercase tracking-wide2 transition-colors ${
-                    isActive ? 'text-ochre-400' : 'text-steel-200 hover:text-white'
+                    isActive ? 'text-accent-400' : 'text-steel-200 hover:text-white'
                   }`
                 }
               >
@@ -122,7 +122,7 @@ export default function Header() {
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
-              className="flex h-11 w-11 items-center justify-center border border-navy-600 text-steel-100 lg:hidden"
+              className="flex h-11 w-11 items-center justify-center border border-ink-600 text-steel-100 lg:hidden"
               aria-expanded={open}
               aria-label={open ? t.header.closeMenu : t.header.openMenu}
             >
@@ -136,7 +136,7 @@ export default function Header() {
 
       {/* мобильное меню */}
       <div
-        className={`fixed inset-x-0 bottom-0 top-[72px] z-40 bg-navy-950 transition-opacity duration-200 lg:hidden ${
+        className={`fixed inset-x-0 bottom-0 top-[72px] z-40 bg-ink-950 transition-opacity duration-200 lg:hidden ${
           open ? 'opacity-100' : 'pointer-events-none opacity-0'
         }`}
       >
@@ -147,8 +147,8 @@ export default function Header() {
               to={item.to}
               end={item.key === 'home'}
               className={({ isActive }) =>
-                `flex items-baseline gap-4 border-b border-navy-800 py-5 font-display text-[26px] uppercase tracking-tightest ${
-                  isActive ? 'text-ochre-400' : 'text-white'
+                `flex items-baseline gap-4 border-b border-ink-800 py-5 font-display text-[26px] uppercase tracking-tightest ${
+                  isActive ? 'text-accent-400' : 'text-white'
                 }`
               }
             >

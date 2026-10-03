@@ -9,8 +9,8 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="bg-navy-950 text-steel-300">
-      <div className="shell grid grid-cols-1 gap-12 border-b border-navy-800 py-16 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+    <footer className="bg-ink-950 text-steel-300">
+      <div className="shell grid grid-cols-1 gap-12 border-b border-ink-800 py-16 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-4">
           <p className="font-display text-[22px] font-bold uppercase leading-tight tracking-tightest text-white">
             Intertrade
@@ -59,7 +59,7 @@ export default function Footer() {
                 {t.footer.phone}
               </dt>
               <dd className="mt-1">
-                <a href={contacts.phoneHref} className="font-mono text-[16px] text-white hover:text-ochre-400">
+                <a href={contacts.phoneHref} className="font-mono text-[16px] text-white hover:text-accent-400">
                   {contacts.phone}
                 </a>
               </dd>
@@ -69,7 +69,7 @@ export default function Footer() {
                 {t.footer.email}
               </dt>
               <dd className="mt-1">
-                <a href={contacts.emailHref} className="text-white hover:text-ochre-400">
+                <a href={contacts.emailHref} className="text-white hover:text-accent-400">
                   {contacts.email}
                 </a>
               </dd>

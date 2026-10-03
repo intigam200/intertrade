@@ -19,9 +19,9 @@ export default function Services() {
             <li key={a.slug}>
               <a
                 href={`#${a.slug}`}
-                className="flex items-baseline gap-3 font-mono text-[12px] uppercase tracking-wide2 text-steel-300 hover:text-ochre-400"
+                className="flex items-baseline gap-3 font-mono text-[12px] uppercase tracking-wide2 text-steel-300 hover:text-accent-400"
               >
-                <span className="text-ochre-500">{a.index}</span>
+                <span className="text-accent-500">{a.index}</span>
                 {a.title}
               </a>
             </li>
@@ -41,17 +41,17 @@ export default function Services() {
               <p className="font-display text-[64px] font-bold leading-none tracking-tightest text-steel-200 lg:text-[88px]">
                 {a.index}
               </p>
-              <Icon name={a.icon} className="mt-6 h-16 w-16 text-ochre-500" />
+              <Icon name={a.icon} className="mt-6 h-16 w-16 text-accent-500" />
             </div>
 
             <div className="lg:col-span-5">
-              <h2 className="text-[30px] font-bold uppercase leading-[1.05] text-navy-900 lg:text-[42px]">
+              <h2 className="text-[30px] font-bold uppercase leading-[1.05] text-ink-900 lg:text-[42px]">
                 {a.title}
               </h2>
               <p className="mt-6 max-w-lg text-[16px] leading-relaxed text-steel-500">{a.full}</p>
               <Link
                 to={path('contacts')}
-                className="mt-8 inline-flex items-center gap-3 font-mono text-[12px] uppercase tracking-wide2 text-navy-900 hover:text-ochre-500"
+                className="mt-8 inline-flex items-center gap-3 font-mono text-[12px] uppercase tracking-wide2 text-ink-900 hover:text-accent-500"
               >
                 {t.services.request}
                 <IconArrow />
@@ -64,7 +64,7 @@ export default function Services() {
                 {a.items.map((item, n) => (
                   <li
                     key={item}
-                    className="flex items-baseline gap-4 border-b border-steel-200 py-3 text-[15px] text-navy-700"
+                    className="flex items-baseline gap-4 border-b border-steel-200 py-3 text-[15px] text-ink-700"
                   >
                     <span className="font-mono text-[11px] text-steel-400">
                       {String(n + 1).padStart(2, '0')}
@@ -81,7 +81,7 @@ export default function Services() {
       {/* ── Аутсорсинг снабжения ───────────────────────────────────── */}
       <section
         id="outsourcing"
-        className="relative scroll-mt-24 overflow-hidden bg-navy-900 py-20 lg:py-28"
+        className="relative scroll-mt-24 overflow-hidden bg-ink-900 py-20 lg:py-28"
       >
         <div className="shell relative">
           <SectionHead
@@ -107,10 +107,10 @@ export default function Services() {
           <div className="mt-14 grid grid-cols-1 gap-px bg-steel-200 sm:grid-cols-2 lg:grid-cols-4">
             {d.workflow.map((step, i) => (
               <Reveal key={step.index} delay={i * 70} className="bg-white p-8 lg:p-10">
-                <span className="font-mono text-[12px] tracking-wide2 text-ochre-500">
+                <span className="font-mono text-[12px] tracking-wide2 text-accent-500">
                   {step.index}
                 </span>
-                <h3 className="mt-6 text-[19px] font-bold uppercase leading-tight text-navy-900">
+                <h3 className="mt-6 text-[19px] font-bold uppercase leading-tight text-ink-900">
                   {step.title}
                 </h3>
                 <p className="mt-3 text-[14px] leading-relaxed text-steel-500">{step.text}</p>

@@ -62,7 +62,7 @@ export default function Products() {
                   <a
                     key={c.id}
                     href={`#${c.id}`}
-                    className="flex items-baseline gap-4 border-b border-steel-200 py-3 text-[14px] leading-snug text-navy-700 transition-colors hover:text-ochre-600"
+                    className="flex items-baseline gap-4 border-b border-steel-200 py-3 text-[14px] leading-snug text-ink-700 transition-colors hover:text-accent-600"
                   >
                     <span className="font-mono text-[11px] text-steel-400">{c.code}</span>
                     {c.title}
@@ -71,7 +71,7 @@ export default function Products() {
               </nav>
               <p className="mt-6 text-[13px] leading-relaxed text-steel-500">
                 {t.products.notFoundLead}
-                <a href={contacts.emailHref} className="text-ochre-600 underline underline-offset-4">
+                <a href={contacts.emailHref} className="text-accent-600 underline underline-offset-4">
                   {contacts.email}
                 </a>
                 .
@@ -88,7 +88,7 @@ export default function Products() {
                 <article
                   key={c.id}
                   id={c.id}
-                  className="scroll-mt-28 border-t border-navy-900 first:border-t-2"
+                  className="scroll-mt-28 border-t border-ink-900 first:border-t-2"
                 >
                   <button
                     type="button"
@@ -98,20 +98,20 @@ export default function Products() {
                   >
                     <Icon
                       name={c.icon}
-                      className="hidden h-12 w-12 shrink-0 text-ochre-500 sm:block"
+                      className="hidden h-12 w-12 shrink-0 text-accent-500 sm:block"
                     />
                     <span className="flex-1">
                       <span className="font-mono text-[11px] uppercase tracking-wide2 text-steel-400">
                         ICG-{c.code} · {String(count).padStart(2, '0')} {t.products.itemsCount}
                       </span>
-                      <h2 className="mt-3 text-[22px] font-bold uppercase leading-tight text-navy-900 group-hover:text-ochre-600 sm:text-[28px]">
+                      <h2 className="mt-3 text-[22px] font-bold uppercase leading-tight text-ink-900 group-hover:text-accent-600 sm:text-[28px]">
                         {c.title}
                       </h2>
                       <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-steel-500">
                         {c.lead}
                       </p>
                     </span>
-                    <span className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center border border-steel-300 text-navy-900 transition-colors group-hover:border-ochre-500 group-hover:text-ochre-500">
+                    <span className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center border border-steel-300 text-ink-900 transition-colors group-hover:border-accent-500 group-hover:text-accent-500">
                       <IconPlus open={isOpen} className="h-4 w-4" />
                     </span>
                   </button>
@@ -130,7 +130,7 @@ export default function Products() {
                                 <span className="w-[74px] shrink-0 font-mono text-[11px] uppercase tracking-wide text-steel-400">
                                   {c.code}-{String(n + 1).padStart(2, '0')}
                                 </span>
-                                <span className="text-[15px] leading-snug text-navy-800">
+                                <span className="text-[15px] leading-snug text-ink-800">
                                   {item}
                                 </span>
                               </li>
@@ -144,7 +144,7 @@ export default function Products() {
               )
             })}
 
-            <div className="border-t-2 border-navy-900 pt-10">
+            <div className="border-t-2 border-ink-900 pt-10">
               <p className="max-w-2xl text-[15px] leading-relaxed text-steel-500">
                 {t.products.closing}
               </p>
