@@ -51,15 +51,6 @@ export default {
       maxWidth: {
         grid: '1440px',
       },
-      backgroundImage: {
-        blueprint:
-          'linear-gradient(to right, rgba(125,140,166,0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(125,140,166,0.12) 1px, transparent 1px)',
-        hatch:
-          'repeating-linear-gradient(135deg, rgba(232,117,17,0.16) 0 2px, transparent 2px 9px)',
-      },
-      backgroundSize: {
-        grid: '64px 64px',
-      },
       keyframes: {
         marquee: {
           '0%': { transform: 'translateX(0)' },

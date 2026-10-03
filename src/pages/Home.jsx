@@ -17,7 +17,6 @@ export default function Home() {
     <>
       {/* ── Первый экран ───────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-navy-900">
-        <div className="absolute inset-0 bg-blueprint bg-grid opacity-70" aria-hidden />
         <div className="shell relative grid grid-cols-1 gap-10 pb-0 pt-14 lg:grid-cols-12 lg:gap-8 lg:pt-20">
           <div className="lg:col-span-6">
             <p className="tag">{t.home.tag}</p>
@@ -211,7 +210,6 @@ export default function Home() {
 
       {/* ── Преимущества ───────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-navy-900 py-20 lg:py-28">
-        <div className="absolute inset-0 bg-blueprint bg-grid opacity-50" aria-hidden />
         <div className="shell relative">
           <SectionHead
             dark

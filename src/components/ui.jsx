@@ -204,7 +204,6 @@ export function PageHero({ code, title, lead, image, imageAlt, children }) {
           <div className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/80 to-navy-950/40" />
         </div>
       )}
-      <div className="absolute inset-0 bg-blueprint bg-grid opacity-60" aria-hidden />
       <div className="shell relative grid grid-cols-1 gap-8 py-16 lg:grid-cols-12 lg:py-24">
         <div className="lg:col-span-2">
           <p className="font-mono text-[11px] uppercase tracking-wide2 text-ochre-500">{code}</p>

@@ -83,7 +83,6 @@ export default function Services() {
         id="outsourcing"
         className="relative scroll-mt-24 overflow-hidden bg-navy-900 py-20 lg:py-28"
       >
-        <div className="absolute inset-0 bg-blueprint bg-grid opacity-50" aria-hidden />
         <div className="shell relative">
           <SectionHead
             dark
