@@ -1,70 +1,62 @@
 import { Link } from 'react-router-dom'
+import { FiArrowRight, FiUserCheck } from 'react-icons/fi'
 import Reveal from '../components/Reveal.jsx'
 import Icon from '../components/Icon.jsx'
-import { IconArrow } from '../components/Icons.jsx'
-import { PageHero, Photo, SectionHead, IndexList, BrandStrip, CtaBand } from '../components/ui.jsx'
-import { contacts } from '../data/company.js'
+import { BrandStrip, CheckList, CtaBlock, PageHero, Photo, SectionIntro } from '../components/ui.jsx'
 import { useI18n } from '../i18n/index.jsx'
+
+const industryIcons = ['plant', 'mining', 'oil']
 
 export default function About() {
   const { t, d, path } = useI18n()
 
   return (
     <>
-      <PageHero code={t.about.code} title={t.about.title} lead={d.positioning} />
+      <PageHero label={t.about.label} title={t.about.title} lead={d.positioning} image="slide-assembly" />
 
       {/* ── Миссия ─────────────────────────────────────────────────── */}
-      <section className="bg-white py-20 lg:py-28">
-        <div className="shell grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-3">
-            <p className="tag">{t.about.missionTag}</p>
-          </div>
-          <div className="lg:col-span-9">
-            <blockquote className="border-l-2 border-accent-500 pl-6 lg:pl-10">
-              <p className="font-display text-[24px] font-bold uppercase leading-[1.15] tracking-tightest text-ink-900 sm:text-[34px] lg:text-[40px]">
+      <section className="section bg-white">
+        <div className="container-x grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <SectionIntro large label={t.about.mission.label} title={t.about.mission.title} />
+            <Reveal>
+              <div className="rule-accent" />
+              <blockquote className="text-[clamp(18px,1.8vw,21px)] font-medium leading-[1.6] text-navy">
                 {d.mission}
-              </p>
-            </blockquote>
-            <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-3">
-              {d.industries.map((item, i) => (
-                <div key={item} className="border-t border-steel-200 pt-4">
-                  <span className="font-mono text-[11px] tracking-wide2 text-accent-500">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <p className="mt-2 text-[15px] leading-snug text-ink-700">{item}</p>
-                </div>
-              ))}
-            </div>
+              </blockquote>
+            </Reveal>
           </div>
+          <Reveal className="space-y-4" delay={100}>
+            <p className="text-[13px] font-bold uppercase tracking-[0.1em] text-navy">{t.about.mission.industries}</p>
+            {d.industries.map((item, i) => (
+              <div key={item} className="hover-icon flex items-center gap-4 rounded-[10px] border border-line p-5">
+                <span className="icon-circle h-[60px] w-[60px]">
+                  <Icon name={industryIcons[i]} className="tm-icon h-[30px] w-[30px]" />
+                </span>
+                <p className="text-[17px] font-bold text-navy">{item}</p>
+              </div>
+            ))}
+          </Reveal>
         </div>
       </section>
 
       {/* ── Возможности ────────────────────────────────────────────── */}
-      <section className="bg-steel-50 py-20 lg:py-28">
-        <div className="shell">
-          <SectionHead
-            tag={t.about.capabilities.tag}
+      <section className="section bg-mist">
+        <div className="container-x">
+          <SectionIntro
+            label={t.about.capabilities.label}
             title={t.about.capabilities.title}
-            lead={t.about.capabilities.lead}
+            desc={t.about.capabilities.desc}
           />
-
-          <div className="mt-14 grid grid-cols-1 border-t border-steel-200 md:grid-cols-3">
+          <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-3">
             {d.capabilities.map((c, i) => (
-              <Reveal
-                key={c.index}
-                delay={i * 80}
-                className={`border-b border-steel-200 py-10 md:px-10 md:first:pl-0 md:last:pr-0 lg:py-14 ${
-                  i > 0 ? 'md:border-l' : ''
-                }`}
-              >
-                <div className="flex items-center justify-between">
-                  <Icon name={c.icon} className="h-14 w-14 text-ink-900" />
-                  <span className="font-display text-[40px] font-bold leading-none tracking-tightest text-steel-300">
-                    {c.index}
-                  </span>
-                </div>
-                <h3 className="mt-8 text-[20px] font-bold uppercase text-ink-900">{c.title}</h3>
-                <p className="mt-3 text-[15px] leading-relaxed text-steel-500">{c.text}</p>
+              <Reveal key={c.title} delay={i * 80} className="card card-hover hover-icon p-7 shadow-card">
+                <span className="icon-circle h-16 w-16">
+                  <Icon name={c.icon} className="tm-icon h-9 w-9" />
+                </span>
+                <h3 className="mt-6 text-[18px] font-bold text-navy">{c.title}</h3>
+                <div className="my-4 h-[3px] w-10 bg-accent" />
+                <p className="text-[14px] leading-[1.65] text-muted">{c.text}</p>
               </Reveal>
             ))}
           </div>
@@ -72,31 +64,27 @@ export default function About() {
       </section>
 
       {/* ── Специалисты ────────────────────────────────────────────── */}
-      <section className="bg-white py-20 lg:py-28">
-        <div className="shell">
-          <SectionHead
-            tag={t.about.specialists.tag}
-            title={t.about.specialists.title}
-            lead={t.about.specialists.lead}
-          />
-          <div className="mt-14">
-            <IndexList items={d.specialists} columns={3} />
+      <section className="section bg-white">
+        <div className="container-x grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <SectionIntro
+              label={t.about.specialists.label}
+              title={t.about.specialists.title}
+              desc={t.about.specialists.desc}
+            />
+            <Reveal className="mt-8">
+              <CheckList items={d.specialists} />
+            </Reveal>
           </div>
-
-          <Reveal className="mt-14 grid grid-cols-1 gap-8 bg-ink-900 p-8 lg:grid-cols-12 lg:p-12">
-            <div className="lg:col-span-4">
-              <p className="tag-dark">{t.about.staffTag}</p>
-              <h3 className="mt-4 text-[22px] font-bold uppercase leading-tight text-white lg:text-[26px]">
-                {t.about.staffTitle}
-              </h3>
-            </div>
-            <ul className="grid grid-cols-1 gap-x-8 sm:grid-cols-2 lg:col-span-7 lg:col-start-6">
+          <Reveal delay={100} className="self-start rounded-xl bg-navy p-8 text-white shadow-media md:p-10">
+            <p className="eyebrow-dark">{t.about.staff.label}</p>
+            <h3 className="text-[24px] font-bold leading-tight">{t.about.staff.title}</h3>
+            <ul className="mt-7 space-y-px overflow-hidden rounded-md bg-white/[0.08]">
               {d.staffEngineers.map((item) => (
-                <li
-                  key={item}
-                  className="flex items-baseline gap-4 border-b border-ink-700 py-4 text-[15px] text-steel-200"
-                >
-                  <span className="h-px w-4 shrink-0 translate-y-[-4px] bg-accent-500" aria-hidden />
+                <li key={item} className="flex items-center gap-4 bg-navy px-1 py-4 text-[15px] font-semibold">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-accent/40">
+                    <FiUserCheck className="h-[18px] w-[18px] text-accent-soft" aria-hidden />
+                  </span>
                   {item}
                 </li>
               ))}
@@ -105,53 +93,42 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── Отрасли / география ────────────────────────────────────── */}
-      <section className="relative overflow-hidden border-y border-ink-700 bg-ink-900 py-20 lg:py-28">
-        {/* фон — Астана на закате; скрим держит контраст текста */}
+      {/* ── География ──────────────────────────────────────────────── */}
+      <section className="on-dark section relative overflow-hidden bg-navy">
         <div className="absolute inset-0" aria-hidden>
           <Photo
             name="kazakhstan"
             widths={[800, 1440, 1920]}
-            sizes="100vw"
-            width="1920"
-            height="800"
             className="h-full w-full object-cover object-[center_32%]"
           />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(27,42,74,0.95)_0%,rgba(27,42,74,0.85)_50%,rgba(27,42,74,0.45)_100%)]" />
         </div>
-        <div className="absolute inset-0 bg-ink-950/35" aria-hidden />
-        <div
-          className="absolute inset-0 bg-gradient-to-b from-ink-950/95 via-ink-950/75 to-ink-950/55 lg:bg-gradient-to-r lg:via-ink-950/80 lg:to-transparent"
-          aria-hidden
-        />
-
-        <div className="shell relative grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center lg:gap-8">
-          <div className="lg:col-span-6">
-            <p className="tag-dark">{t.about.geography.tag}</p>
-            <h2 className="mt-5 text-[28px] font-bold uppercase leading-[1.08] text-white sm:text-[36px]">
-              {t.about.geography.title}
-            </h2>
-            <p className="mt-6 max-w-lg text-[15px] leading-relaxed text-steel-300">
-              {t.about.geography.text}
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+        <div className="container-x relative">
+          <div className="max-w-[620px]">
+            <SectionIntro
+              dark
+              label={t.about.geography.label}
+              title={t.about.geography.title}
+              desc={t.about.geography.text}
+            />
+            <Reveal className="mt-8 flex flex-wrap gap-4">
               <Link to={path('products')} className="btn-primary">
                 {t.about.geography.button}
-                <IconArrow />
+                <FiArrowRight className="h-[18px] w-[18px]" aria-hidden />
               </Link>
-              <a href={contacts.phoneHref} className="btn-ghost-dark">
-                {contacts.phone}
-              </a>
-            </div>
+              <Link to={path('contacts')} className="btn-secondary">
+                {t.header.cta}
+              </Link>
+            </Reveal>
           </div>
-          <p className="relative hidden items-center gap-3 font-mono text-[11px] uppercase tracking-wide2 text-steel-300 lg:col-span-4 lg:col-start-9 lg:flex lg:justify-end lg:self-end lg:pb-1">
-            <span className="h-px w-6 bg-accent-500" aria-hidden />
+          <p className="mt-14 text-[12px] font-semibold uppercase tracking-[0.12em] text-white/70 md:text-right">
             {t.about.geography.caption}
           </p>
         </div>
       </section>
 
       <BrandStrip />
-      <CtaBand />
+      <CtaBlock />
     </>
   )
 }

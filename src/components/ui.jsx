@@ -1,13 +1,13 @@
 import { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { FiArrowRight, FiCheck, FiMessageSquare } from 'react-icons/fi'
 import Reveal from './Reveal.jsx'
-import { IconArrow } from './Icons.jsx'
 import { brands, contacts } from '../data/company.js'
 import { useI18n } from '../i18n/index.jsx'
 
 /* Фотография сайта: AVIF с запасным WebP и набором ширин под srcset.
    Файлы готовит scripts/build-images.py; самая широкая версия лежит без
-   суффикса, остальные — с ним (industry-hero-760.avif). */
+   суффикса, остальные — с ним (slide-welding-800.avif). */
 export function Photo({
   name,
   widths,
@@ -33,6 +33,7 @@ export function Photo({
         height={height}
         className={`select-none ${className}`}
         loading={priority ? 'eager' : 'lazy'}
+        fetchpriority={priority ? 'high' : undefined}
         decoding="async"
         draggable="false"
         aria-hidden={alt ? undefined : true}
@@ -41,79 +42,69 @@ export function Photo({
   )
 }
 
-/* Заголовок секции: маркировка слева, заголовок и лид в асимметричной сетке */
-export function SectionHead({ tag, title, lead, dark = false, className = '' }) {
+/* Label → Title → Desc — начало каждой секции */
+export function SectionIntro({ label, title, desc, dark = false, center = false, large = false, className = '' }) {
   return (
-    <Reveal className={`grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8 ${className}`}>
-      <div className="lg:col-span-3">
-        <p className={dark ? 'tag-dark' : 'tag'}>{tag}</p>
-      </div>
-      <div className="lg:col-span-6">
-        <h2
-          className={`text-[30px] font-bold uppercase leading-[1.05] sm:text-[40px] lg:text-[46px] ${
-            dark ? 'text-white' : 'text-ink-900'
-          }`}
-        >
-          {title}
-        </h2>
-      </div>
-      {lead && (
-        <div className="lg:col-span-3">
-          <p className={`text-[15px] leading-relaxed ${dark ? 'text-steel-300' : 'text-steel-500'}`}>
-            {lead}
-          </p>
-        </div>
+    <Reveal className={`${center ? 'mx-auto text-center' : ''} ${className}`}>
+      {label && <p className={dark ? 'eyebrow-dark' : 'eyebrow'}>{label}</p>}
+      <h2 className={`${large ? 'h2-lg' : 'h2'} ${dark ? '!text-white' : ''}`}>{title}</h2>
+      {desc && (
+        <p className={`desc ${center ? 'mx-auto' : ''} ${dark ? '!text-white/75' : ''}`}>{desc}</p>
       )}
     </Reveal>
   )
 }
 
-/* Нумерованный список: крупный индекс как графический элемент */
-export function IndexList({ items, dark = false, columns = 2 }) {
-  const line = dark ? 'border-ink-700' : 'border-steel-200'
+/* Список с галочками в квадратах — «Почему мы», состав работ */
+export function CheckList({ items, compact = false, className }) {
   return (
-    <div
-      className={`grid grid-cols-1 border-t ${line} ${
-        columns === 3 ? 'lg:grid-cols-3' : 'md:grid-cols-2'
-      }`}
-    >
-      {items.map((item, i) => (
-        <Reveal
-          key={item.index}
-          delay={i * 70}
-          className={`group border-b py-9 lg:py-12 ${line} ${
-            columns === 3
-              ? `lg:px-10 lg:first:pl-0 ${i > 0 ? 'lg:border-l' : ''}`
-              : 'md:px-8 md:odd:pl-0 md:even:border-l'
-          }`}
-        >
-          <div className="flex items-start gap-6">
+    <ul className={className || (compact ? 'space-y-3' : 'space-y-7')}>
+      {items.map((item) => {
+        const title = typeof item === 'string' ? item : item.title
+        return (
+          <li key={title} className="hover-icon flex gap-4">
             <span
-              className={`font-display text-[44px] font-bold leading-none tracking-tightest lg:text-[56px] ${
-                dark ? 'text-ink-600' : 'text-steel-300'
-              } transition-colors duration-300 group-hover:text-accent-500`}
+              className={`flex shrink-0 items-center justify-center rounded-btn bg-sky-bg text-accent ${
+                compact ? 'h-7 w-7' : 'h-9 w-9'
+              }`}
             >
-              {item.index}
+              <FiCheck className={`tm-icon ${compact ? 'h-4 w-4' : 'h-5 w-5'}`} aria-hidden />
             </span>
-            <div className="pt-1">
-              <h3
-                className={`text-[19px] font-bold uppercase leading-tight lg:text-[22px] ${
-                  dark ? 'text-white' : 'text-ink-900'
-                }`}
-              >
-                {item.title}
-              </h3>
-              <p
-                className={`mt-3 max-w-md text-[15px] leading-relaxed ${
-                  dark ? 'text-steel-300' : 'text-steel-500'
-                }`}
-              >
-                {item.text}
+            <div className={compact ? 'pt-0.5' : 'pt-1'}>
+              <p className={`font-bold text-navy ${compact ? 'text-[15px] font-semibold' : 'text-[15px]'}`}>
+                {title}
               </p>
+              {item.text && <p className="mt-1 text-[14px] leading-[1.65] text-muted">{item.text}</p>}
             </div>
-          </div>
-        </Reveal>
-      ))}
+          </li>
+        )
+      })}
+    </ul>
+  )
+}
+
+/* Карточка шагов: номер в круге, шаги связаны пунктиром */
+export function StepsCard({ steps, title }) {
+  return (
+    <div className="rounded-xl bg-white p-7 shadow-[0_4px_24px_rgba(0,0,0,0.06)] md:p-10">
+      {title && <p className="mb-8 text-[13px] font-bold uppercase tracking-[0.1em] text-navy">{title}</p>}
+      <ol className="relative space-y-8">
+        <span
+          className="absolute bottom-5 left-[19px] top-5 border-l border-dashed border-line"
+          aria-hidden
+        />
+        {steps.map((step, i) => (
+          <li key={step.title} className="relative flex gap-5">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-[14px] font-bold text-white">
+              {i + 1}
+            </span>
+            <div className="pt-1.5">
+              <p className="text-[17px] font-bold text-navy">{step.title}</p>
+              <p className="mt-1 text-[14px] leading-relaxed text-muted">{step.text}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
     </div>
   )
 }
@@ -123,101 +114,149 @@ export function BrandStrip() {
   const { t } = useI18n()
   const row = [...brands, ...brands]
   return (
-    <section className="border-y border-ink-700 bg-ink-900 py-14">
-      <div className="shell flex flex-col gap-3 pb-10 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <p className="tag-dark">{t.brandStrip.tag}</p>
-          <h2 className="mt-4 text-[26px] font-bold uppercase leading-none text-white sm:text-[34px]">
-            {t.brandStrip.title}
-          </h2>
-        </div>
-        <p className="max-w-sm text-[14px] leading-relaxed text-steel-400">{t.brandStrip.text}</p>
+    <section className="on-dark relative overflow-hidden bg-navy-strip py-16 md:py-20">
+      <div className="absolute inset-0" aria-hidden>
+        <Photo
+          name="slide-welding"
+          widths={[800, 1600]}
+          className="h-full w-full object-cover opacity-40 brightness-75 saturate-[0.7]"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(20,32,58,0.95)_0%,rgba(20,32,58,0.86)_42%,rgba(20,32,58,0.62)_100%)]" />
       </div>
 
-      <div className="relative overflow-hidden">
-        <div className="flex w-max animate-marquee">
+      <div className="container-wide relative">
+        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-10">
+          <div>
+            <p className="eyebrow-dark">{t.brandStrip.tag}</p>
+            <h2 className="text-[clamp(28px,3.6vw,40px)] font-extrabold uppercase leading-[1.15] text-white">
+              {t.brandStrip.title}
+            </h2>
+          </div>
+          <p className="max-w-md text-[15px] leading-relaxed text-white/75">{t.brandStrip.text}</p>
+        </div>
+      </div>
+
+      <div className="marquee relative mt-10 overflow-hidden">
+        <ul className="flex min-h-[64px] w-max animate-marquee items-center md:min-h-[78px]">
           {row.map((brand, i) => (
-            <span
+            <li
               key={`${brand}-${i}`}
               aria-hidden={i >= brands.length ? true : undefined}
-              className="flex h-16 min-w-[190px] items-center justify-center border border-ink-700 border-r-0 px-8 font-mono text-[13px] uppercase tracking-wide2 text-steel-400 last:border-r"
+              className="px-8 text-[18px] font-extrabold uppercase tracking-[0.06em] text-white/70 transition-colors duration-200 hover:text-white md:px-11 md:text-[20px]"
             >
               {brand}
-            </span>
+            </li>
           ))}
-        </div>
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-ink-900 to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-ink-900 to-transparent" />
+        </ul>
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-navy-strip to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-navy-strip/70 to-transparent" />
       </div>
     </section>
   )
 }
 
-/* Полоса перехода к заявке */
-export function CtaBand({ title, text }) {
+/* CTA-блок: белая карточка с тенью в светлой секции */
+export function CtaBlock({ title, text, bare = false }) {
+  const { t, path } = useI18n()
+  const card = (
+    <Reveal className="flex flex-col gap-6 rounded-[10px] bg-white px-7 py-8 shadow-card md:flex-row md:items-center md:justify-between md:px-9">
+      <div className="hover-icon flex items-start gap-5">
+        <span className="icon-circle h-14 w-14">
+          <FiMessageSquare className="tm-icon h-6 w-6" aria-hidden />
+        </span>
+        <div>
+          <h2 className="text-[20px] font-bold leading-snug text-navy">{title || t.cta.title}</h2>
+          <p className="mt-1.5 max-w-xl text-[14px] leading-relaxed text-muted">{text || t.cta.text}</p>
+        </div>
+      </div>
+      <div className="flex shrink-0 flex-col gap-2.5 md:items-end">
+        <Link to={path('contacts')} className="btn-primary">
+          {t.cta.button}
+          <FiArrowRight className="h-[18px] w-[18px]" aria-hidden />
+        </Link>
+        <p className="text-[12px] text-muted">{t.cta.meta}</p>
+      </div>
+    </Reveal>
+  )
+  if (bare) return card
+  return (
+    <section className="bg-mist py-14 md:py-16">
+      <div className="container-x">{card}</div>
+    </section>
+  )
+}
+
+/* Шапка внутренней страницы: тёмно-синий фон, фото справа растворяется */
+export function PageHero({ label, title, lead, image, children }) {
   const { t, path } = useI18n()
   return (
-    <section className="bg-accent-700">
-      <div className="shell grid grid-cols-1 items-center gap-8 py-14 lg:grid-cols-12 lg:py-20">
-        <div className="lg:col-span-7">
-          <h2 className="max-w-3xl text-[28px] font-bold uppercase leading-[1.08] text-white sm:text-[38px]">
-            {title || t.cta.title}
-          </h2>
-          <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-white/85">{text || t.cta.text}</p>
-        </div>
-        <div className="flex flex-col gap-4 lg:col-span-4 lg:col-start-9 lg:items-end">
-          <Link
-            to={path('contacts')}
-            className="btn w-full bg-ink-950 text-white hover:bg-white hover:text-ink-950 sm:w-auto"
-          >
-            {t.cta.button}
-            <IconArrow />
-          </Link>
-          <a
-            href={contacts.phoneHref}
-            className="font-mono text-[18px] tracking-wide text-white hover:text-ink-950"
-          >
-            {contacts.phone}
-          </a>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-/* Шапка внутренней страницы */
-export function PageHero({ code, title, lead, image, imageAlt, children }) {
-  return (
-    <section className="relative overflow-hidden border-b border-ink-700 bg-ink-900">
+    <section className="on-dark relative overflow-hidden bg-navy">
       {image && (
-        <div className="absolute inset-0" aria-hidden>
+        <div
+          className="absolute inset-0 brightness-[0.62] saturate-[0.8] [mask-image:linear-gradient(180deg,transparent_0%,black_45%)] md:left-auto md:w-[70%] md:[mask-image:linear-gradient(90deg,transparent_0%,transparent_4%,black_32%)]"
+          aria-hidden
+        >
           <Photo
-            name={image.name}
-            widths={image.widths}
-            sizes="100vw"
-            alt={imageAlt}
-            width={image.width}
-            height={image.height}
+            name={image}
+            widths={[800, 1600]}
+            sizes="(min-width: 768px) 70vw, 100vw"
             className="h-full w-full object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-ink-950/55" />
-          <div className="absolute inset-0 bg-gradient-to-r from-ink-950 via-ink-950/80 to-ink-950/40" />
         </div>
       )}
-      <div className="shell relative grid grid-cols-1 gap-8 py-16 lg:grid-cols-12 lg:py-24">
-        <div className="lg:col-span-2">
-          <p className="font-mono text-[11px] uppercase tracking-wide2 text-accent-400">{code}</p>
-        </div>
-        <div className="lg:col-span-7">
-          <h1 className="text-[34px] font-bold uppercase leading-[1.03] text-white sm:text-[52px] lg:text-[62px]">
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,25,45,0.55)_0%,rgba(15,25,45,0.88)_60%,#1B2A4A_100%)] md:bg-[linear-gradient(90deg,rgba(27,42,74,0.94)_25%,rgba(27,42,74,0.66)_55%,rgba(18,29,50,0.4)_100%)]" />
+
+      <div className="container-wide relative py-14 md:py-20">
+        <nav aria-label={t.breadcrumbs.label} className="mb-8">
+          <ol className="flex flex-wrap items-center gap-2 text-[13px] text-white/70">
+            <li>
+              <Link to={path('home')} className="hover:text-white">
+                {t.breadcrumbs.home}
+              </Link>
+            </li>
+            <li aria-hidden>/</li>
+            <li aria-current="page" className="text-white">
+              {title}
+            </li>
+          </ol>
+        </nav>
+        <div className="max-w-[720px]">
+          {label && <p className="eyebrow-dark !mb-4">{label}</p>}
+          <h1 className="text-[clamp(32px,4.4vw,50px)] font-extrabold leading-[1.12] tracking-[-0.025em] text-white">
             {title}
           </h1>
-          {lead && <p className="mt-7 max-w-2xl text-[16px] leading-relaxed text-steel-300">{lead}</p>}
+          {lead && (
+            <p className="mt-5 max-w-[600px] text-[clamp(16px,1.6vw,18px)] leading-[1.7] text-white/85">
+              {lead}
+            </p>
+          )}
           {children}
         </div>
       </div>
     </section>
+  )
+}
+
+/* Строка контакта: иконка в круге, подпись капсом, значение */
+export function ContactRow({ icon: RowIcon, label, href, text }) {
+  const body = (
+    <>
+      <span className="icon-circle h-11 w-11">
+        <RowIcon className="tm-icon h-5 w-5" aria-hidden />
+      </span>
+      <span>
+        <span className="block text-[11px] font-bold uppercase tracking-[0.1em] text-navy">{label}</span>
+        <span className="mt-0.5 block text-[15px] text-muted transition-colors group-hover:text-accent">{text}</span>
+      </span>
+    </>
+  )
+  return href ? (
+    <a href={href} className="hover-icon group flex items-center gap-4">
+      {body}
+    </a>
+  ) : (
+    <div className="flex items-center gap-4">{body}</div>
   )
 }
 

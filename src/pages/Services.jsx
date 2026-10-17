@@ -1,27 +1,25 @@
 import { Link } from 'react-router-dom'
+import { FiArrowRight, FiDollarSign, FiStar, FiTrendingUp } from 'react-icons/fi'
 import Reveal from '../components/Reveal.jsx'
 import Icon from '../components/Icon.jsx'
-import { IconArrow } from '../components/Icons.jsx'
-import { PageHero, SectionHead, IndexList, CtaBand } from '../components/ui.jsx'
+import { CheckList, CtaBlock, PageHero, SectionIntro, StepsCard } from '../components/ui.jsx'
 import { useI18n } from '../i18n/index.jsx'
+
+const outsourcingIcons = [FiDollarSign, FiStar, FiTrendingUp]
 
 export default function Services() {
   const { t, d, path } = useI18n()
 
   return (
     <>
-      <PageHero code={t.services.code} title={t.services.title} lead={t.services.lead}>
-        <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3">
-          {[
-            ...d.activities,
-            { slug: 'outsourcing', title: t.services.outsourcingNav, index: '04' },
-          ].map((a) => (
+      <PageHero label={t.services.label} title={t.services.title} lead={t.services.lead} image="slide-refinery">
+        <ul className="mt-8 flex flex-wrap gap-2.5">
+          {[...d.activities, { slug: 'outsourcing', title: t.services.outsourcingNav }].map((a) => (
             <li key={a.slug}>
               <a
                 href={`#${a.slug}`}
-                className="flex items-baseline gap-3 font-mono text-[12px] uppercase tracking-wide2 text-steel-300 hover:text-accent-400"
+                className="inline-flex rounded-full border border-white/25 bg-white/[0.06] px-4 py-1.5 text-[14px] font-semibold text-white transition-colors hover:border-accent-soft hover:text-accent-soft"
               >
-                <span className="text-accent-400">{a.index}</span>
                 {a.title}
               </a>
             </li>
@@ -31,96 +29,77 @@ export default function Services() {
 
       {/* ── Направления ────────────────────────────────────────────── */}
       {d.activities.map((a, i) => (
-        <section
-          key={a.slug}
-          id={a.slug}
-          className={`scroll-mt-24 py-20 lg:py-28 ${i % 2 === 0 ? 'bg-white' : 'bg-steel-50'}`}
-        >
-          <div className="shell grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-8">
-            <div className="lg:col-span-3">
-              <p className="font-display text-[64px] font-bold leading-none tracking-tightest text-steel-300 lg:text-[88px]">
-                {a.index}
+        <section key={a.slug} id={a.slug} className={`section ${i % 2 === 0 ? 'bg-white' : 'bg-mist'}`}>
+          <div className="container-x grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+            <Reveal>
+              <span className="icon-circle h-16 w-16 bg-sky-bg">
+                <Icon name={a.icon} className="h-9 w-9" />
+              </span>
+              <p className="eyebrow mt-6">
+                {t.services.direction} {a.index}
               </p>
-              <Icon name={a.icon} className="mt-6 h-16 w-16 text-accent-500" />
-            </div>
-
-            <div className="lg:col-span-5">
-              <h2 className="text-[30px] font-bold uppercase leading-[1.05] text-ink-900 lg:text-[42px]">
-                {a.title}
-              </h2>
-              <p className="mt-6 max-w-lg text-[16px] leading-relaxed text-steel-500">{a.full}</p>
-              <Link
-                to={path('contacts')}
-                className="mt-8 inline-flex items-center gap-3 font-mono text-[12px] uppercase tracking-wide2 text-ink-900 hover:text-accent-500"
-              >
+              <h2 className="h2-lg">{a.title}</h2>
+              <div className="rule-accent" />
+              <p className="desc">{a.full}</p>
+              <Link to={path('contacts')} className="btn-primary mt-8">
                 {t.services.request}
-                <IconArrow />
+                <FiArrowRight className="h-[18px] w-[18px]" aria-hidden />
               </Link>
-            </div>
+            </Reveal>
 
-            <Reveal className="lg:col-span-4">
-              <p className="tag mb-4">{t.services.scopeTag}</p>
-              <ul className="border-t border-steel-300">
-                {a.items.map((item, n) => (
-                  <li
-                    key={item}
-                    className="flex items-baseline gap-4 border-b border-steel-200 py-3 text-[15px] text-ink-700"
-                  >
-                    <span className="font-mono text-[11px] text-steel-500">
-                      {String(n + 1).padStart(2, '0')}
-                    </span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
+            <Reveal delay={100} className="self-start rounded-xl border border-line bg-white p-7 shadow-card md:p-9">
+              <p className="mb-6 text-[13px] font-bold uppercase tracking-[0.1em] text-navy">{t.services.scope}</p>
+              <CheckList
+                compact
+                items={a.items}
+                className={a.items.length > 6 ? 'grid gap-x-6 gap-y-3 sm:grid-cols-2' : undefined}
+              />
             </Reveal>
           </div>
         </section>
       ))}
 
       {/* ── Аутсорсинг снабжения ───────────────────────────────────── */}
-      <section
-        id="outsourcing"
-        className="relative scroll-mt-24 overflow-hidden bg-ink-900 py-20 lg:py-28"
-      >
-        <div className="shell relative">
-          <SectionHead
+      <section id="outsourcing" className="on-dark section bg-navy">
+        <div className="container-x">
+          <SectionIntro
             dark
-            tag={t.services.outsourcing.tag}
+            center
+            className="max-w-[680px]"
+            label={t.services.outsourcing.label}
             title={t.services.outsourcing.title}
-            lead={t.services.outsourcing.lead}
+            desc={t.services.outsourcing.desc}
           />
-          <div className="mt-14">
-            <IndexList items={d.outsourcing} dark columns={3} />
-          </div>
+          <Reveal className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded bg-white/[0.08] md:grid-cols-3">
+            {d.outsourcing.map((item, i) => {
+              const ItemIcon = outsourcingIcons[i]
+              return (
+                <div key={item.title} className="bg-white/[0.03] px-6 py-9 text-center">
+                  <ItemIcon className="mx-auto h-7 w-7 text-white/50" aria-hidden />
+                  <p className="mt-4 text-[16px] font-bold text-white">{item.title}</p>
+                  <p className="mx-auto mt-2 max-w-[260px] text-[14px] leading-relaxed text-white/70">{item.text}</p>
+                </div>
+              )
+            })}
+          </Reveal>
         </div>
       </section>
 
       {/* ── Порядок работы ─────────────────────────────────────────── */}
-      <section className="bg-white py-20 lg:py-28">
-        <div className="shell">
-          <SectionHead
-            tag={t.services.workflow.tag}
+      <section className="section bg-cloud">
+        <div className="container-x grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+          <SectionIntro
+            label={t.services.workflow.label}
             title={t.services.workflow.title}
-            lead={t.services.workflow.lead}
+            desc={t.services.workflow.desc}
           />
-          <div className="mt-14 grid grid-cols-1 gap-px bg-steel-200 sm:grid-cols-2 lg:grid-cols-4">
-            {d.workflow.map((step, i) => (
-              <Reveal key={step.index} delay={i * 70} className="bg-white p-8 lg:p-10">
-                <span className="font-mono text-[12px] tracking-wide2 text-accent-600">
-                  {step.index}
-                </span>
-                <h3 className="mt-6 text-[19px] font-bold uppercase leading-tight text-ink-900">
-                  {step.title}
-                </h3>
-                <p className="mt-3 text-[14px] leading-relaxed text-steel-500">{step.text}</p>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal delay={100}>
+            <StepsCard steps={d.workflow} />
+          </Reveal>
         </div>
       </section>
 
-      <CtaBand title={t.services.cta.title} text={t.services.cta.text} />
+      <CtaBlock title={t.services.cta.title} text={t.services.cta.text} />
     </>
   )
 }

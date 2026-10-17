@@ -1,17 +1,33 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
+import { FiArrowRight, FiChevronDown, FiMail, FiMapPin, FiMenu, FiPhone, FiX } from 'react-icons/fi'
 import { contacts } from '../data/company.js'
 import { useI18n } from '../i18n/index.jsx'
 import { languages, routeKeys } from '../i18n/routes.js'
 
-function Monogram() {
+export function Logo({ size = 'md' }) {
+  const big = size === 'lg'
   return (
-    <svg viewBox="0 0 40 40" className="h-10 w-10 shrink-0" aria-hidden>
-      <rect width="40" height="40" fill="#2E63E8" />
-      <rect x="8" y="10" width="4" height="20" fill="#FFFFFF" />
-      <path d="M16 30V10l8 10v10" fill="none" stroke="#FFFFFF" strokeWidth="4" />
-      <path d="M32 12a8 8 0 100 16" fill="none" stroke="#FFFFFF" strokeWidth="4" />
-    </svg>
+    <span className="flex items-center gap-3">
+      <svg
+        viewBox="0 0 40 40"
+        className={`shrink-0 ${big ? 'h-14 w-14' : 'h-11 w-11 md:h-12 md:w-12'}`}
+        aria-hidden
+      >
+        <rect width="40" height="40" rx="6" fill="#2D72D2" />
+        <rect x="8" y="10" width="4" height="20" fill="#FFFFFF" />
+        <path d="M16 30V10l8 10v10" fill="none" stroke="#FFFFFF" strokeWidth="4" />
+        <path d="M32 12a8 8 0 100 16" fill="none" stroke="#FFFFFF" strokeWidth="4" />
+      </svg>
+      <span className="leading-none">
+        <span className={`block font-extrabold uppercase tracking-[0.02em] text-white ${big ? 'text-[22px]' : 'text-[18px] md:text-[20px]'}`}>
+          Intertrade
+        </span>
+        <span className="mt-1 block text-[11px] font-medium uppercase tracking-[0.14em] text-white/70">
+          and Consulting Group
+        </span>
+      </span>
+    </span>
   )
 }
 
@@ -19,153 +35,221 @@ function Monogram() {
 function LangSwitch({ className = '' }) {
   const { lang, t, altPath } = useI18n()
   return (
-    <div
-      className={`flex items-center gap-1 font-mono text-[11px] uppercase tracking-wide2 ${className}`}
-      aria-label={t.header.language}
-    >
-      {languages.map((code, i) => (
-        <span key={code} className="flex items-center gap-1">
-          {i > 0 && <span className="text-steel-500">/</span>}
-          {code === lang ? (
-            <span className="px-1 text-accent-400" aria-current="true">
-              {code}
-            </span>
-          ) : (
-            <Link to={altPath(code)} hrefLang={code} className="px-1 text-steel-400 hover:text-white">
-              {code}
-            </Link>
-          )}
-        </span>
-      ))}
+    <div className={`flex items-center rounded-btn border border-white/20 p-0.5 ${className}`} role="group" aria-label={t.header.language}>
+      {languages.map((code) =>
+        code === lang ? (
+          <span
+            key={code}
+            className="rounded-[2px] bg-white/10 px-2.5 py-1 text-[12px] font-bold uppercase text-white"
+            aria-current="true"
+          >
+            {code}
+          </span>
+        ) : (
+          <Link
+            key={code}
+            to={altPath(code)}
+            hrefLang={code}
+            lang={code}
+            className="rounded-[2px] px-2.5 py-1 text-[12px] font-bold uppercase text-white/70 hover:text-white"
+          >
+            {code}
+          </Link>
+        ),
+      )}
+    </div>
+  )
+}
+
+/* Верхняя полоса с контактами — скрыта на телефоне */
+export function TopBar() {
+  const { d } = useI18n()
+  return (
+    <div className="on-dark hidden bg-navy-deep text-[12px] text-[rgba(244,237,237,0.94)] md:block">
+      <div className="container-wide flex h-9 items-center justify-between">
+        <div className="flex items-center gap-4">
+          <a href={contacts.emailHref} className="flex items-center gap-1.5 hover:text-white">
+            <FiMail className="h-[13px] w-[13px]" aria-hidden />
+            {contacts.email}
+          </a>
+          <span className="h-3.5 w-px bg-white/20" aria-hidden />
+          <a href={contacts.phoneHref} className="flex items-center gap-1.5 hover:text-white">
+            <FiPhone className="h-[13px] w-[13px]" aria-hidden />
+            {contacts.phone}
+          </a>
+        </div>
+        <p className="flex items-center gap-1.5">
+          <FiMapPin className="h-[13px] w-[13px]" aria-hidden />
+          {d.contacts.country}
+        </p>
+      </div>
+    </div>
+  )
+}
+
+/* Выпадающее меню: открывается наведением и фокусом с клавиатуры.
+   Мостик между ссылкой и меню — padding-top, а не margin, иначе меню
+   закрывается, пока курсор идёт вниз. */
+function MegaMenu({ items, all, wide }) {
+  return (
+    <div className="invisible absolute left-1/2 top-full z-10 -translate-x-1/2 pt-4 opacity-0 transition-opacity duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+      <div className={`animate-menu-in rounded-xl bg-white p-4 shadow-menu ${wide ? 'w-[460px]' : 'w-[320px]'}`}>
+        <ul className={`grid gap-1 ${wide ? 'grid-cols-2' : 'grid-cols-1'}`}>
+          {items.map((item) => (
+            <li key={item.to}>
+              <Link
+                to={item.to}
+                className="block rounded-md px-2.5 py-2 text-[13px] font-semibold leading-snug text-navy transition-all duration-150 hover:bg-mist hover:pl-3.5 hover:text-accent"
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <Link
+          to={all.to}
+          className="mt-3 flex items-center gap-2 border-t border-line px-2.5 pt-3 text-[13px] font-semibold text-accent hover:text-accent-hover"
+        >
+          {all.label}
+          <FiArrowRight className="h-4 w-4" aria-hidden />
+        </Link>
+      </div>
     </div>
   )
 }
 
 export default function Header() {
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const { pathname } = useLocation()
   const { t, d, path } = useI18n()
 
-  const nav = routeKeys.map((key, i) => ({
-    key,
-    to: path(key),
-    label: t.nav[key],
-    code: String(i).padStart(2, '0'),
-  }))
+  const menus = {
+    services: {
+      items: [
+        ...d.activities.map((a) => ({ to: path('services', `#${a.slug}`), label: a.title })),
+        { to: path('services', '#outsourcing'), label: t.services.outsourcingNav },
+      ],
+      all: { to: path('services'), label: t.nav.allServices },
+    },
+    products: {
+      wide: true,
+      items: d.catalog.map((c) => ({ to: path('products', `#${c.id}`), label: c.title })),
+      all: { to: path('products'), label: t.nav.allProducts },
+    },
+  }
 
   useEffect(() => {
     setOpen(false)
   }, [pathname])
 
   useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
+    const onKey = (event) => event.key === 'Escape' && setOpen(false)
+    window.addEventListener('keydown', onKey)
     return () => {
       document.body.style.overflow = ''
+      window.removeEventListener('keydown', onKey)
     }
   }, [open])
 
   return (
-    <header className="sticky top-0 z-50">
-      {/* верхняя служебная полоса */}
-      <div className="hidden bg-ink-950 text-steel-300 lg:block">
-        <div className="shell flex h-10 items-center justify-between font-mono text-[11px] uppercase tracking-wide2">
-          <p>{t.header.topline}</p>
-          <div className="flex items-center gap-8">
-            <span className="text-steel-400">{d.contacts.country}</span>
-            <a href={contacts.emailHref} className="link-underline hover:text-white">
-              {contacts.email}
-            </a>
-            <a href={contacts.phoneHref} className="link-underline text-white hover:text-accent-400">
-              {contacts.phone}
-            </a>
-            <LangSwitch />
-          </div>
-        </div>
-      </div>
+    <header
+      className={`on-dark sticky top-0 z-[100] border-b transition-colors duration-200 ${
+        scrolled ? 'border-white/[0.07] bg-navy-night/95 backdrop-blur-md' : 'border-transparent bg-navy-night'
+      }`}
+    >
+      <div className="container-wide flex h-[72px] items-center justify-between gap-6 lg:h-[97px]">
+        <Link to={path('home')} aria-label={t.header.toHome} className="shrink-0">
+          <Logo />
+        </Link>
 
-      <div className="border-b border-ink-700 bg-ink-900">
-        <div className="shell flex h-[72px] items-center justify-between gap-6">
-          <Link to={path('home')} className="flex items-center gap-3" aria-label={t.header.toHome}>
-            <Monogram />
-            <span className="leading-none">
-              <span className="block font-display text-[17px] font-bold uppercase leading-none tracking-tightest text-white sm:text-[19px]">
-                Intertrade
-              </span>
-              <span className="mt-1 block font-mono text-[10px] uppercase leading-none tracking-wide2 text-steel-400">
-                and Consulting Group
-              </span>
-            </span>
-          </Link>
-
-          <nav className="hidden items-center gap-1 lg:flex">
-            {nav.map((item) => (
+        <nav aria-label={t.header.mainNav} className="hidden items-center gap-8 lg:flex">
+          {routeKeys.map((key) => {
+            const menu = menus[key]
+            const link = (
               <NavLink
-                key={item.key}
-                to={item.to}
-                end={item.key === 'home'}
-                className={({ isActive }) =>
-                  `px-4 py-2 font-mono text-[12px] uppercase tracking-wide2 transition-colors ${
-                    isActive ? 'text-accent-400' : 'text-steel-200 hover:text-white'
-                  }`
-                }
+                to={path(key)}
+                end={key === 'home'}
+                className={({ isActive }) => `nav-link flex items-center gap-1 ${isActive ? 'nav-link-active' : ''}`}
               >
-                {item.label}
+                {t.nav[key]}
+                {menu && <FiChevronDown className="h-3.5 w-3.5 opacity-70" aria-hidden />}
               </NavLink>
-            ))}
-          </nav>
+            )
+            return menu ? (
+              <div key={key} className="group relative">
+                {link}
+                <MegaMenu {...menu} />
+              </div>
+            ) : (
+              <div key={key}>{link}</div>
+            )
+          })}
+        </nav>
 
-          <div className="flex items-center gap-3">
-            <LangSwitch className="lg:hidden" />
-            <Link to={path('contacts')} className="btn-primary hidden !py-3 sm:inline-flex">
-              {t.header.cta}
-            </Link>
-            <button
-              type="button"
-              onClick={() => setOpen((v) => !v)}
-              className="flex h-11 w-11 items-center justify-center border border-ink-600 text-steel-100 lg:hidden"
-              aria-expanded={open}
-              aria-label={open ? t.header.closeMenu : t.header.openMenu}
-            >
-              <svg viewBox="0 0 24 24" className="h-5 w-5" stroke="currentColor" strokeWidth="1.6" fill="none">
-                {open ? <path d="M5 5l14 14M19 5L5 19" /> : <path d="M3 7h18M3 12h18M3 17h18" />}
-              </svg>
-            </button>
-          </div>
+        <div className="flex items-center gap-3">
+          <LangSwitch className="hidden sm:flex" />
+          <Link to={path('contacts')} className="btn-primary hidden !px-6 !py-2.5 !text-[13px] md:inline-flex">
+            {t.header.cta}
+          </Link>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="flex h-11 w-11 items-center justify-center rounded-md text-white transition-colors hover:bg-white/[0.08] lg:hidden"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? t.header.closeMenu : t.header.openMenu}
+          >
+            {open ? <FiX className="h-7 w-7" aria-hidden /> : <FiMenu className="h-7 w-7" aria-hidden />}
+          </button>
         </div>
       </div>
 
       {/* мобильное меню */}
       <div
-        className={`fixed inset-x-0 bottom-0 top-[72px] z-40 bg-ink-950 transition-opacity duration-200 lg:hidden ${
-          open ? 'opacity-100' : 'pointer-events-none opacity-0'
-        }`}
+        id="mobile-menu"
+        hidden={!open}
+        className="fixed inset-x-0 bottom-0 top-[72px] z-40 overflow-y-auto bg-navy lg:hidden"
       >
-        <nav className="shell flex flex-col pt-6">
-          {nav.map((item) => (
+        <nav aria-label={t.header.mainNav} className="container-wide flex flex-col py-4">
+          {routeKeys.map((key) => (
             <NavLink
-              key={item.key}
-              to={item.to}
-              end={item.key === 'home'}
+              key={key}
+              to={path(key)}
+              end={key === 'home'}
               className={({ isActive }) =>
-                `flex items-baseline gap-4 border-b border-ink-800 py-5 font-display text-[26px] uppercase tracking-tightest ${
-                  isActive ? 'text-accent-400' : 'text-white'
+                `border-b border-white/[0.08] py-4 text-[16px] font-medium ${
+                  isActive ? 'text-accent-soft' : 'text-white'
                 }`
               }
             >
-              <span className="font-mono text-[11px] tracking-wide2 text-steel-400">{item.code}</span>
-              {item.label}
+              {t.nav[key]}
             </NavLink>
           ))}
+          <Link to={path('contacts')} className="btn-primary mt-6 w-full">
+            {t.header.cta}
+            <FiArrowRight className="h-[18px] w-[18px]" aria-hidden />
+          </Link>
+          <LangSwitch className="mt-6 self-start sm:hidden" />
+          <div className="mt-8 space-y-3 text-[15px]">
+            <a href={contacts.phoneHref} className="flex items-center gap-3 font-semibold text-white">
+              <FiPhone className="h-4 w-4 text-accent-soft" aria-hidden />
+              {contacts.phone}
+            </a>
+            <a href={contacts.emailHref} className="flex items-center gap-3 text-white/80">
+              <FiMail className="h-4 w-4 text-accent-soft" aria-hidden />
+              {contacts.email}
+            </a>
+          </div>
         </nav>
-        <div className="shell mt-8 space-y-3 font-mono text-[13px] uppercase tracking-wide2">
-          <a href={contacts.phoneHref} className="block text-white">
-            {contacts.phone}
-          </a>
-          <a href={contacts.emailHref} className="block text-steel-300 normal-case tracking-normal">
-            {contacts.email}
-          </a>
-          <LangSwitch className="pt-2" />
-        </div>
       </div>
     </header>
   )

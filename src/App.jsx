@@ -1,5 +1,5 @@
 import { Link, Route, Routes } from 'react-router-dom'
-import Header from './components/Header.jsx'
+import Header, { TopBar } from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import { PageHero, ScrollManager } from './components/ui.jsx'
 import Home from './pages/Home.jsx'
@@ -31,7 +31,7 @@ function SkipLink() {
 function NotFound() {
   const { t, path } = useI18n()
   return (
-    <PageHero code={t.notFound.code} title={t.notFound.title} lead={t.notFound.lead}>
+    <PageHero label={t.notFound.code} title={t.notFound.title} lead={t.notFound.lead}>
       <Link to={path('home')} className="btn-primary mt-8">
         {t.notFound.button}
       </Link>
@@ -44,6 +44,7 @@ export default function App() {
     <div className="flex min-h-screen flex-col">
       <ScrollManager />
       <SkipLink />
+      <TopBar />
       <Header />
       <main id="content" className="flex-1">
         <Routes>

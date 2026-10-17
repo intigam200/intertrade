@@ -209,6 +209,7 @@ export default {
     catalog: [
       {
         id: 'actuators',
+        short: 'Actuators',
         code: 'PA',
         icon: 'actuator',
         title: 'Actuators and spare parts',
@@ -227,6 +228,7 @@ export default {
       },
       {
         id: 'steam-traps',
+        short: 'Steam traps',
         code: 'ST',
         icon: 'steamtrap',
         title: 'Steam traps and steam system equipment',
@@ -257,6 +259,7 @@ export default {
       },
       {
         id: 'flanges',
+        short: 'Flanges',
         code: 'FL',
         icon: 'flange',
         title: 'Flanges',
@@ -292,6 +295,7 @@ export default {
       },
       {
         id: 'hoses',
+        short: 'Flexible hoses',
         code: 'FH',
         icon: 'hose',
         title: 'Flexible hoses',
@@ -314,6 +318,7 @@ export default {
       },
       {
         id: 'expansion-joints',
+        short: 'Expansion joints',
         code: 'EJ',
         icon: 'bellows',
         title: 'Expansion joints',
@@ -347,28 +352,38 @@ export default {
       services: 'Services',
       products: 'Products',
       contacts: 'Contacts',
+      allServices: 'All services',
+      allProducts: 'Full catalogue',
     },
 
     header: {
-      topline: 'Industrial supply · Logistics · Technical audit',
       cta: 'Send a request',
       toHome: 'Go to home page',
+      mainNav: 'Main menu',
       openMenu: 'Open menu',
       closeMenu: 'Close menu',
       language: 'Site language',
       skip: 'Skip to content',
     },
 
+    breadcrumbs: {
+      label: 'You are here',
+      home: 'Home',
+    },
+
     footer: {
       blurb:
-        'Supply of industrial equipment and components for manufacturing, quarrying and oil & gas enterprises in Kazakhstan. Over 400 brands in the portfolio.',
-      cta: 'Request a supply',
-      sitemap: 'Site map',
-      products: 'Products',
+        'Supply of industrial equipment and components for manufacturing, quarrying and oil & gas enterprises in Kazakhstan.',
+      badges: ['Direct supply', '400+ brands', 'Customs & paperwork', 'Engineers on staff'],
+      cta: 'Send a request',
       contacts: 'Contacts',
+      sitemap: 'Sections',
+      products: 'Products',
       phone: 'Phone',
       email: 'E-mail',
+      region: 'Region',
       legal: 'Legal entity',
+      rights: 'All rights reserved.',
     },
 
     brandStrip: {
@@ -380,88 +395,129 @@ export default {
 
     cta: {
       title: 'Send us your specification — we will source and price the supply',
-      text:
-        'We accept requests by specification, drawing or part number, and reply with lead times, price and delivery terms.',
+      text: 'We accept requests by specification, drawing or part number, and reply with lead times, price and delivery terms.',
       button: 'Submit a request',
+      meta: 'Fast response • Equivalents sourced • Engineering support',
     },
 
     notFound: {
-      code: '404',
+      code: 'Error 404',
       title: 'Page not found',
       lead: 'Check the address or return to the main sections of the site.',
       button: 'Go to home page',
     },
 
     home: {
-      tag: 'LLP · Republic of Kazakhstan · Direct supply',
-      h1: {
-        line1: 'Industrial',
-        line2: 'equipment',
-        accent: ' and components',
-        line3: 'for enterprises',
-      },
+      eyebrow: 'Industrial supply · Kazakhstan',
+      h1: ['Industrial equipment', 'and components'],
+      lead:
+        'We supply equipment, components and spare parts to manufacturing, quarrying and oil & gas enterprises — directly from plants in Europe, the UK, the USA and China.',
       ctaPrimary: 'Send a request',
       ctaSecondary: 'Product catalogue',
-      posterAlt: 'Assembly line: a worker in gloves fitting an electric motor stator',
-      slides: [
-        'Manufacturing · Assembly',
-        'Power generation',
-        'Sea freight · Ports',
+      trust: [
+        { title: '400+ brands', text: 'Direct contracts with manufacturing plants' },
+        { title: '4 regions', text: 'Europe, the UK, the USA, China' },
+        { title: 'End to end', text: 'Logistics, customs and paperwork' },
       ],
-      figures: [
-        'brands in the portfolio',
-        'regions of direct supply',
-        'industries served',
-        'catalogue categories',
-      ],
-      industriesTag: 'Industries',
-      activities: {
-        tag: '01 / Areas of work',
+      services: {
+        label: 'Areas of work',
         title: 'Supply, logistics and technical audit',
-        lead:
-          'Three areas of work covering an item’s path from the enterprise’s request to delivery on site.',
-        more: 'Details',
+        desc: 'Three areas covering an item’s path from the enterprise’s request to delivery on site.',
+        more: 'Learn more',
       },
       catalog: {
-        tag: '02 / Catalogue',
-        title: 'Products',
-        lead:
-          'The principal supply groups. The full range is on the catalogue page and available on request.',
-        colIndex: 'Index',
-        colGroup: 'Product group',
-        colCount: 'Items',
-        goTo: 'Go to the “{title}” section',
-        open: 'Open the catalogue',
+        label: 'Catalogue',
+        title: 'What we supply',
+        desc: 'The principal supply groups. Items outside the catalogue are sourced by specification, drawing or part number.',
+        count: '{n} items',
+        all: 'Open the full catalogue',
       },
-      advantages: {
-        tag: '03 / Advantages',
+      industries: {
+        label: 'Industries',
+        title: 'Who we supply',
+        desc: 'Equipment and spare parts for enterprises where downtime costs more than the delivery.',
+        posterAlt: 'Assembly line: a worker in gloves fitting an electric motor stator',
+        videoLabels: ['Manufacturing', 'Power generation', 'Sea freight'],
+        items: [
+          { title: 'Manufacturing enterprises', text: 'Equipment, spare parts, consumables' },
+          { title: 'Quarrying and mining', text: 'Components for machinery and processing' },
+          { title: 'Oil & gas enterprises', text: 'Valves, actuators, flanges, expansion joints' },
+        ],
+      },
+      why: {
+        label: 'Why us',
         title: 'Why enterprises work with us',
-        lead: 'The terms on which supply under our contracts is built.',
+        desc:
+          'Every request is processed technically before it reaches procurement: engineers check items, equivalents and documents.',
+        button: 'About the company',
+        items: [
+          {
+            title: 'Technical processing of requests',
+            text: 'Engineers select items, equivalents and replacements by specification, drawing or part number.',
+          },
+          {
+            title: 'Selection by quality and cost',
+            text: 'We compare manufacturers’ offers and propose the best balance of price and lead time.',
+          },
+          {
+            title: 'Standardisation and certification',
+            text: 'Standardisation and certification engineers check that the supply meets requirements.',
+          },
+          {
+            title: 'One contractor for the whole route',
+            text: 'Supply, logistics and technical audit — with no hand-offs between contractors.',
+          },
+        ],
       },
-      capabilitiesTag: 'Capabilities',
-      capabilitiesAlt:
-        'Welding work at a plant: a shower of sparks from arc welding of a steel structure',
-      aboutLink: 'About the company',
+      network: {
+        label: 'Supply geography',
+        title: 'Plants in Europe, the UK, the USA and China — for enterprises in Kazakhstan',
+        desc: 'We handle the whole route of the cargo: from the manufacturing plant to delivery on site.',
+        regions: ['Europe', 'United Kingdom', 'USA', 'China', '→ Kazakhstan'],
+        steps: [
+          'Delivery from plant to site',
+          'Storage and consolidation',
+          'Customs clearance',
+          'Certificates and shipping documents',
+        ],
+      },
+      about: {
+        label: 'About',
+        title: 'Long-term partnership with enterprises in Kazakhstan',
+        button: 'More about the company',
+        stepsTitle: 'How a request is handled',
+      },
+      contact: {
+        label: 'Request',
+        title: 'Tell us what you need supplied',
+        desc: 'We will reply with lead times, price and delivery terms. You can attach a specification to your e-mail.',
+      },
     },
 
     about: {
-      code: '01 / About',
+      label: 'About',
       title: 'About the company',
-      missionTag: 'Mission',
+      mission: {
+        label: 'Mission',
+        title: 'A partnership built on trust',
+        industries: 'Who we supply',
+      },
       capabilities: {
-        tag: '02 / Our capabilities',
+        label: 'Our capabilities',
         title: 'Manufacturers, warehouses, clients',
-        lead: 'The resources that keep requests fulfilled on time.',
+        desc: 'The resources that keep requests fulfilled on time.',
       },
       specialists: {
-        tag: '03 / Our specialists',
+        label: 'Our specialists',
         title: 'Who handles your request',
-        lead: 'Every request is processed technically before it reaches procurement.',
+        desc: 'Every request is processed technically before it reaches procurement.',
       },
-      staffTag: 'On staff',
-      staffTitle: 'Engineering team',
+      staff: {
+        label: 'On staff',
+        title: 'Engineering team',
+      },
       geography: {
-        tag: 'Supply geography',
+        label: 'Supply geography',
         title: 'Plants in Europe, the UK, the USA and China — for enterprises in Kazakhstan',
         text:
           'We work directly with manufacturing plants. Our portfolio holds over 400 industrial brands — equipment, components and spare parts for your existing process schemes.',
@@ -471,22 +527,22 @@ export default {
     },
 
     services: {
-      code: '02 / Services',
+      label: 'Services',
       title: 'Services',
-      lead:
-        'Supply, logistics and technical audit — separately or as a single supply loop for your enterprise.',
+      lead: 'Supply, logistics and technical audit — separately or as a single supply loop for your enterprise.',
+      direction: 'Area',
       outsourcingNav: 'Procurement outsourcing',
       request: 'Request in this area',
-      scopeTag: 'Scope of work',
+      scope: 'Scope of work',
       outsourcing: {
-        tag: '04 / Procurement outsourcing',
+        label: 'Procurement outsourcing',
         title: 'Procurement handled by the contractor',
-        lead: 'Handing over procurement takes non-core work off the enterprise.',
+        desc: 'Handing over procurement takes non-core work off the enterprise.',
       },
       workflow: {
-        tag: '05 / How we work',
+        label: 'How we work',
         title: 'How a request is handled',
-        lead: 'From the arrival of the specification to delivery on site.',
+        desc: 'From the arrival of the specification to delivery on site — four steps.',
       },
       cta: {
         title: 'Describe the task — we will propose the scope of supply and lead times',
@@ -495,47 +551,52 @@ export default {
     },
 
     products: {
-      code: '03 / Products',
+      label: 'Products',
       title: 'Product catalogue',
       lead:
         'The principal supply groups, broken down by type. Items outside the catalogue are sourced by specification, drawing or part number.',
-      heroAlt:
-        'Night view of an oil refinery: process columns and trunk pipelines running to the horizon',
       statGroups: 'Groups',
-      statPositions: 'Items in the catalogue',
-      statBrands: 'Brands in the portfolio',
-      groupsTag: 'Groups',
+      statPositions: 'Items',
+      statBrands: 'Brands',
+      groupsLabel: 'Product groups',
       notFoundLead: 'Can’t find an item? Send your specification to ',
       itemsCount: 'items',
+      search: {
+        label: 'Search the catalogue',
+        placeholder: 'Search: e.g. flange, actuator, RTJ',
+        clear: 'Clear search',
+        found: 'Items found: {n}',
+        emptyTitle: 'This item is not in the catalogue',
+        empty: 'That doesn’t mean we can’t supply it: the catalogue lists only the main groups. Send us a request.',
+      },
       closing:
         'Beyond the catalogue we supply consumables, PPE, machine tools, hand tools, spare parts, lubricants, measuring instruments, steel structures, valves and fittings, and construction materials.',
       request: 'Request an item',
       cta: {
         title: 'We will find an equivalent or replacement for your existing scheme',
-        text:
-          'Give us the manufacturer, part number or unit parameters — our engineers will select the item by quality and cost.',
+        text: 'Give us the manufacturer, part number or unit parameters — our engineers will select the item by quality and cost.',
       },
     },
 
     contacts: {
-      code: '04 / Contacts',
+      label: 'Contacts',
       title: 'Contacts',
-      lead:
-        'Requests for supply and technical audit are accepted by phone and e-mail, and through the form on this page.',
-      tag: 'Get in touch',
+      lead: 'Requests for supply and technical audit are accepted by phone, e-mail and through the form on this page.',
+      infoLabel: 'Get in touch',
+      infoTitle: 'Contact us',
       phone: 'Phone',
       email: 'E-mail',
       legal: 'Legal entity',
       region: 'Region of operation',
-      directions: 'Areas of work',
-      hintTag: 'Please include',
+      hintTitle: 'Please include',
       hints: [
-        '— item name, part number or drawing;',
-        '— quantity and required delivery date;',
-        '— shipping terms and site address.',
+        'Item name, part number or drawing',
+        'Quantity and required delivery date',
+        'Shipping terms and site address',
       ],
-      formTag: 'Request form',
+      formLabel: 'Request form',
       formTitle: 'Request for supply or technical audit',
+      required: 'Fields marked * are required.',
       fields: {
         company: 'Company *',
         companyPlaceholder: 'Company name',
@@ -562,8 +623,10 @@ export default {
       },
       submit: 'Send request',
       sending: 'Sending…',
-      sent: 'Request sent. We will get back to you during business hours.',
-      error: 'Not sent. Please also write to ',
+      sentTitle: 'Request sent',
+      sent: 'We will get back to you during business hours with lead times and price.',
+      again: 'Send another one',
+      error: 'Could not send. Please also write to ',
       stub: 'The form runs in stub mode. Set VITE_FORM_ENDPOINT to submit to a server.',
     },
   },

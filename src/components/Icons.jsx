@@ -1,11 +1,12 @@
-// Единый line-стиль: сетка 48×48, штрих 1.5, без скруглений, тематика трубопроводной арматуры.
+// Отраслевые пиктограммы в line-стиле Feather: сетка 48×48, штрих 1.75,
+// скруглённые концы. Интерфейсные иконки — из react-icons/fi.
 const base = {
   viewBox: '0 0 48 48',
   fill: 'none',
   stroke: 'currentColor',
-  strokeWidth: 1.5,
-  strokeLinecap: 'square',
-  strokeLinejoin: 'miter',
+  strokeWidth: 1.75,
+  strokeLinecap: 'round',
+  strokeLinejoin: 'round',
   'aria-hidden': true,
 }
 
@@ -132,15 +133,25 @@ export const IconActuator = (p) => (
   </Svg>
 )
 
-export const IconArrow = ({ className = 'h-4 w-4' }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className={className} aria-hidden>
-    <path d="M4 12h15M13 6l6 6-6 6" />
-  </svg>
+/* Карьерный самосвал — горнодобывающие предприятия */
+export const IconMining = (p) => (
+  <Svg {...p}>
+    <path d="M4 30h26l4-10h8l4 8v6H4z" />
+    <path d="M8 30l4-14h16l2 14" />
+    <circle cx="12" cy="38" r="4" />
+    <circle cx="36" cy="38" r="4" />
+    <path d="M36 20v8h10" />
+  </Svg>
 )
 
-export const IconPlus = ({ className = 'h-4 w-4', open = false }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} className={className} aria-hidden>
-    <path d="M4 12h16" />
-    {!open && <path d="M12 4v16" />}
-  </svg>
+/* Станок-качалка — нефтегазовые предприятия */
+export const IconOil = (p) => (
+  <Svg {...p}>
+    <path d="M6 42h36" />
+    <path d="M14 42l8-22 8 22" />
+    <path d="M6 16l32-6" />
+    <path d="M38 10c3 0 5 2 5 5s-2 6-5 6" />
+    <path d="M22 20V13" />
+    <path d="M38 21v21" />
+  </Svg>
 )

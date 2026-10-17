@@ -8,106 +8,158 @@
   }
 
   body {
-    @apply bg-steel-50 font-sans text-ink-900 antialiased;
-    text-rendering: optimizeLegibility;
+    @apply bg-white font-sans text-graphite antialiased;
+    line-height: 1.6;
   }
 
   ::selection {
-    @apply bg-accent-500 text-white;
+    @apply bg-accent text-white;
   }
 
-  /* Видимый фокус с клавиатуры: до этого обводки не было вовсе. */
   :focus-visible {
-    @apply outline outline-2 outline-offset-2 outline-accent-400;
+    @apply outline outline-2 outline-offset-2 outline-accent;
   }
 
-  h1,
-  h2,
-  h3,
-  h4 {
-    @apply font-display tracking-tightest;
+  /* на тёмно-синем основной акцент обводки почти не виден */
+  .on-dark :focus-visible {
+    @apply outline-accent-soft;
   }
 }
 
 @layer components {
-  .shell {
-    @apply mx-auto w-full max-w-grid px-5 sm:px-8 lg:px-12;
+  .container-x {
+    @apply mx-auto w-full max-w-content px-6;
   }
 
-  /* Технический подзаголовок-маркировка. Два варианта: на светлом нужен
-     глубокий синий, на чёрном он проваливается — там берём светлый. */
-  .tag {
-    @apply font-mono text-[11px] uppercase leading-none tracking-wide2 text-accent-600;
+  /* hero, лента брендов, полоса преимуществ */
+  .container-wide {
+    @apply mx-auto w-full max-w-wide px-6 md:px-10;
   }
 
-  .tag-dark {
-    @apply font-mono text-[11px] uppercase leading-none tracking-wide2 text-accent-400;
+  .section {
+    @apply scroll-mt-[110px] py-16 md:py-[88px];
   }
 
-  .rule {
-    @apply border-t border-steel-200;
+  /* Label → Title → Desc: каждая секция начинается с этой тройки */
+  .eyebrow {
+    @apply mb-3 text-[12px] font-bold uppercase leading-none tracking-[0.12em] text-accent-hover;
   }
 
-  .rule-dark {
-    @apply border-t border-ink-700;
+  .eyebrow-dark {
+    @apply mb-3 text-[12px] font-bold uppercase leading-none tracking-[0.12em] text-accent-soft;
   }
 
-  .link-underline {
-    @apply relative inline-block after:absolute after:bottom-[-2px] after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-current after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100;
+  .h2 {
+    @apply mb-4 text-[clamp(26px,3.2vw,36px)] font-bold leading-[1.2] tracking-[-0.01em] text-navy;
   }
 
+  .h2-lg {
+    @apply mb-4 text-[clamp(28px,3.6vw,40px)] font-extrabold leading-[1.15] text-navy;
+  }
+
+  .desc {
+    @apply max-w-[560px] text-[16px] leading-[1.7] text-muted;
+  }
+
+  .rule-accent {
+    @apply my-6 h-[3px] w-[60px] bg-accent;
+  }
+
+  /* Кнопки: 4 варианта */
   .btn {
-    @apply inline-flex items-center justify-center gap-3 px-7 py-4 font-mono text-[12px] uppercase tracking-wide2 transition-colors duration-200;
+    @apply inline-flex items-center justify-center gap-2 rounded-btn px-8 py-[14px] text-[15px] font-semibold tracking-[0.02em] transition-all duration-150 disabled:cursor-not-allowed disabled:opacity-70;
   }
 
   .btn-primary {
-    @apply btn bg-accent-500 text-white hover:bg-accent-600;
+    @apply btn bg-accent text-white hover:bg-accent-hover hover:shadow-glow;
   }
 
-  .btn-ghost {
-    @apply btn border border-steel-300 text-ink-900 hover:border-ink-900 hover:bg-ink-900 hover:text-white;
+  /* на тёмном фоне */
+  .btn-secondary {
+    @apply btn border-[1.5px] border-white/40 text-white hover:border-accent-soft hover:bg-accent/[0.12] hover:text-accent-soft hover:shadow-ring;
   }
 
-  .btn-ghost-dark {
-    @apply btn border border-ink-600 text-steel-100 hover:border-accent-500 hover:bg-accent-500 hover:text-white;
+  /* на светлом фоне */
+  .btn-outline {
+    @apply btn border-[1.5px] border-line text-navy hover:border-accent hover:bg-accent/[0.06] hover:text-accent;
+  }
+
+  .btn-dark {
+    @apply btn bg-navy text-white hover:bg-accent hover:shadow-[0_4px_18px_rgba(45,114,210,0.35)];
+  }
+
+  /* Карточки */
+  .card {
+    @apply rounded-lg border border-line bg-white;
+  }
+
+  .card-hover {
+    @apply transition-[box-shadow,transform] duration-200 ease-out hover:-translate-y-1 hover:shadow-lift;
+  }
+
+  .icon-circle {
+    @apply flex shrink-0 items-center justify-center rounded-full bg-mist text-accent;
+  }
+
+  /* Иконка внутри .hover-icon увеличивается при наведении на контейнер */
+  .hover-icon .tm-icon {
+    @apply transition-transform duration-300 ease-out;
+  }
+
+  .hover-icon:hover .tm-icon {
+    @apply scale-[1.15];
+  }
+
+  /* Ссылка меню: подчёркивание растёт из центра */
+  .nav-link {
+    @apply relative pb-1.5 text-[14px] font-medium text-white/80 transition-colors duration-200 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-center after:scale-x-0 after:bg-white after:transition-transform after:duration-300 hover:text-white hover:after:scale-x-100;
+  }
+
+  .nav-link-active {
+    @apply text-white after:scale-x-100;
+  }
+
+  /* Поля формы */
+  .label {
+    @apply mb-1.5 block text-[12px] font-semibold text-navy;
   }
 
   .field {
-    @apply w-full border border-steel-300 bg-white px-4 py-3 font-sans text-[15px] text-ink-900 outline-none transition-colors placeholder:text-steel-400 focus:border-ink-900;
-  }
-
-  /* Нативная стрелка select выпадает из оформления — рисуем свою. */
-  .field-select {
-    @apply field appearance-none bg-[length:12px] bg-[right_1rem_center] bg-no-repeat pr-12;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%235E6E88' stroke-width='1.6'/%3E%3C/svg%3E");
-  }
-
-  /* Ссылка для клавиатуры: появляется только при фокусе. */
-  .skip-link {
-    @apply absolute left-4 top-4 z-[100] -translate-y-20 bg-accent-500 px-5 py-3 font-mono text-[12px] uppercase tracking-wide2 text-white transition-transform focus-visible:translate-y-0;
+    @apply w-full rounded-btn border border-line bg-white px-3.5 py-3 font-sans text-[15px] text-graphite outline-none transition-[border-color,box-shadow] duration-150 placeholder:text-muted/80 focus:border-navy focus:shadow-ring;
   }
 
   .field-error {
-    @apply border-signal-red;
+    @apply border-danger focus:border-danger;
   }
 
-  .label {
-    @apply mb-2 block font-mono text-[11px] uppercase tracking-wide2 text-steel-500;
+  /* нативная стрелка select выпадает из оформления — рисуем свою */
+  .field-select {
+    @apply field cursor-pointer appearance-none bg-[length:12px] bg-[right_14px_center] bg-no-repeat pr-10;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%231B2A4A' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  }
+
+  /* Для клавиатуры: появляется только при фокусе */
+  .skip-link {
+    @apply fixed left-2 top-[-48px] z-[200] rounded bg-accent px-4 py-2.5 text-[14px] font-bold text-white transition-[top] duration-150 focus-visible:top-2;
   }
 }
 
 /* сдержанное появление при скролле */
 .reveal {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: opacity, transform;
+  transform: translateY(16px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .reveal.is-visible {
   opacity: 1;
   transform: none;
+}
+
+.marquee:hover .animate-marquee,
+.marquee:focus-within .animate-marquee {
+  animation-play-state: paused;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -119,7 +171,17 @@
     transform: none;
     transition: none;
   }
-  .animate-marquee {
+  .animate-marquee,
+  .animate-float,
+  .animate-menu-in {
     animation: none;
+  }
+  .card-hover,
+  .hover-icon .tm-icon {
+    transition: none;
+  }
+  .card-hover:hover,
+  .hover-icon:hover .tm-icon {
+    transform: none;
   }
 }

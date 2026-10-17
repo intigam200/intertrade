@@ -10,6 +10,8 @@ import {
   IconHose,
   IconSteamTrap,
   IconActuator,
+  IconMining,
+  IconOil,
 } from './Icons.jsx'
 
 const map = {
@@ -24,6 +26,8 @@ const map = {
   hose: IconHose,
   steamtrap: IconSteamTrap,
   actuator: IconActuator,
+  mining: IconMining,
+  oil: IconOil,
 }
 
 export default function Icon({ name, className }) {
