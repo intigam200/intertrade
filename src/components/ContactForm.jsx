@@ -112,7 +112,6 @@ export default function ContactForm({ idPrefix = 'form' }) {
           {d.activities.map((a) => (
             <option key={a.slug}>{a.title}</option>
           ))}
-          <option>{f.subjectOutsourcing}</option>
           <option>{f.subjectOther}</option>
         </select>
       </div>

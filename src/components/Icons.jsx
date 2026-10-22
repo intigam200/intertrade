@@ -133,6 +133,22 @@ export const IconActuator = (p) => (
   </Svg>
 )
 
+/* Щит с отметкой — контроль качества */
+export const IconQuality = (p) => (
+  <Svg {...p}>
+    <path d="M24 4l16 6v12c0 10-7 18-16 22C15 40 8 32 8 22V10z" />
+    <path d="M17 24l5 5 9-10" />
+  </Svg>
+)
+
+/* Встречные стрелки — подбор аналогов */
+export const IconSwap = (p) => (
+  <Svg {...p}>
+    <path d="M8 16h30M30 8l8 8-8 8" />
+    <path d="M40 32H10M18 24l-8 8 8 8" />
+  </Svg>
+)
+
 /* Карьерный самосвал — горнодобывающие предприятия */
 export const IconMining = (p) => (
   <Svg {...p}>

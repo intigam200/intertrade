@@ -83,6 +83,22 @@ export function CheckList({ items, compact = false, className }) {
   )
 }
 
+/* Стандарты и сертификаты — плашками */
+export function StandardTags({ items, className = '' }) {
+  return (
+    <ul className={`flex flex-wrap gap-2 ${className}`}>
+      {items.map((item) => (
+        <li
+          key={item}
+          className="rounded-btn border border-accent/25 bg-sky-bg px-2.5 py-1 text-[13px] font-semibold leading-snug text-navy"
+        >
+          {item}
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 /* Карточка шагов: номер в круге, шаги связаны пунктиром */
 export function StepsCard({ steps, title }) {
   return (

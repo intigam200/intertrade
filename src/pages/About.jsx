@@ -5,7 +5,7 @@ import Icon from '../components/Icon.jsx'
 import { BrandStrip, CheckList, CtaBlock, PageHero, Photo, SectionIntro } from '../components/ui.jsx'
 import { useI18n } from '../i18n/index.jsx'
 
-const industryIcons = ['plant', 'mining', 'oil']
+const industryIcons = ['oil', 'mining', 'plant']
 
 export default function About() {
   const { t, d, path } = useI18n()

@@ -1,11 +1,9 @@
 import { Link } from 'react-router-dom'
-import { FiArrowRight, FiDollarSign, FiStar, FiTrendingUp } from 'react-icons/fi'
+import { FiArrowRight } from 'react-icons/fi'
 import Reveal from '../components/Reveal.jsx'
 import Icon from '../components/Icon.jsx'
 import { CheckList, CtaBlock, PageHero, SectionIntro, StepsCard } from '../components/ui.jsx'
 import { useI18n } from '../i18n/index.jsx'
-
-const outsourcingIcons = [FiDollarSign, FiStar, FiTrendingUp]
 
 export default function Services() {
   const { t, d, path } = useI18n()
@@ -14,7 +12,7 @@ export default function Services() {
     <>
       <PageHero label={t.services.label} title={t.services.title} lead={t.services.lead} image="slide-refinery">
         <ul className="mt-8 flex flex-wrap gap-2.5">
-          {[...d.activities, { slug: 'outsourcing', title: t.services.outsourcingNav }].map((a) => (
+          {d.activities.map((a) => (
             <li key={a.slug}>
               <a
                 href={`#${a.slug}`}
@@ -27,7 +25,7 @@ export default function Services() {
         </ul>
       </PageHero>
 
-      {/* ── Направления ────────────────────────────────────────────── */}
+      {/* ── Компетенции ────────────────────────────────────────────── */}
       {d.activities.map((a, i) => (
         <section key={a.slug} id={a.slug} className={`section ${i % 2 === 0 ? 'bg-white' : 'bg-mist'}`}>
           <div className="container-x grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
@@ -58,32 +56,6 @@ export default function Services() {
           </div>
         </section>
       ))}
-
-      {/* ── Аутсорсинг снабжения ───────────────────────────────────── */}
-      <section id="outsourcing" className="on-dark section bg-navy">
-        <div className="container-x">
-          <SectionIntro
-            dark
-            center
-            className="max-w-[680px]"
-            label={t.services.outsourcing.label}
-            title={t.services.outsourcing.title}
-            desc={t.services.outsourcing.desc}
-          />
-          <Reveal className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded bg-white/[0.08] md:grid-cols-3">
-            {d.outsourcing.map((item, i) => {
-              const ItemIcon = outsourcingIcons[i]
-              return (
-                <div key={item.title} className="bg-white/[0.03] px-6 py-9 text-center">
-                  <ItemIcon className="mx-auto h-7 w-7 text-white/50" aria-hidden />
-                  <p className="mt-4 text-[16px] font-bold text-white">{item.title}</p>
-                  <p className="mx-auto mt-2 max-w-[260px] text-[14px] leading-relaxed text-white/70">{item.text}</p>
-                </div>
-              )
-            })}
-          </Reveal>
-        </div>
-      </section>
 
       {/* ── Порядок работы ─────────────────────────────────────────── */}
       <section className="section bg-cloud">

@@ -12,6 +12,8 @@ import {
   IconActuator,
   IconMining,
   IconOil,
+  IconQuality,
+  IconSwap,
 } from './Icons.jsx'
 
 const map = {
@@ -28,6 +30,8 @@ const map = {
   actuator: IconActuator,
   mining: IconMining,
   oil: IconOil,
+  quality: IconQuality,
+  swap: IconSwap,
 }
 
 export default function Icon({ name, className }) {

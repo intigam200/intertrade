@@ -102,16 +102,7 @@ export default function Footer() {
           <p>
             © {year} {d.contacts.legalName}. {t.footer.rights}
           </p>
-          <ul className="flex flex-wrap items-center gap-x-3 gap-y-1">
-            {d.activities.map((a, i) => (
-              <li key={a.slug} className="flex items-center gap-3">
-                {i > 0 && <span aria-hidden>|</span>}
-                <Link to={path('services', `#${a.slug}`)} className="hover:text-white">
-                  {a.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <p>{d.contacts.country}</p>
         </div>
       </div>
     </footer>

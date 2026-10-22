@@ -1,39 +1,37 @@
 // English version of the site. Anchors (slug, id) are shared with the Russian
-// bundle, so switching language keeps the reader in the same place on a page.
+// version so that switching language keeps the position on the page.
 export default {
   meta: {
-    title: 'Intertrade and Consulting Group — industrial supply, logistics, technical audit',
+    title: 'Intertrade and Consulting Group — Integrated Equipment Supply & Global Project Logistics',
     description:
-      'Intertrade and Consulting Group LLP supplies industrial equipment and components to manufacturing, quarrying and oil & gas enterprises in Kazakhstan. Over 400 brands, direct supply from plants in Europe, the UK, the USA and China.',
+      'Certified equipment, technical auditing and end-to-end heavy-haul logistics for Oil & Gas and Mining enterprises worldwide.',
   },
 
-  // A separate title and description per page: one site-wide title makes
-  // browser tabs and search results meaningless.
   pages: {
     home: {
-      title: 'Intertrade and Consulting Group — industrial supply, logistics, technical audit',
+      title: 'Intertrade and Consulting Group — Integrated Equipment Supply & Global Project Logistics',
       description:
-        'Intertrade and Consulting Group LLP supplies industrial equipment and components to manufacturing, quarrying and oil & gas enterprises in Kazakhstan. Over 400 brands, direct supply from plants in Europe, the UK, the USA and China.',
+        'Certified equipment, technical auditing and end-to-end heavy-haul logistics for Oil & Gas and Mining enterprises worldwide.',
     },
     about: {
-      title: 'About the company — Intertrade and Consulting Group',
+      title: 'About — Intertrade and Consulting Group',
       description:
-        'Supplier of industrial equipment for enterprises in Kazakhstan: manufacturers, warehouses, engineering team and the geography of direct supply.',
+        'Supplier of certified equipment for Oil & Gas and Mining enterprises: engineering audit, quality assurance and project logistics.',
     },
     services: {
-      title: 'Services: supply, logistics, technical audit — Intertrade and Consulting Group',
+      title: 'Capabilities: specification audit, quality assurance, logistics — Intertrade and Consulting Group',
       description:
-        'Supply for enterprises, logistics with customs clearance and documentation, technical audit of equipment and procurement outsourcing. How a request is handled.',
+        'Engineering & specification audit, flow control and instrumentation, mining wear solutions, 3-stage quality assurance, strategic equivalents and project logistics.',
     },
     products: {
-      title: 'Product catalogue — Intertrade and Consulting Group',
+      title: 'Equipment & Compliance Matrix — Intertrade and Consulting Group',
       description:
-        'Actuators and spare parts, steam traps and steam system equipment, flanges, flexible hoses, expansion joints. Items sourced by specification, drawing or part number.',
+        'Equipment and compliance matrix: API 6D valves, API 610 pumps, ATEX/IECEx instrumentation, mining wear parts and project logistics.',
     },
     contacts: {
       title: 'Contacts — Intertrade and Consulting Group',
       description:
-        'Requests for supply and technical audit: phone, e-mail and the request form. Intertrade and Consulting Group LLP, Republic of Kazakhstan.',
+        'Submit your datasheets, specifications or RFP by phone, e-mail or the request form. Intertrade and Consulting Group LLP.',
     },
   },
 
@@ -44,62 +42,116 @@ export default {
     },
 
     mission:
-      'Intertrade and Consulting Group LLP builds long-term partnerships with its clients, founded on trust and respect.',
+      'We ensure uninterrupted supply of shut-off and control valves, instrumentation and process equipment to industrial sites, with strict adherence to project specifications and contractual deadlines.',
 
     positioning:
-      'Supplier of industrial equipment and components for manufacturing, quarrying (mining) and oil & gas enterprises in Kazakhstan. We work directly with manufacturing plants in Europe, the UK, the USA and China.',
+      'We power energy, mining, and industrial infrastructure with certified equipment, technical auditing, and end-to-end heavy-haul logistics. Ensuring continuous operations and zero downtime for severe-service assets across remote global locations.',
 
-    industries: [
-      'Manufacturing enterprises',
-      'Quarrying and mining enterprises',
-      'Oil and gas enterprises',
-    ],
+    industries: ['Oil & Gas enterprises', 'Mining enterprises', 'Energy and industrial infrastructure'],
 
     activities: [
       {
         index: '01',
-        icon: 'valve',
-        slug: 'supply',
-        title: 'Supply',
-        short: 'Equipment, consumables, spare parts and materials for production needs.',
+        icon: 'gauge',
+        slug: 'engineering-audit',
+        title: 'Engineering & Specification Audit',
+        short: 'We audit your datasheets and requisitions before order placement.',
         full:
-          'Supply of equipment, consumables, PPE, machine tools, hand tools, spare parts, lubricants, measuring instruments, steel structures, valves and fittings, and construction materials.',
+          'We do more than supply hardware. Our technical team audits your Data Sheets and Material Requisitions to verify pressure ratings, medium compatibility, connection specs and duty cycles — eliminating design discrepancies and site mismatches before order placement.',
         items: [
-          'Equipment',
-          'Consumables',
-          'PPE',
-          'Machine tools',
-          'Hand tools',
-          'Spare parts',
-          'Lubricants',
-          'Measuring instruments',
-          'Steel structures',
-          'Valves and fittings',
-          'Construction materials',
+          'Data Sheet review',
+          'Material Requisition review',
+          'Pressure ratings',
+          'Medium compatibility',
+          'Connection specs and duty cycles',
+          'Discrepancies eliminated before ordering',
         ],
       },
       {
         index: '02',
-        icon: 'freight',
-        slug: 'logistics',
-        title: 'Logistics',
-        short: 'The full range of logistics services — from transport to documentation.',
+        icon: 'valve',
+        slug: 'flow-control',
+        title: 'Oil & Gas Flow Control & Instrumentation',
+        short: 'Severe-service valves, pumps, compressors and Ex-proof E&I.',
         full:
-          'The full range of logistics services: transport, warehousing, customs clearance and preparation of documentation.',
-        items: ['Transport', 'Warehousing', 'Customs clearance', 'Documentation'],
+          'Certified supply of severe-service valves, pumps, compressors, and Ex-proof E&I modules compliant with API, SIL 3, NACE, and ATEX standards.',
+        items: [
+          'Severe-service valves',
+          'API 610 / API 674 pumps',
+          'Gas compressors',
+          'Ex-proof E&I modules (Ex d / Ex ia)',
+          'Sour service (NACE MR0175)',
+          'High-pressure and cryogenic duty',
+        ],
       },
       {
         index: '03',
-        icon: 'gauge',
-        slug: 'technical-audit',
-        title: 'Technical audit',
-        short: 'Analysis of processes and equipment condition, solutions for optimisation.',
+        icon: 'mining',
+        slug: 'mining',
+        title: 'Mining Equipment & Wear Solutions',
+        short: 'Crushing spares, slurry pumps, conveyor components.',
         full:
-          'Analysis of production processes and equipment condition, with solutions for optimising production.',
+          'High-durability crushing & grinding spares, slurry pumping systems, conveyor components, and heavy fleet parts built for maximum abrasion resistance.',
         items: [
-          'Analysis of production processes',
-          'Assessment of equipment condition',
-          'Solutions for optimising production',
+          'Crushing & grinding spares',
+          'Crusher liners',
+          'Grinding media',
+          'Slurry pumps',
+          'Conveyor components',
+          'Wear plates',
+          'Heavy fleet parts',
+        ],
+      },
+      {
+        index: '04',
+        icon: 'quality',
+        slug: 'quality',
+        title: '3-Stage Quality Assurance & Full Traceability',
+        short: 'Pre-shipment inspection and complete documentation.',
+        full:
+          'Zero-defect policy. Every unit undergoes rigorous pre-shipment inspection: dimensional checks, coating thickness testing and hydrostatic testing, delivered with complete documentation packages — factory acceptance test (FAT) reports, material test reports (MTRs to EN 10204 3.1/3.2) and full compliance with ATEX, IECEx, API and ISO standards.',
+        items: [
+          'Dimensional checks',
+          'Coating thickness testing',
+          'Hydrostatic testing',
+          'Factory acceptance test (FAT) reports',
+          'MTRs to EN 10204 3.1/3.2',
+          'ATEX, IECEx, API, ISO compliance',
+        ],
+      },
+      {
+        index: '05',
+        icon: 'swap',
+        slug: 'equivalents',
+        title: 'Strategic Equivalents & Obsolescence Management',
+        short: 'Fully compatible equivalents and shorter lead times.',
+        full:
+          'Facing discontinued items or extended lead times? We identify fully compatible form-fit-function equivalents from vetted global manufacturers, providing comparative engineering matrices to lower lead times without compromising safety margins.',
+        items: [
+          'Discontinued item replacement',
+          'Form-fit-function equivalents',
+          'Vetted global manufacturers',
+          'Comparative engineering matrices',
+          'Shorter lead times, same safety margins',
+        ],
+      },
+      {
+        index: '06',
+        icon: 'freight',
+        slug: 'logistics',
+        title: 'Project Logistics & Heavy-Haul Transport',
+        short: 'Door-to-site delivery to remote locations under SLA.',
+        full:
+          'Direct door-to-site delivery to remote oilfields and mining deposits. Managed out-of-gauge (OOG) transport, chartering, route surveys, hazardous material transport and customs clearance — with transparent supply chain tracking and firm contractual delivery windows under strict SLA terms backed by financial performance guarantees.',
+        items: [
+          'Door-to-site delivery',
+          'Out-of-gauge (OOG) heavy-lift',
+          'Multimodal transit and chartering',
+          'Route surveys',
+          'Hazardous material transport',
+          'Customs clearance',
+          'Supply chain tracking',
+          'Firm SLA delivery windows',
         ],
       },
     ],
@@ -109,70 +161,60 @@ export default {
         index: '01',
         icon: 'plant',
         title: 'Manufacturers',
-        text: 'Partnerships with leading manufacturers of equipment and components.',
+        text: 'Vetted global manufacturers of certified equipment.',
       },
       {
         index: '02',
         icon: 'warehouse',
-        title: 'Warehouses',
-        text: 'Warehousing capacity for fast and efficient logistics.',
+        title: 'Logistics',
+        text: 'Delivery to remote sites, including out-of-gauge cargo.',
       },
       {
         index: '03',
         icon: 'agreement',
-        title: 'Clients',
-        text: 'A focus on long-term cooperation.',
+        title: 'Contractual deadlines',
+        text: 'Delivery within windows fixed by contract and SLA.',
       },
     ],
 
     advantages: [
       {
         index: '01',
-        title: 'Direct supply',
-        text: 'We work directly with supplier plants in Europe, the UK, the USA and China.',
+        title: 'Engineering audit',
+        text: 'Datasheets and specifications checked before order placement.',
       },
       {
         index: '02',
-        title: 'Individual approach',
-        text: 'Personal service and flexible pricing for every client.',
+        title: 'Quality assurance',
+        text: 'Pre-shipment inspection, FAT and MTRs to EN 10204 3.1/3.2.',
       },
       {
         index: '03',
-        title: 'Shortest lead times',
-        text: 'Minimum delivery times and stock held in the warehouse.',
+        title: 'SLA delivery',
+        text: 'Firm contractual delivery windows and transparent tracking.',
       },
       {
         index: '04',
-        title: 'Relationships built on trust',
-        text: 'Strong partnerships with major enterprises across Kazakhstan.',
-      },
-    ],
-
-    outsourcing: [
-      { index: '01', title: 'Lower costs', text: 'Reduced spending on the procurement process.' },
-      {
-        index: '02',
-        title: 'Higher quality',
-        text: 'Better quality of purchased materials and optimised procurement.',
-      },
-      {
-        index: '03',
-        title: 'Freed-up resources',
-        text: 'More of the enterprise’s time for strategic work.',
+        title: 'Standards',
+        text: 'Equipment to API, NACE, SIL 3, ATEX / IECEx.',
       },
     ],
 
     specialists: [
-      { index: '01', title: 'Experience', text: 'Supply management for enterprises of any scale.' },
+      {
+        index: '01',
+        title: 'Engineering audit',
+        text: 'Pressure ratings, medium compatibility and connections verified before ordering.',
+      },
       {
         index: '02',
-        title: 'Product selection',
-        text: 'Technical processing of the order and selection by quality and cost.',
+        title: 'Equivalents',
+        text: 'Form-fit-function replacements backed by a comparative matrix.',
       },
       {
         index: '03',
-        title: 'Qualification',
-        text: 'A team of specialists for tasks of any complexity.',
+        title: 'Documentation',
+        text: 'FAT reports, material certificates and permit documentation compiled.',
       },
     ],
 
@@ -187,160 +229,69 @@ export default {
       {
         index: '01',
         title: 'Request',
-        text: 'A specification, drawing or part number from the enterprise.',
+        text: 'Datasheet, material requisition, specification or RFP.',
       },
       {
         index: '02',
-        title: 'Technical processing',
-        text: 'Our engineers select items, equivalents and replacements.',
+        title: 'Technical audit',
+        text: 'Parameters verified, discrepancies removed, equivalents sourced.',
       },
       {
         index: '03',
-        title: 'Quotation',
-        text: 'Price, lead time and shipping terms.',
+        title: 'Commercial offer',
+        text: 'Price, SLA delivery windows, shipping terms.',
       },
       {
         index: '04',
-        title: 'Delivery',
-        text: 'Transport, customs clearance, documents and delivery to site.',
+        title: 'Quality assurance and delivery',
+        text: 'Inspection, documentation package, delivery to site.',
       },
     ],
 
     catalog: [
       {
-        id: 'actuators',
-        short: 'Actuators',
-        code: 'PA',
-        icon: 'actuator',
-        title: 'Actuators and spare parts',
-        lead:
-          'Actuation for isolating and control pipeline valves, together with control systems and spare parts.',
-        groups: [
+        id: 'oil-gas',
+        short: 'Oil & Gas',
+        icon: 'oil',
+        title: 'Oil & Gas',
+        lead: 'Severe-service valves, API pumps, gas compression, Ex-proof instrumentation.',
+        scope: ['Severe-service valves', 'API pumps', 'Gas compression', 'Ex-proof instrumentation'],
+        standards: ['API 6D', 'API 610', 'NACE MR0175', 'SIL 3', 'ATEX / IECEx'],
+        details: [
           {
-            title: 'Actuators',
-            items: ['Multi-turn actuators', 'Quarter-turn actuators', 'Linear actuators'],
+            title: 'Flow Control & Valves',
+            standards: 'API 6D / API 600 / ISO 10423 / SIL 3',
+            field: 'High-pressure, sour gas (NACE MR0175), cryogenic, and severe service applications',
           },
           {
-            title: 'Control and components',
-            items: ['Actuator control systems', 'Actuator spare parts'],
-          },
-        ],
-      },
-      {
-        id: 'steam-traps',
-        short: 'Steam traps',
-        code: 'ST',
-        icon: 'steamtrap',
-        title: 'Steam traps and steam system equipment',
-        lead:
-          'Equipment for condensate removal, protection and metering in industrial steam systems.',
-        groups: [
-          {
-            title: 'Steam traps',
-            items: [
-              'Ball float steam trap',
-              'Thermodynamic steam trap',
-              'Thermostatic steam trap',
-              'Bimetallic steam trap',
-              'Inverted bucket steam trap',
-            ],
+            title: 'Instrumentation & Control (E&I)',
+            standards: 'ATEX / IECEx / Ex d / Ex ia / IP67',
+            field: 'Hazardous Area Zones 0, 1, 2 for offshore platforms and refineries',
           },
           {
-            title: 'Steam system equipment',
-            items: [
-              'Vacuum breaker',
-              'Disc check valve',
-              'Sight glass',
-              'Steam separator',
-              'Steam flow meters',
-            ],
+            title: 'Pumping & Compression Systems',
+            standards: 'API 610 / API 674 / ISO 13709',
+            field: 'Produced water injection, crude oil transfer, and hydrocarbon processing',
           },
         ],
       },
       {
-        id: 'flanges',
-        short: 'Flanges',
-        code: 'FL',
-        icon: 'flange',
-        title: 'Flanges',
-        lead: 'Flanges in all principal types and facings to match project requirements.',
-        groups: [
-          {
-            title: 'By connection type',
-            items: [
-              'Weld Neck',
-              'Slip-On',
-              'Socket Weld',
-              'Threaded',
-              'Blind',
-              'Lap Joint',
-              'Long Weld Neck',
-              'Reducing',
-              'Expander',
-            ],
-          },
-          {
-            title: 'Special types and facings',
-            items: [
-              'Orifice',
-              'Spectacle Blind',
-              'RTJ',
-              'Flat Face',
-              'Raised Face',
-              'Tongue and Groove',
-              'Male and Female',
-            ],
-          },
-        ],
+        id: 'mining',
+        short: 'Mining & Minerals',
+        icon: 'mining',
+        title: 'Mining & Minerals',
+        lead: 'Slurry pumps, crusher liners, grinding media, conveyor hardware, wear plates.',
+        scope: ['Slurry pumps', 'Crusher liners', 'Grinding media', 'Conveyor hardware', 'Wear plates'],
+        standards: ['ISO 9001', 'DIN', 'ASTM', 'High-Chrome / Manganese Specs'],
       },
       {
-        id: 'hoses',
-        short: 'Flexible hoses',
-        code: 'FH',
-        icon: 'hose',
-        title: 'Flexible hoses',
-        lead:
-          'Flexible metal and composite hoses for process, building services and fire protection systems.',
-        groups: [
-          {
-            title: 'Range',
-            items: [
-              'Hoses in coils',
-              'Flexible metal hoses with fittings',
-              'Fan coil hoses',
-              'Omega V Flex',
-              'Omega U Flex',
-              'Sprinkler system hoses',
-              'Fit-Set',
-            ],
-          },
-        ],
-      },
-      {
-        id: 'expansion-joints',
-        short: 'Expansion joints',
-        code: 'EJ',
-        icon: 'bellows',
-        title: 'Expansion joints',
-        lead:
-          'Compensation for thermal expansion, vibration and installation offsets in pipework and equipment.',
-        groups: [
-          {
-            title: 'Metal',
-            items: [
-              'Axial expansion joint',
-              'Externally pressurised expansion joint',
-              'Universal expansion joint',
-              'Gimbal expansion joint',
-              'Pipe expansion joint',
-              'Lens expansion joint',
-            ],
-          },
-          {
-            title: 'Rubber and special',
-            items: ['Flexible connector', 'Rubber expansion joint', 'Rectangular expansion joint'],
-          },
-        ],
+        id: 'project-logistics',
+        short: 'Project Logistics',
+        icon: 'freight',
+        title: 'Project Logistics',
+        lead: 'OOG heavy-lift, multimodal transit, chartering, site delivery.',
+        scope: ['OOG heavy-lift', 'Multimodal transit', 'Chartering', 'Site delivery'],
+        standards: ['Incoterms 2020', 'Full Cargo Insurance', 'ISO 28000'],
       },
     ],
   },
@@ -349,11 +300,11 @@ export default {
     nav: {
       home: 'Home',
       about: 'About',
-      services: 'Services',
+      services: 'Capabilities',
       products: 'Products',
       contacts: 'Contacts',
-      allServices: 'All services',
-      allProducts: 'Full catalogue',
+      allServices: 'All capabilities',
+      allProducts: 'Full equipment matrix',
     },
 
     header: {
@@ -373,8 +324,8 @@ export default {
 
     footer: {
       blurb:
-        'Supply of industrial equipment and components for manufacturing, quarrying and oil & gas enterprises in Kazakhstan.',
-      badges: ['Direct supply', '400+ brands', 'Customs & paperwork', 'Engineers on staff'],
+        'Integrated equipment supply and global project logistics for Oil & Gas and Mining enterprises worldwide.',
+      badges: ['API · NACE · ATEX', 'EN 10204 3.1/3.2', 'Heavy-haul logistics', 'Engineering audit'],
       cta: 'Send a request',
       contacts: 'Contacts',
       sitemap: 'Sections',
@@ -394,10 +345,10 @@ export default {
     },
 
     cta: {
-      title: 'Send us your specification — we will source and price the supply',
-      text: 'We accept requests by specification, drawing or part number, and reply with lead times, price and delivery terms.',
+      title: 'Submit your datasheets or specifications — we will audit and price the supply',
+      text: 'We accept Data Sheets, Material Requisitions and RFPs, and reply with lead times, price and delivery terms.',
       button: 'Submit a request',
-      meta: 'Fast response • Equivalents sourced • Engineering support',
+      meta: 'Engineering audit • Strategic equivalents • SLA delivery',
     },
 
     notFound: {
@@ -408,89 +359,66 @@ export default {
     },
 
     home: {
-      eyebrow: 'Industrial supply · Kazakhstan',
-      h1: ['Industrial equipment', 'and components'],
+      eyebrow: 'For Oil & Gas and Mining Enterprises Worldwide',
+      h1: ['Integrated Equipment Supply', '& Global Project Logistics'],
       lead:
-        'We supply equipment, components and spare parts to manufacturing, quarrying and oil & gas enterprises — directly from plants in Europe, the UK, the USA and China.',
-      ctaPrimary: 'Send a request',
-      ctaSecondary: 'Product catalogue',
+        'We power energy, mining, and industrial infrastructure with certified equipment, technical auditing, and end-to-end heavy-haul logistics. Ensuring continuous operations and zero downtime for severe-service assets across remote global locations.',
+      ctaPrimary: 'Submit RFP / Specifications',
+      ctaProfile: 'Download Corporate Profile (PDF)',
       trust: [
-        { title: '400+ brands', text: 'Direct contracts with manufacturing plants' },
-        { title: '4 regions', text: 'Europe, the UK, the USA, China' },
-        { title: 'End to end', text: 'Logistics, customs and paperwork' },
+        { title: 'Engineering audit', text: 'Datasheets verified before order placement' },
+        { title: 'API · NACE · ATEX', text: 'Certified equipment for severe service' },
+        { title: 'SLA delivery', text: 'Door-to-site, including out-of-gauge cargo' },
       ],
       services: {
-        label: 'Areas of work',
-        title: 'Supply, logistics and technical audit',
-        desc: 'Three areas covering an item’s path from the enterprise’s request to delivery on site.',
+        label: 'Core Operational Capabilities',
+        title: 'We do more than supply hardware',
+        desc: 'Technical auditing of requests, fast assembly of complex specifications and a complete package of permit documentation.',
         more: 'Learn more',
       },
-      catalog: {
-        label: 'Catalogue',
-        title: 'What we supply',
-        desc: 'The principal supply groups. Items outside the catalogue are sourced by specification, drawing or part number.',
-        count: '{n} items',
-        all: 'Open the full catalogue',
+      matrix: {
+        label: 'Equipment & Compliance Matrix',
+        title: 'Equipment and compliance',
+        desc: 'Sectors, primary equipment scope and the standards our equipment is supplied to.',
+        colSector: 'Sector',
+        colScope: 'Primary Equipment Scope',
+        colStandards: 'Standards & Certifications',
+        all: 'Equipment details',
       },
       industries: {
         label: 'Industries',
         title: 'Who we supply',
-        desc: 'Equipment and spare parts for enterprises where downtime costs more than the delivery.',
+        desc: 'Continuous operations and zero downtime for severe-service assets across remote global locations.',
         posterAlt: 'Assembly line: a worker in gloves fitting an electric motor stator',
         videoLabels: ['Manufacturing', 'Power generation', 'Sea freight'],
         items: [
-          { title: 'Manufacturing enterprises', text: 'Equipment, spare parts, consumables' },
-          { title: 'Quarrying and mining', text: 'Components for machinery and processing' },
-          { title: 'Oil & gas enterprises', text: 'Valves, actuators, flanges, expansion joints' },
-        ],
-      },
-      why: {
-        label: 'Why us',
-        title: 'Why enterprises work with us',
-        desc:
-          'Every request is processed technically before it reaches procurement: engineers check items, equivalents and documents.',
-        button: 'About the company',
-        items: [
-          {
-            title: 'Technical processing of requests',
-            text: 'Engineers select items, equivalents and replacements by specification, drawing or part number.',
-          },
-          {
-            title: 'Selection by quality and cost',
-            text: 'We compare manufacturers’ offers and propose the best balance of price and lead time.',
-          },
-          {
-            title: 'Standardisation and certification',
-            text: 'Standardisation and certification engineers check that the supply meets requirements.',
-          },
-          {
-            title: 'One contractor for the whole route',
-            text: 'Supply, logistics and technical audit — with no hand-offs between contractors.',
-          },
+          { title: 'Oil & Gas', text: 'Valves, pumps, compressors, Ex-proof instrumentation' },
+          { title: 'Mining & Minerals', text: 'Slurry pumps, liners, conveyors, wear plates' },
+          { title: 'Energy & infrastructure', text: 'Process equipment and project logistics' },
         ],
       },
       network: {
-        label: 'Supply geography',
-        title: 'Plants in Europe, the UK, the USA and China — for enterprises in Kazakhstan',
-        desc: 'We handle the whole route of the cargo: from the manufacturing plant to delivery on site.',
-        regions: ['Europe', 'United Kingdom', 'USA', 'China', '→ Kazakhstan'],
+        label: 'Project Logistics',
+        title: 'Door-to-site delivery to remote oilfields and mining deposits',
+        desc: 'Out-of-gauge transport, chartering, route surveys and customs clearance — under strict SLA terms.',
+        regions: ['Europe', 'United Kingdom', 'USA', 'China', '→ your site'],
         steps: [
-          'Delivery from plant to site',
-          'Storage and consolidation',
-          'Customs clearance',
-          'Certificates and shipping documents',
+          { title: 'Out-of-gauge (OOG)', text: 'Heavy-lift and oversized cargo' },
+          { title: 'Chartering & multimodal', text: 'Sea, rail and road transit' },
+          { title: 'Customs clearance', text: 'Including hazardous materials' },
+          { title: 'SLA tracking', text: 'Transparent supply chain, firm delivery windows' },
         ],
       },
       about: {
         label: 'About',
-        title: 'Long-term partnership with enterprises in Kazakhstan',
+        title: 'Certified equipment, technical auditing and end-to-end logistics',
         button: 'More about the company',
         stepsTitle: 'How a request is handled',
       },
       contact: {
         label: 'Request',
-        title: 'Tell us what you need supplied',
-        desc: 'We will reply with lead times, price and delivery terms. You can attach a specification to your e-mail.',
+        title: 'Submit your datasheets or specifications',
+        desc: 'We will audit them and reply with lead times, price and delivery terms.',
       },
     },
 
@@ -518,63 +446,51 @@ export default {
       },
       geography: {
         label: 'Supply geography',
-        title: 'Plants in Europe, the UK, the USA and China — for enterprises in Kazakhstan',
+        title: 'Door-to-site delivery to remote oilfields and mining deposits',
         text:
-          'We work directly with manufacturing plants. Our portfolio holds over 400 industrial brands — equipment, components and spare parts for your existing process schemes.',
-        button: 'Product catalogue',
+          'Vetted global manufacturers, out-of-gauge transport, chartering, route surveys and customs clearance — under strict SLA terms.',
+        button: 'Equipment & compliance',
         caption: 'Astana · Republic of Kazakhstan',
       },
     },
 
     services: {
-      label: 'Services',
-      title: 'Services',
-      lead: 'Supply, logistics and technical audit — separately or as a single supply loop for your enterprise.',
-      direction: 'Area',
-      outsourcingNav: 'Procurement outsourcing',
-      request: 'Request in this area',
-      scope: 'Scope of work',
-      outsourcing: {
-        label: 'Procurement outsourcing',
-        title: 'Procurement handled by the contractor',
-        desc: 'Handing over procurement takes non-core work off the enterprise.',
-      },
+      label: 'Capabilities',
+      title: 'Core Operational Capabilities',
+      lead: 'Engineering audit, certified supply for Oil & Gas and Mining, quality assurance, strategic equivalents and project logistics.',
+      direction: 'Capability',
+      request: 'Submit specifications',
+      scope: 'What is included',
       workflow: {
         label: 'How we work',
         title: 'How a request is handled',
-        desc: 'From the arrival of the specification to delivery on site — four steps.',
+        desc: 'From datasheet to delivery on site — four steps.',
       },
       cta: {
-        title: 'Describe the task — we will propose the scope of supply and lead times',
-        text: 'Requests are accepted by specification, drawing, part number or description of the unit.',
+        title: 'Send us your datasheets or RFP — we will audit them and propose the supply',
+        text: 'Pressure ratings, medium compatibility and connections verified before order placement.',
       },
     },
 
     products: {
       label: 'Products',
-      title: 'Product catalogue',
-      lead:
-        'The principal supply groups, broken down by type. Items outside the catalogue are sourced by specification, drawing or part number.',
-      statGroups: 'Groups',
-      statPositions: 'Items',
-      statBrands: 'Brands',
-      groupsLabel: 'Product groups',
-      notFoundLead: 'Can’t find an item? Send your specification to ',
-      itemsCount: 'items',
-      search: {
-        label: 'Search the catalogue',
-        placeholder: 'Search: e.g. flange, actuator, RTJ',
-        clear: 'Clear search',
-        found: 'Items found: {n}',
-        emptyTitle: 'This item is not in the catalogue',
-        empty: 'That doesn’t mean we can’t supply it: the catalogue lists only the main groups. Send us a request.',
-      },
-      closing:
-        'Beyond the catalogue we supply consumables, PPE, machine tools, hand tools, spare parts, lubricants, measuring instruments, steel structures, valves and fittings, and construction materials.',
-      request: 'Request an item',
+      title: 'Equipment & Compliance',
+      lead: 'Equipment and compliance matrix by sector: what we supply and the requirements it meets.',
+      statSectors: 'Sectors',
+      statStandards: 'API · NACE · ATEX',
+      statStandardsText: 'Standards',
+      statDocs: 'EN 10204 3.1/3.2',
+      statDocsText: 'Certificates',
+      groupsLabel: 'Sectors',
+      notFoundLead: 'Need an item outside the matrix? Send your specification to ',
+      scope: 'Primary Equipment Scope',
+      standards: 'Standards & Certifications',
+      details: 'Categories and operational field',
+      field: 'Operational field',
+      request: 'Submit specifications',
       cta: {
-        title: 'We will find an equivalent or replacement for your existing scheme',
-        text: 'Give us the manufacturer, part number or unit parameters — our engineers will select the item by quality and cost.',
+        title: 'Discontinued item? We will source a compatible equivalent',
+        text: 'Form-fit-function equivalents from vetted manufacturers — backed by a comparative engineering matrix.',
       },
     },
 
@@ -590,9 +506,9 @@ export default {
       region: 'Region of operation',
       hintTitle: 'Please include',
       hints: [
-        'Item name, part number or drawing',
+        'Data Sheet or Material Requisition',
         'Quantity and required delivery date',
-        'Shipping terms and site address',
+        'Site address and delivery terms (Incoterms)',
       ],
       formLabel: 'Request form',
       formTitle: 'Request for supply or technical audit',
@@ -607,10 +523,9 @@ export default {
         email: 'E-mail *',
         emailPlaceholder: 'name@company.kz',
         subject: 'Area of work',
-        subjectOutsourcing: 'Procurement outsourcing',
         subjectOther: 'Other',
         message: 'Request *',
-        messagePlaceholder: 'Item names, part numbers, quantity, required delivery date',
+        messagePlaceholder: 'Items, parameters (pressure, medium, connection), quantity, required delivery date',
         consent: 'I consent to the processing of the data provided for review of this request.',
       },
       errors: {

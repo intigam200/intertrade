@@ -126,14 +126,13 @@ export default function Header() {
 
   const menus = {
     services: {
+      wide: true,
       items: [
         ...d.activities.map((a) => ({ to: path('services', `#${a.slug}`), label: a.title })),
-        { to: path('services', '#outsourcing'), label: t.services.outsourcingNav },
       ],
       all: { to: path('services'), label: t.nav.allServices },
     },
     products: {
-      wide: true,
       items: d.catalog.map((c) => ({ to: path('products', `#${c.id}`), label: c.title })),
       all: { to: path('products'), label: t.nav.allProducts },
     },

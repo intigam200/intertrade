@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   FiArrowRight,
-  FiCheckSquare,
-  FiClock,
+  FiClipboard,
+  FiDownload,
   FiFileText,
   FiMail,
-  FiPackage,
+  FiNavigation,
   FiPhone,
   FiShield,
   FiTruck,
@@ -17,16 +17,17 @@ import Icon from '../components/Icon.jsx'
 import HeroSlideshow from '../components/HeroSlideshow.jsx'
 import SectorVideo from '../components/SectorVideo.jsx'
 import ContactForm from '../components/ContactForm.jsx'
-import { BrandStrip, CheckList, ContactRow, CtaBlock, Photo, SectionIntro, StepsCard } from '../components/ui.jsx'
-import { contacts, countPositions } from '../data/company.js'
+import { BrandStrip, ContactRow, CtaBlock, Photo, SectionIntro, StandardTags, StepsCard } from '../components/ui.jsx'
+import { contacts, useProfilePdf } from '../data/company.js'
 import { useI18n } from '../i18n/index.jsx'
 
-const benefitIcons = [FiTruck, FiUserCheck, FiClock, FiShield]
-const logisticsIcons = [FiTruck, FiPackage, FiCheckSquare, FiFileText]
-const industryIcons = ['plant', 'mining', 'oil']
+const benefitIcons = [FiClipboard, FiShield, FiTruck, FiFileText]
+const logisticsIcons = [FiTruck, FiNavigation, FiFileText, FiClipboard]
+const industryIcons = ['oil', 'mining', 'plant']
 
 function Hero() {
   const { t, path } = useI18n()
+  const profile = useProfilePdf()
   const [hovered, setHovered] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -50,29 +51,36 @@ function Hero() {
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,25,45,0.4)_0%,rgba(15,25,45,0.88)_55%,#1B2A4A_100%)] md:bg-[linear-gradient(90deg,rgba(27,42,74,0.92)_20%,rgba(27,42,74,0.62)_50%,rgba(18,29,50,0.38)_100%)]" />
 
       <div className="container-wide relative z-[1] pb-16 pt-24 md:pb-16 md:pt-[104px]">
-        <div className="max-w-[800px]">
+        <div className="max-w-[860px]">
           <p className="mb-[18px] text-[12px] font-semibold uppercase tracking-[0.14em] text-accent-soft">
             {t.home.eyebrow}
           </p>
-          <h1 className="mb-[18px] text-[clamp(34px,5vw,56px)] font-extrabold leading-[1.12] tracking-[-0.025em] text-white">
-            {t.home.h1[0]}
-            <br />
-            {t.home.h1[1]}
+          <h1 className="mb-[18px] text-[clamp(32px,4.6vw,54px)] font-extrabold leading-[1.12] tracking-[-0.025em] text-white">
+            {t.home.h1.map((line, i) => (
+              <span key={line}>
+                {i > 0 && <br />}
+                {line}
+              </span>
+            ))}
           </h1>
-          <p className="mb-[30px] max-w-[540px] text-[clamp(16px,1.8vw,19px)] leading-[1.7] text-white">
+          <p className="mb-[30px] max-w-[600px] text-[clamp(16px,1.8vw,19px)] leading-[1.7] text-white">
             {t.home.lead}
           </p>
           <div className="mb-9 flex flex-wrap gap-4">
-            <Link to={path('contacts')} className="btn-primary !px-8 !py-4 !text-[18px]">
+            <Link to={path('contacts')} className="btn-primary !px-8 !py-4 !text-[17px]">
               {t.home.ctaPrimary}
               <FiArrowRight className="h-[18px] w-[18px]" aria-hidden />
             </Link>
-            <Link to={path('products')} className="btn-secondary">
-              {t.home.ctaSecondary}
-            </Link>
+            {/* Кнопка появляется, как только PDF положен в public/ */}
+            {profile && (
+              <a href={profile} download className="btn-secondary">
+                <FiDownload className="h-[18px] w-[18px]" aria-hidden />
+                {t.home.ctaProfile}
+              </a>
+            )}
           </div>
 
-          <ul className="flex max-w-[680px] flex-wrap gap-4 md:flex-nowrap">
+          <ul className="flex max-w-[720px] flex-wrap gap-4 md:flex-nowrap">
             {t.home.trust.map((item) => (
               <li
                 key={item.title}
@@ -96,6 +104,53 @@ function Hero() {
         }`}
       />
     </section>
+  )
+}
+
+/* Матрица: отрасль → оборудование → стандарты. На телефоне — карточки. */
+function Matrix() {
+  const { t, d, path } = useI18n()
+  const m = t.home.matrix
+  return (
+    <Reveal className="mt-12 overflow-hidden rounded-[10px] bg-white shadow-card">
+      <table className="w-full border-collapse text-left">
+        <thead className="hidden bg-navy text-white md:table-header-group">
+          <tr>
+            {[m.colSector, m.colScope, m.colStandards].map((col) => (
+              <th key={col} scope="col" className="px-6 py-4 text-[12px] font-bold uppercase tracking-[0.1em]">
+                {col}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {d.catalog.map((c) => (
+            <tr key={c.id} className="block border-t border-line first:border-t-0 md:table-row md:first:border-t">
+              <th scope="row" className="block px-6 pb-2 pt-6 align-top md:table-cell md:w-[24%] md:py-6">
+                <Link to={path('products', `#${c.id}`)} className="hover-icon group flex items-center gap-3">
+                  <span className="icon-circle h-12 w-12 bg-sky-bg">
+                    <Icon name={c.icon} className="tm-icon h-7 w-7" />
+                  </span>
+                  <span className="text-[17px] font-bold leading-snug text-navy group-hover:text-accent">{c.title}</span>
+                </Link>
+              </th>
+              <td className="block px-6 py-2 align-top md:table-cell md:py-6">
+                <span className="mb-1 block text-[11px] font-bold uppercase tracking-[0.1em] text-muted md:hidden">
+                  {m.colScope}
+                </span>
+                <p className="text-[15px] leading-relaxed text-graphite">{c.scope.join(', ')}</p>
+              </td>
+              <td className="block px-6 pb-6 pt-2 align-top md:table-cell md:w-[34%] md:py-6">
+                <span className="mb-2 block text-[11px] font-bold uppercase tracking-[0.1em] text-muted md:hidden">
+                  {m.colStandards}
+                </span>
+                <StandardTags items={c.standards} />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </Reveal>
   )
 }
 
@@ -130,17 +185,18 @@ export default function Home() {
         </ul>
       </div>
 
-      {/* ── Направления ────────────────────────────────────────────── */}
+      {/* ── Ключевые компетенции ───────────────────────────────────── */}
       <section id="services" className="section bg-white">
         <div className="container-x">
           <SectionIntro
+            className="max-w-[820px]"
             label={t.home.services.label}
             title={t.home.services.title}
             desc={t.home.services.desc}
           />
-          <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-3">
+          <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             {d.activities.map((a, i) => (
-              <Reveal key={a.slug} delay={i * 80} className="h-full">
+              <Reveal key={a.slug} delay={(i % 3) * 80} className="h-full">
                 <Link
                   to={path('services', `#${a.slug}`)}
                   className="card card-hover hover-icon flex h-full flex-col p-7"
@@ -148,20 +204,8 @@ export default function Home() {
                   <span className="icon-circle h-16 w-16">
                     <Icon name={a.icon} className="tm-icon h-9 w-9" />
                   </span>
-                  <h3 className="mt-6 text-[20px] font-bold text-navy">{a.title}</h3>
-                  <p className="mt-2 text-[14px] leading-[1.65] text-muted">{a.full}</p>
-                  <ul className="mt-5 flex flex-wrap gap-2">
-                    {a.items.slice(0, 5).map((item) => (
-                      <li key={item} className="rounded-full bg-mist px-3 py-1 text-[12px] font-medium text-navy">
-                        {item}
-                      </li>
-                    ))}
-                    {a.items.length > 5 && (
-                      <li className="rounded-full bg-mist px-3 py-1 text-[12px] font-medium text-muted">
-                        +{a.items.length - 5}
-                      </li>
-                    )}
-                  </ul>
+                  <h3 className="mt-6 text-[19px] font-bold leading-snug text-navy">{a.title}</h3>
+                  <p className="mt-2 text-[14px] leading-[1.65] text-muted">{a.short}</p>
                   <span className="mt-auto flex items-center gap-2 pt-6 text-[14px] font-semibold text-accent">
                     {t.home.services.more}
                     <FiArrowRight className="h-[18px] w-[18px]" aria-hidden />
@@ -173,39 +217,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Каталог ────────────────────────────────────────────────── */}
+      {/* ── Матрица оборудования и стандартов ──────────────────────── */}
       <section
         id="products"
         className="section bg-mist bg-[radial-gradient(ellipse_420px_100%_at_left,rgba(45,114,210,0.07),transparent_60%),radial-gradient(ellipse_420px_100%_at_right,rgba(45,114,210,0.07),transparent_60%)]"
       >
         <div className="container-x">
-          <SectionIntro label={t.home.catalog.label} title={t.home.catalog.title} desc={t.home.catalog.desc} />
-          <ul className="mt-12 grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-3 lg:grid-cols-5">
-            {d.catalog.map((c, i) => (
-              <Reveal as="li" key={c.id} delay={i * 60}>
-                <Link
-                  to={path('products', `#${c.id}`)}
-                  className="card card-hover hover-icon flex h-full flex-col overflow-hidden"
-                >
-                  <span className="flex h-[140px] items-center justify-center bg-gradient-to-b from-white to-paper sm:h-[160px]">
-                    <span className="icon-circle h-24 w-24 bg-sky-bg">
-                      <Icon name={c.icon} className="tm-icon h-12 w-12" />
-                    </span>
-                  </span>
-                  <span className="flex flex-1 flex-col px-4 pb-5 sm:px-5">
-                    <span className="break-words text-[15px] font-bold leading-snug text-navy [hyphens:auto] sm:text-[16px]">{c.title}</span>
-                    <span className="mt-1.5 text-[13px] text-muted">
-                      {t.home.catalog.count.replace('{n}', countPositions([c]))}
-                    </span>
-                    <FiArrowRight className="mt-auto h-[18px] w-[18px] shrink-0 text-accent" aria-hidden />
-                  </span>
-                </Link>
-              </Reveal>
-            ))}
-          </ul>
+          <SectionIntro label={t.home.matrix.label} title={t.home.matrix.title} desc={t.home.matrix.desc} />
+          <Matrix />
           <Reveal className="mt-10 flex justify-center">
             <Link to={path('products')} className="btn-outline bg-white">
-              {t.home.catalog.all}
+              {t.home.matrix.all}
               <FiArrowRight className="h-[18px] w-[18px]" aria-hidden />
             </Link>
           </Reveal>
@@ -249,7 +271,7 @@ export default function Home() {
             {t.home.industries.items.map((item, i) => (
               <Reveal key={item.title} delay={i * 70}>
                 <Link
-                  to={path('contacts')}
+                  to={i < 2 ? path('products', `#${d.catalog[i].id}`) : path('contacts')}
                   className="hover-icon flex h-full items-center gap-4 rounded-[10px] border-[1.5px] border-accent bg-white p-5 transition-shadow duration-150 hover:shadow-[0_8px_24px_rgba(27,42,74,0.12)]"
                 >
                   <span className="icon-circle h-[60px] w-[60px]">
@@ -271,25 +293,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Почему мы ──────────────────────────────────────────────── */}
-      <section className="section bg-mist">
-        <div className="container-x grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
-          <div>
-            <SectionIntro label={t.home.why.label} title={t.home.why.title} desc={t.home.why.desc} />
-            <Reveal className="mt-8">
-              <Link to={path('about')} className="btn-primary">
-                {t.home.why.button}
-                <FiArrowRight className="h-[18px] w-[18px]" aria-hidden />
-              </Link>
-            </Reveal>
-          </div>
-          <Reveal>
-            <CheckList items={t.home.why.items} />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ── География поставок ─────────────────────────────────────── */}
+      {/* ── Проектная логистика ────────────────────────────────────── */}
       <section className="on-dark section relative overflow-hidden bg-navy">
         <div className="absolute inset-0" aria-hidden>
           <Photo
@@ -303,7 +307,7 @@ export default function Home() {
           <SectionIntro
             center
             dark
-            className="max-w-[720px]"
+            className="max-w-[760px]"
             label={t.home.network.label}
             title={t.home.network.title}
             desc={t.home.network.desc}
@@ -320,16 +324,23 @@ export default function Home() {
           </Reveal>
 
           <Reveal className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded bg-white/[0.08] sm:grid-cols-2 lg:grid-cols-4">
-            {d.activities[1].items.map((item, i) => {
+            {t.home.network.steps.map((step, i) => {
               const StepIcon = logisticsIcons[i]
               return (
-                <div key={item} className="bg-navy/60 px-6 py-8 text-center">
+                <div key={step.title} className="bg-navy/60 px-6 py-8 text-center">
                   <StepIcon className="mx-auto h-7 w-7 text-white/50" aria-hidden />
-                  <p className="mt-4 text-[15px] font-bold text-white">{item}</p>
-                  <p className="mt-1.5 text-[13px] leading-relaxed text-white/70">{t.home.network.steps[i]}</p>
+                  <p className="mt-4 text-[15px] font-bold text-white">{step.title}</p>
+                  <p className="mt-1.5 text-[13px] leading-relaxed text-white/70">{step.text}</p>
                 </div>
               )
             })}
+          </Reveal>
+
+          <Reveal className="mt-10 flex justify-center">
+            <Link to={path('services', '#logistics')} className="btn-secondary">
+              {t.home.services.more}
+              <FiArrowRight className="h-[18px] w-[18px]" aria-hidden />
+            </Link>
           </Reveal>
         </div>
       </section>
@@ -352,13 +363,13 @@ export default function Home() {
           </defs>
           <rect width="100%" height="100%" fill="url(#dots)" mask="url(#dots-mask)" />
         </svg>
+
         <div className="container-x relative grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <SectionIntro large label={t.home.about.label} title={t.home.about.title} />
             <Reveal>
               <div className="rule-accent" />
               <p className="desc">{d.positioning}</p>
-              <p className="desc mt-4">{d.mission}</p>
               <ul className="mt-8 grid max-w-[520px] grid-cols-2 gap-x-6 gap-y-4">
                 {d.staffEngineers.map((item) => (
                   <li key={item} className="hover-icon flex items-center gap-3 text-[14px] font-semibold text-navy">
