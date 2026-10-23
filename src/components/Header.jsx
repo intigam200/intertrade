@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { FiArrowRight, FiChevronDown, FiMail, FiMapPin, FiMenu, FiPhone, FiX } from 'react-icons/fi'
+import { FiArrowRight, FiChevronDown, FiMail, FiMenu, FiPhone, FiX } from 'react-icons/fi'
 import { contacts } from '../data/company.js'
 import { useI18n } from '../i18n/index.jsx'
 import { languages, routeKeys } from '../i18n/routes.js'
@@ -63,7 +63,6 @@ function LangSwitch({ className = '' }) {
 
 /* Верхняя полоса с контактами — скрыта на телефоне */
 export function TopBar() {
-  const { d } = useI18n()
   return (
     <div className="on-dark hidden bg-navy-deep text-[12px] text-[rgba(244,237,237,0.94)] md:block">
       <div className="container-wide flex h-9 items-center justify-between">
@@ -78,10 +77,6 @@ export function TopBar() {
             {contacts.phone}
           </a>
         </div>
-        <p className="flex items-center gap-1.5">
-          <FiMapPin className="h-[13px] w-[13px]" aria-hidden />
-          {d.contacts.country}
-        </p>
       </div>
     </div>
   )

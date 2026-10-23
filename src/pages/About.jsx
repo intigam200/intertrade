@@ -97,9 +97,9 @@ export default function About() {
       <section className="on-dark section relative overflow-hidden bg-navy">
         <div className="absolute inset-0" aria-hidden>
           <Photo
-            name="kazakhstan"
-            widths={[800, 1440, 1920]}
-            className="h-full w-full object-cover object-[center_32%]"
+            name="slide-refinery"
+            widths={[800, 1536]}
+            className="h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(27,42,74,0.95)_0%,rgba(27,42,74,0.85)_50%,rgba(27,42,74,0.45)_100%)]" />
         </div>
@@ -121,9 +121,6 @@ export default function About() {
               </Link>
             </Reveal>
           </div>
-          <p className="mt-14 text-[12px] font-semibold uppercase tracking-[0.12em] text-white/70 md:text-right">
-            {t.about.geography.caption}
-          </p>
         </div>
       </section>
 

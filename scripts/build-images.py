@@ -11,7 +11,7 @@
 import os
 from pathlib import Path
 
-from PIL import Image, ImageEnhance
+from PIL import Image
 
 SOURCES = Path(os.environ.get('ICG_SOURCES', Path.home() / 'Downloads'))
 OUT = Path(__file__).resolve().parent.parent / 'public' / 'images'
@@ -29,17 +29,6 @@ def export(img, name, widths, avif_q=58, webp_q=80):
             path = OUT / f'{name}{suffix}.{ext}'
             frame.save(path, **params)
             print(f'{path.name:<28} {width:>5}px  {path.stat().st_size / 1024:>6.0f} KB')
-
-
-def kazakhstan():
-    src = Image.open(SOURCES / 'kazakhstan.jpeg').convert('RGB')
-    # Полоса 2.4:1 с башней и закатом; фото уходит под тёмно-синий скрим
-    # секции, поэтому правится только контраст.
-    band = round(src.width / 2.4)
-    top = round(src.height * 0.20)
-    img = src.crop((0, top, src.width, min(src.height, top + band)))
-    img = ImageEnhance.Contrast(img).enhance(1.04)
-    export(img, 'kazakhstan', [1920, 1440, 800], avif_q=55, webp_q=78)
 
 
 def cover(img, ratio):
@@ -86,4 +75,3 @@ def slides():
 if __name__ == '__main__':
     OUT.mkdir(parents=True, exist_ok=True)
     slides()
-    kazakhstan()

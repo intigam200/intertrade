@@ -297,9 +297,9 @@ export default function Home() {
       <section className="on-dark section relative overflow-hidden bg-navy">
         <div className="absolute inset-0" aria-hidden>
           <Photo
-            name="kazakhstan"
-            widths={[800, 1440, 1920]}
-            className="h-full w-full object-cover object-[center_35%]"
+            name="slide-refinery"
+            widths={[800, 1536]}
+            className="h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-navy/[0.82]" />
         </div>

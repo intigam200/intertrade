@@ -450,7 +450,6 @@ export default {
         text:
           'Vetted global manufacturers, out-of-gauge transport, chartering, route surveys and customs clearance — under strict SLA terms.',
         button: 'Equipment & compliance',
-        caption: 'Astana · Republic of Kazakhstan',
       },
     },
 
@@ -521,7 +520,7 @@ export default {
         phone: 'Phone *',
         phonePlaceholder: '+7 ___ ___ __ __',
         email: 'E-mail *',
-        emailPlaceholder: 'name@company.kz',
+        emailPlaceholder: 'name@company.com',
         subject: 'Area of work',
         subjectOther: 'Other',
         message: 'Request *',

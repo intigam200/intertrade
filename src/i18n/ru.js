@@ -475,7 +475,6 @@ export default {
         text:
           'Проверенные мировые производители, перевозка негабаритных грузов, фрахт, обследование маршрутов и таможенное оформление — по договорным срокам SLA.',
         button: 'Оборудование и стандарты',
-        caption: 'Астана · Республика Казахстан',
       },
     },
 
@@ -540,13 +539,13 @@ export default {
       required: 'Поля, отмеченные *, обязательны.',
       fields: {
         company: 'Организация *',
-        companyPlaceholder: 'ТОО «Предприятие»',
+        companyPlaceholder: 'Название компании',
         name: 'Контактное лицо *',
         namePlaceholder: 'ФИО, должность',
         phone: 'Телефон *',
         phonePlaceholder: '+7 ___ ___ __ __',
         email: 'E-mail *',
-        emailPlaceholder: 'name@company.kz',
+        emailPlaceholder: 'name@company.com',
         subject: 'Направление',
         subjectOther: 'Другое',
         message: 'Заявка *',

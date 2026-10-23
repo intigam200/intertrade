@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { FiAward, FiFileText, FiGlobe, FiMail, FiMapPin, FiPhone, FiTool, FiBriefcase } from 'react-icons/fi'
+import { FiAward, FiFileText, FiGlobe, FiMail, FiPhone, FiTool } from 'react-icons/fi'
 import { Logo } from './Header.jsx'
 import { contacts } from '../data/company.js'
 import { useI18n } from '../i18n/index.jsx'
@@ -18,8 +18,6 @@ export default function Footer() {
   const rows = [
     { icon: FiPhone, href: contacts.phoneHref, text: contacts.phone, label: t.footer.phone },
     { icon: FiMail, href: contacts.emailHref, text: contacts.email, label: t.footer.email },
-    { icon: FiMapPin, text: d.contacts.country, label: t.footer.region },
-    { icon: FiBriefcase, text: d.contacts.legalName, label: t.footer.legal },
   ]
 
   return (
@@ -100,9 +98,8 @@ export default function Footer() {
       <div className="border-t border-white/[0.08]">
         <div className="container-x flex flex-col gap-3 py-6 text-[12px] text-white/60 md:flex-row md:items-center md:justify-between">
           <p>
-            © {year} {d.contacts.legalName}. {t.footer.rights}
+            © {year} Intertrade and Consulting Group. {t.footer.rights}
           </p>
-          <p>{d.contacts.country}</p>
         </div>
       </div>
     </footer>
