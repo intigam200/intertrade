@@ -13,6 +13,8 @@ import {
   IconMining,
   IconOil,
   IconQuality,
+  IconPump,
+  IconExchanger,
   IconSwap,
 } from './Icons.jsx'
 
@@ -31,6 +33,8 @@ const map = {
   mining: IconMining,
   oil: IconOil,
   quality: IconQuality,
+  pump: IconPump,
+  exchanger: IconExchanger,
   swap: IconSwap,
 }
 

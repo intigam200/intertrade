@@ -53,4 +53,11 @@ export const brands = [
   'Samson',
   'Bettis',
   'Fisher',
+  'Masoneilan',
+  'John Crane',
+  'EagleBurgmann',
+  'SKF',
+  'FAG',
+  'NSK',
+  'Triconex',
 ]

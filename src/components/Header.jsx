@@ -128,7 +128,10 @@ export default function Header() {
       all: { to: path('services'), label: t.nav.allServices },
     },
     products: {
-      items: d.catalog.map((c) => ({ to: path('products', `#${c.id}`), label: c.title })),
+      items: [
+        ...d.catalog.map((c) => ({ to: path('products', `#${c.id}`), label: c.title })),
+        { to: path('products', '#spare-parts'), label: t.nav.spareParts },
+      ],
       all: { to: path('products'), label: t.nav.allProducts },
     },
   }

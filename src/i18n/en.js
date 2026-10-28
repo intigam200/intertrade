@@ -26,7 +26,7 @@ export default {
     products: {
       title: 'Equipment & Compliance Matrix — Intertrade and Consulting Group',
       description:
-        'Equipment and compliance matrix: API 6D valves, API 610 pumps, ATEX/IECEx instrumentation, mining wear parts and project logistics.',
+        'Equipment and compliance matrix: API 6D valves, API 610 pumps, ATEX/IECEx instrumentation, mining wear parts, project logistics and in-demand spare parts.',
     },
     contacts: {
       title: 'Contacts — Intertrade and Consulting Group',
@@ -248,6 +248,98 @@ export default {
       },
     ],
 
+    // Top in-demand spare parts (Products page, spare-parts section)
+    spareParts: [
+      {
+        id: 'rotating',
+        icon: 'pump',
+        title: 'Pumps, Compressors & Rotating Equipment',
+        top: true,
+        note: 'Pumps and compressors run continuously and need constant maintenance.',
+        items: [
+          {
+            title: 'Mechanical Seals',
+            text: 'Single, double and cartridge seals to API 682 (John Crane, EagleBurgmann and others).',
+          },
+          {
+            title: 'Bearings and bearing assemblies',
+            text: 'High-reliability rolling and plain bearings (SKF, FAG, NSK) for aggressive media and high temperatures.',
+          },
+          {
+            title: 'Pump parts (API 610 / API 685)',
+            text: 'Impellers, shafts, wear and protective rings, shaft sleeves, casing gaskets.',
+          },
+          {
+            title: 'Compressor parts (API 618 / API 617)',
+            text: 'Plate and ring valves, piston rings, packing, connecting rod bearings.',
+          },
+          { title: 'Flexible Couplings', text: 'Disc and diaphragm couplings to API 671.' },
+        ],
+      },
+      {
+        id: 'valves',
+        icon: 'valve',
+        title: 'Shut-off & Control Valves and Piping Components',
+        items: [
+          {
+            title: 'Valve repair kits',
+            text: 'Gland packing, glands, stems, seats, balls and discs for control and safety valves (Fisher, Masoneilan, Samson).',
+          },
+          {
+            title: 'Safety relief valves (API 520 / API 526)',
+            text: 'Springs, burst discs, spools.',
+          },
+          {
+            title: 'Sealing materials (gaskets)',
+            list: [
+              'Spiral Wound Gaskets — Graphite/316L, Monel, Inconel',
+              'Ring Joint Gaskets — RTJ, type R, RX, BX',
+              'Graphite-metal and PTFE gaskets',
+            ],
+          },
+          {
+            title: 'Fasteners',
+            text: 'High-strength studs and nuts in special steels (ASTM A193 B7/B16, A194 2H/7) for high-pressure, high-temperature flanges.',
+          },
+        ],
+      },
+      {
+        id: 'heat-exchange',
+        icon: 'exchanger',
+        title: 'Heat Exchange & Fired Equipment',
+        items: [
+          {
+            title: 'Tube Bundles and heat exchanger tubes',
+            text: 'In corrosion-resistant and heat-resistant alloys (Stainless Steel, Duplex, Monel, Incoloy).',
+          },
+          {
+            title: 'Expansion joints',
+            text: 'Metal bellows and fabric expansion joints for high temperatures and aggressive gases.',
+          },
+          {
+            title: 'Furnace fittings and burners',
+            text: 'Burner nozzles, ignition electrodes, refractory tubes, tube hangers.',
+          },
+        ],
+      },
+      {
+        id: 'instrumentation',
+        icon: 'gauge',
+        title: 'Instrumentation & Electrical (Explosion-Proof)',
+        items: [
+          {
+            title: 'Sensors and instruments',
+            text: 'Pressure, temperature, level and flow transmitters in explosion-proof design (Ex d / Ex i) from Emerson, Yokogawa, Endress+Hauser.',
+          },
+          { title: 'Explosion-proof cable glands and junction boxes' },
+          {
+            title: 'Control system modules (ESD / DCS)',
+            text: 'Cards and controllers for Triconex, Honeywell and Yokogawa Centum systems.',
+          },
+        ],
+      },
+    ],
+
     catalog: [
       {
         id: 'oil-gas',
@@ -304,6 +396,7 @@ export default {
       products: 'Products',
       contacts: 'Contacts',
       allServices: 'All capabilities',
+      spareParts: 'Spare parts',
       allProducts: 'Full equipment matrix',
     },
 
@@ -384,6 +477,12 @@ export default {
         colScope: 'Primary Equipment Scope',
         colStandards: 'Standards & Certifications',
         all: 'Equipment details',
+      },
+      spare: {
+        label: 'Spare parts',
+        title: 'Top in-demand spare parts',
+        desc: 'Seals, bearings, repair kits, gaskets, tube bundles and explosion-proof instrumentation — for continuous operation.',
+        more: 'Full list',
       },
       industries: {
         label: 'Industries',
@@ -487,6 +586,13 @@ export default {
       details: 'Categories and operational field',
       field: 'Operational field',
       request: 'Submit specifications',
+      spare: {
+        label: 'Spare parts',
+        title: 'Top in-demand spare parts by category',
+        desc: 'The parts and seals that keep pumps, compressors, valves, heat exchangers and instrumentation in service.',
+        top: 'Highest demand',
+        request: 'Request spare parts',
+      },
       cta: {
         title: 'Discontinued item? We will source a compatible equivalent',
         text: 'Form-fit-function equivalents from vetted manufacturers — backed by a comparative engineering matrix.',

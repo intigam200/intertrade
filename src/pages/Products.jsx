@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { FiArrowRight, FiMail } from 'react-icons/fi'
 import Reveal from '../components/Reveal.jsx'
 import Icon from '../components/Icon.jsx'
-import { BrandStrip, CheckList, CtaBlock, PageHero, StandardTags } from '../components/ui.jsx'
+import { BrandStrip, CheckList, CtaBlock, PageHero, SectionIntro, StandardTags } from '../components/ui.jsx'
 import { contacts } from '../data/company.js'
 import { useI18n } from '../i18n/index.jsx'
 
@@ -48,6 +48,15 @@ export default function Products() {
                       </a>
                     </li>
                   ))}
+                  <li>
+                    <a
+                      href="#spare-parts"
+                      className="flex items-center gap-3 rounded-md px-3 py-2.5 text-[14px] font-semibold leading-snug text-navy transition-all duration-150 hover:bg-mist hover:text-accent"
+                    >
+                      <Icon name="pump" className="h-5 w-5 shrink-0 text-accent" />
+                      {t.nav.spareParts}
+                    </a>
+                  </li>
                 </ul>
               </nav>
               <div className="card hover-icon p-5 shadow-card">
@@ -114,6 +123,66 @@ export default function Products() {
               </Link>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── Топ востребованных запчастей ───────────────────────────── */}
+      <section id="spare-parts" className="section bg-white">
+        <div className="container-x">
+          <SectionIntro label={p.spare.label} title={p.spare.title} desc={p.spare.desc} />
+          <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
+            {d.spareParts.map((cat, i) => (
+              <Reveal
+                as="article"
+                key={cat.id}
+                id={cat.id}
+                delay={(i % 2) * 80}
+                className="card scroll-mt-[120px] overflow-hidden shadow-card"
+              >
+                <header className="hover-icon flex items-start gap-4 border-b border-line p-6">
+                  <span className="icon-circle h-14 w-14 bg-sky-bg">
+                    <Icon name={cat.icon} className="tm-icon h-8 w-8" />
+                  </span>
+                  <div>
+                    {cat.top && (
+                      <span className="mb-2 inline-block rounded-full bg-accent px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-[0.08em] text-white">
+                        {p.spare.top}
+                      </span>
+                    )}
+                    <h3 className="text-[19px] font-bold leading-snug text-navy">{cat.title}</h3>
+                    {cat.note && <p className="mt-1.5 text-[14px] leading-relaxed text-muted">{cat.note}</p>}
+                  </div>
+                </header>
+                <ul className="divide-y divide-line px-6">
+                  {cat.items.map((item) => (
+                    <li key={item.title} className="flex gap-3 py-4">
+                      <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden />
+                      <div>
+                        <p className="text-[15px] font-semibold leading-snug text-navy">{item.title}</p>
+                        {item.text && <p className="mt-1 text-[14px] leading-relaxed text-muted">{item.text}</p>}
+                        {item.list && (
+                          <ul className="mt-2 space-y-1.5">
+                            {item.list.map((line) => (
+                              <li key={line} className="flex gap-2 text-[14px] leading-relaxed text-muted">
+                                <span aria-hidden>—</span>
+                                {line}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal className="mt-10">
+            <Link to={path('contacts')} className="btn-primary">
+              {p.spare.request}
+              <FiArrowRight className="h-[18px] w-[18px]" aria-hidden />
+            </Link>
+          </Reveal>
         </div>
       </section>
 

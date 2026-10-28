@@ -234,8 +234,42 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Запасные части ─────────────────────────────────────────── */}
+      <section className="section bg-white">
+        <div className="container-x">
+          <SectionIntro label={t.home.spare.label} title={t.home.spare.title} desc={t.home.spare.desc} />
+          <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {d.spareParts.map((cat, i) => (
+              <Reveal key={cat.id} delay={i * 70} className="h-full">
+                <Link
+                  to={path('products', `#${cat.id}`)}
+                  className="card card-hover hover-icon flex h-full flex-col p-6"
+                >
+                  <span className="icon-circle h-14 w-14 bg-sky-bg">
+                    <Icon name={cat.icon} className="tm-icon h-8 w-8" />
+                  </span>
+                  <h3 className="mt-5 text-[16px] font-bold leading-snug text-navy">{cat.title}</h3>
+                  <ul className="mt-3 space-y-1.5">
+                    {cat.items.slice(0, 3).map((item) => (
+                      <li key={item.title} className="flex gap-2 text-[13px] leading-snug text-muted">
+                        <span className="mt-[6px] h-1 w-1 shrink-0 rounded-full bg-accent" aria-hidden />
+                        {item.title}
+                      </li>
+                    ))}
+                  </ul>
+                  <span className="mt-auto flex items-center gap-2 pt-5 text-[14px] font-semibold text-accent">
+                    {t.home.spare.more}
+                    <FiArrowRight className="h-[18px] w-[18px]" aria-hidden />
+                  </span>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── Отрасли ────────────────────────────────────────────────── */}
-      <section id="industries" className="section bg-white">
+      <section id="industries" className="section bg-mist">
         <div className="container-x">
           <div className="flex items-start justify-between gap-10">
             <SectionIntro

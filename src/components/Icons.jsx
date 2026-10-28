@@ -133,6 +133,26 @@ export const IconActuator = (p) => (
   </Svg>
 )
 
+/* Центробежный насос — насосно-компрессорное оборудование */
+export const IconPump = (p) => (
+  <Svg {...p}>
+    <circle cx="20" cy="26" r="12" />
+    <circle cx="20" cy="26" r="4" />
+    <path d="M20 14V6h14v6" />
+    <path d="M32 26h14" />
+    <path d="M10 42h20" />
+  </Svg>
+)
+
+/* Кожухотрубный теплообменник */
+export const IconExchanger = (p) => (
+  <Svg {...p}>
+    <rect x="6" y="14" width="36" height="20" rx="10" />
+    <path d="M12 21h24M12 27h24" />
+    <path d="M16 14V8M32 34v6" />
+  </Svg>
+)
+
 /* Щит с отметкой — контроль качества */
 export const IconQuality = (p) => (
   <Svg {...p}>
